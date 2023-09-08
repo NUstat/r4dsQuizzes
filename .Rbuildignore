@@ -1,0 +1,10 @@
+^r4dsQuizzes\.Rproj$
+^\.Rproj\.user$
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^LICENSE\.md$
+^r4dsQuizzes\.Rcheck$
+^r4dsQuizzes.*\.tar\.gz$
+^r4dsQuizzes.*\.tgz$
