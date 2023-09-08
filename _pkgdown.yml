@@ -11,7 +11,6 @@ template:
 
 navbar:
   background: "#4E2A84"
-  logo: "images/logo_isds.png"
   align: center
   title: false
 
@@ -19,11 +18,11 @@ navbar:
   - text: Tutorials
     href: tutorials/index.html
   right:
-  - text: ISDS Textbook
-    href: https://nustat.github.io/intro-stat-data-sci/
+  - text: R for Data Science Textbook
+    href: https://r4ds.hadley.nz/
 
 
 tutorials:
-- name: 01_intro
-  title: Preface & Chapter 1
-  url: https://amkuyper.shinyapps.io/01_intro/
+- name: quiz-1
+  title: Visualization and Transformations
+  url: https://amkuyper.shinyapps.io/quiz-1/

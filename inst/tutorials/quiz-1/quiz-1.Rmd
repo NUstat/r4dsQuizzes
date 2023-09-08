@@ -1,0 +1,515 @@
+---
+title: "Visualizations and Transformations"
+tutorial:
+  id: "301_q1"
+  version: 0.1
+  
+output:
+  learnr::tutorial:
+    progressive: false
+    allow_skip: true
+    css: ["css/nu-theme.css"]
+runtime: shiny_prerendered
+description: >
+  Data Science in R proficiency quiz on visualizations and transformations.
+---
+
+```{r setup, include=FALSE}
+library(skimr)
+library(learnr)
+library(tidyverse)
+library(tutorialExtras)
+library(gradethis)
+
+gradethis_setup(pass = "submitted",
+                fail = "submitted",
+                error_checker.message = "submitted",
+                fail.hint = FALSE
+                )
+
+isds_setup(isds_exam = TRUE,
+           max_retry = 3,
+           retry_cooldown = 24)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+credit <- ISLR2::Credit |> 
+  janitor::clean_names()
+
+auto <- ISLR2::Auto |> 
+  janitor::clean_names() |> 
+  mutate(origin = factor(origin, 
+                         levels = c("1", "2", "3"), 
+                         labels = c("American", "European", "Japanese")))
+
+bikeshare <- ISLR2::Bikeshare |> 
+  janitor::clean_names()
+
+diamonds <- diamonds |> 
+  janitor::clean_names()
+
+sample_data <- ceiling((rand_int*4/10))
+
+rand_q <- c(0, sample(1:3, 1), sample(1:3, 1), sample(1:4, 1), sample(1:3, 1))
+
+data <- c("diamonds", "credit", "auto", "bikeshare")
+```
+
+```{r, context = "server"}
+lock_server("lock")
+reset_server("reset")
+```
+
+```{r Name}
+# student name
+question_text("Name:",
+              answer_fn(function(value){
+                              if(length(value) >= 1 ) {
+                                return(mark_as(TRUE))
+                                }
+                              return(mark_as(FALSE) )
+                              }),
+              correct = "submitted",
+              allow_retry = FALSE )
+```
+
+## Instructions
+
+You have 30 minutes to complete this quiz. Set a timer, as it is self timed!
+
+The quiz covers data visualization and transformations.
+
+As always make sure your code is well organized in proper formatting and using tidyverse functions.
+
+Once you are finished:
+
+-   Check Submissions to make sure every question/exercise has been **submitted**.
+-   Click the 'Lock Exam' button. You will not be able to make any changes once this is clicked.
+-   Once the exam is locked you will be able to click on the 'Download Exam' button.
+-   Submit the completed html to Canvas.
+
+## The Data
+
+The following set of questions are based on the ` `r data[sample_data]` ` data set.
+A skim, glimpse, and explanation of the variables are provided below.
+
+```{r}
+if(sample_data == 1){
+  skim(diamonds)
+} else if(sample_data == 2){
+  skim(credit)
+} else if(sample_data == 3){
+  skim(auto)
+} else{
+  skim(bikeshare)
+}
+```
+
+
+```{r}
+if(sample_data == 1){
+  glimpse(diamonds)
+} else if(sample_data == 2){
+  glimpse(credit)
+} else if(sample_data == 3){
+  glimpse(auto)
+} else{
+  glimpse(bikeshare)
+}
+```
+
+
+## Question 1
+
+```{r Concept1}
+q1 <- list()
+q1[[1]] <- question_numeric("How many observations are in the dataset?",
+                    answer(53940, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+q1[[2]] <- question_numeric("How many observations are in the dataset?",
+                    answer(400, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+q1[[3]] <- question_numeric("How many observations are in the dataset?",
+                    answer(392, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+q1[[4]] <- question_numeric("How many observations are in the dataset?",
+                    answer(8645, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+
+
+q1[[sample_data]]
+```
+
+
+```{r Concept2}
+q1b <- list()
+q1b[[1]] <- question_numeric("How many variables in the dataset are coded as categorical?",
+                    answer(3, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+q1b[[2]] <- question_numeric("How many variables in the dataset are coded as categorical?",
+                    answer(4, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+q1b[[3]] <- question_numeric("How many variables in the dataset are coded as categorical?",
+                    answer(2, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+q1b[[4]] <- question_numeric("How many variables in the dataset are coded as categorical?",
+                    answer(3, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+
+q1b[[sample_data]]
+```
+
+
+```{r Concept3}
+exam(
+  caption = NULL,
+  question_wordbank("Which function/verb would you use to...",
+                    choices = c("create a new variable", "keep only observations that meet a criteria"),
+                    wordbank = c("slice_max()", "count()", "mutate()", "group_by()", "filter()", "select()", "summarize()", "arrange()", "rename()", "relocate()", "slice_min()", "slice_head()"),
+                    answer(c("mutate()", "filter()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  
+  question_wordbank("Which function/verb would you use to...",
+                    choices = c("orders the rows of a data frame by the values of selected columns", "keep only desired variables"),
+                    wordbank = c("slice_max()", "count()", "mutate()", "group_by()", "filter()", "select()", "summarize()", "arrange()", "rename()", "relocate()", "slice_min()", "slice_head()"),
+                    answer(c("arrange()", "select()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("Which function/verb would you use to...",
+                    choices = c("compute the mean of a variable", "select only the first n rows of a data frame."),
+                    wordbank = c("slice_max()", "count()", "mutate()", "group_by()", "filter()", "select()", "summarize()", "arrange()", "rename()", "relocate()", "slice_min()", "slice_head()"),
+                    answer(c("summarize()", "slice_head()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("Which function/verb would you use to...",
+                    choices = c("perform an action per category", "select the rows with the highest n values of a variable."),
+                    wordbank = c("slice_max()", "count()", "mutate()", "group_by()", "filter()", "select()", "summarize()", "arrange()", "rename()", "relocate()", "slice_min()", "slice_head()"),
+                    answer(c("group_by()", "slice_max()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    )
+)
+```
+
+
+
+## Question 2
+
+Recreate the following visualization: 
+
+- If a fixed color is used, you may use any color of your choice.
+- If a transparency is used it is equal to 0.25.
+
+```{r, context = "server"}
+q2 <- list()
+# if(sample_data == 1){
+#   q2[[1]] <- ggplot(diamonds, aes(x = carat)) +
+#     geom_density(aes(fill = cut), alpha = 0.25) +
+#     labs(title = "Diamond Weight in Carats by Cut")
+#   q2[[2]] <- ggplot(diamonds, aes(x = carat, y = cut)) +
+#   geom_boxplot(fill = "skyblue") +
+#     labs(title = "Diamond Weight in Carats by Cut")
+#   q2[[3]] <- ggplot(diamonds, aes(x = carat, fill = cut)) +
+#     geom_histogram(color = "white") +
+#     labs(title = "Diamond by Cut and Color")
+# } else if(sample_data == 2){
+#   q2[[1]] <- ggplot(credit, aes(x = balance)) +
+#     geom_density(aes(fill = region), alpha = 0.25) +
+#     labs(title = "Credit Card Balance by Region")
+#   q2[[2]] <- ggplot(credit, aes(x = balance, y = region)) +
+#     geom_boxplot(fill = "skyblue") +
+#     labs(title = "Credit Card Balance by Region")
+#   q2[[3]] <- ggplot(credit, aes(x = balance, fill = region)) +
+#     geom_histogram(color = "white") +
+#     labs(title = "Credit Card Balance by Region")
+# } else if(sample_data == 3){
+#   q2[[1]] <- ggplot(auto, aes(x = mpg)) +
+#   geom_density(aes(fill = origin), alpha = 0.25) +
+#     labs(title = "Car MPG based on Origin")
+#   q2[[2]] <- ggplot(auto, aes(x = mpg, y = origin)) +
+#   geom_boxplot(fill = "skyblue") +
+#     labs(title = "Car MPG based on Origin")
+#   q2[[3]] <- ggplot(auto, aes(x = mpg, fill = origin)) +
+#     geom_histogram(color = "white") +
+#     labs(title = "Car MPG based on Origin")
+# } else{
+#   q2[[1]] <- ggplot(bikeshare, aes(x = bikers)) +
+#     geom_density(aes(fill = weathersit), alpha = 0.25) +
+#     labs(title = "Number of Bikers by Weather")
+#   q2[[2]] <- ggplot(bikeshare, aes(x = bikers, y = weathersit)) +
+#     geom_boxplot(fill = "skyblue") +
+#     labs(title = "Number of Bikers by Weather")
+#   q2[[3]] <- ggplot(bikeshare, aes(x = bikers, fill = weathersit)) +
+#     geom_histogram(color = "white") +
+#     labs(title = "Number of Bikers by Weather")
+# }
+
+if(sample_data == 1){
+  q2[[1]] <- "images/q2_p1_a.png"
+  q2[[2]] <- "images/q2_p1_b.png"
+  q2[[3]] <- "images/q2_p1_c.png"
+} else if(sample_data == 2){
+  q2[[1]] <- "images/q2_p2_a.png"
+  q2[[2]] <- "images/q2_p2_b.png"
+  q2[[3]] <- "images/q2_p2_c.png"
+} else if(sample_data == 3){
+  q2[[1]] <- "images/q2_p3_a.png"
+  q2[[2]] <- "images/q2_p3_b.png"
+  q2[[3]] <- "images/q2_p3_c.png"
+} else{
+  q2[[1]] <- "images/q2_p4_a.png"
+  q2[[2]] <- "images/q2_p4_b.png"
+  q2[[3]] <- "images/q2_p4_c.png"
+}
+
+text_server(id = "Q2", text = htmltools::img(
+				src = q2[[rand_q[2]]], width = 300, height = 227
+			) )
+```
+
+
+```{r Question2}
+text_ui(id = "Q2")
+```
+
+
+```{r Q2, exercise=TRUE}
+
+```
+
+```{r Q2-solution, exercise.reveal_solution = FALSE}
+
+```
+
+```{r Q2-check}
+grade_this_code(
+  correct = "Submitted",
+  incorrect = "Submitted"
+)
+```
+
+## Question 3
+
+```{r, context = "server"}
+q3 <- list()
+if(sample_data == 1){
+  q3[[1]] <- "Calculate the mean, standard deviation, and count of diamond price for each cut."
+  q3[[2]] <- "Calculate the count of diamonds of each color and arrange from most to least."
+  q3[[3]] <- "Calculate the minimum, maximum, and count of diamond price for each color."
+} else if(sample_data == 2){
+  q3[[1]] <- "Calculate the mean, standard deviation, and count of balance for each region."
+  q3[[2]] <- "Calculate the count of observations from each region and arrange from least to greatest."
+  q3[[3]] <- "Calculate the minimum and maximum balance for Own and married."
+} else if(sample_data == 3){
+  q3[[1]] <- "Calculate the mean, standard deviation, and count of mpg for each origin."
+  q3[[2]] <- "Calculate the count of cars of each origin and arrange from most to least."
+  q3[[3]] <- "Calculate the minimum, maximum, and count of mpg for each origin."
+} else{
+  q3[[1]] <- "Calculate the mean, standard deviation, and count of bikers for each weathersit."
+  q3[[2]] <- "Calculate the count of weathersit and arrange from most to least."
+  q3[[3]] <- "Calculate the minimum, maximum, and count of bikers for each weathersit."
+}
+
+text_server(id = "Q3", text = q3[[rand_q[3]]])
+```
+
+
+```{r Question3}
+text_ui(id = "Q3")
+```
+
+
+```{r Q3, exercise=TRUE}
+
+```
+
+```{r Q3-solution, exercise.reveal_solution = FALSE}
+
+```
+
+```{r Q3-check}
+grade_this_code(
+  correct = "Submitted",
+  incorrect = "Submitted"
+)
+```
+
+## Question 4
+
+```{r, context = "server"}
+#| warning: false
+q4 <- list()
+if(sample_data == 1){
+  q4[[1]] <- "Create a new variable called `price_per_carat` which is calculated as price divided by carat. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
+  q4[[2]] <- "Create a new variable called `price_per_carat` which is calculated as price divided by carat. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
+  q4[[3]] <- "Create a new variable called `price_per_carat` which is calculated as price divided by carat. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
+  q4[[4]] <- "Create a new variable called `price_per_carat` which is calculated as price divided by carat. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
+} else if(sample_data == 2){
+  q4[[1]] <- "Create a new variable called `prop_limit_used` which is calculated as balance divided by limit. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
+  q4[[2]] <- "Create a new variable called `prop_limit_used` which is calculated as balance divided by limit. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
+  q4[[3]] <- "Create a new variable called `prop_limit_used` which is calculated as balance divided by limit. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
+  q4[[4]] <- "Create a new variable called `prop_limit_used` which is calculated as balance divided by limit. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
+} else if(sample_data == 3){
+  q4[[1]] <- "Create a new variable called `power_weight_ratio` which is calculated as horsepower divided by weight. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
+  q4[[2]] <- "Create a new variable called `power_weight_ratio` which is calculated as horsepower divided by weight. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
+  q4[[3]] <- "Create a new variable called `power_weight_ratio` which is calculated as horsepower divided by weight. Move this new variable to the beginning of the dataframe and only print the smallest 4 observations based on this new variable."
+  q4[[4]] <- "Create a new variable called `power_weight_ratio` which is calculated as horsepower divided by weight. Move this new variable to the beginning of the dataframe and only print the first 5 observations of the data frame."
+} else{
+  q4[[1]] <- "Create a new variable called `prop_registered` which is calculated as registered divided by bikers. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
+  q4[[2]] <- "Create a new variable called `prop_registered` which is calculated as registered divided by bikers. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
+  q4[[3]] <- "Create a new variable called `prop_registered` which is calculated as registered divided by bikers. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
+  q4[[4]] <- "Create a new variable called `prop_registered` which is calculated as registered divided by bikers. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
+}
+
+text_server(id = "Q4", text = q4[[rand_q[4]]])
+```
+
+
+```{r Question4}
+text_ui(id = "Q4")
+```
+
+```{r Q4, exercise=TRUE}
+
+```
+
+```{r Q4-solution, exercise.reveal_solution = FALSE}
+
+```
+
+```{r Q4-check}
+grade_this_code(
+  correct = "Submitted",
+  incorrect = "Submitted"
+)
+```
+
+<br>
+
+## Question 5
+
+```{r, context = "server"}
+#| warning: false
+q5 <- list()
+if(sample_data == 1){
+  q5[[1]] <- "Plot the relationship of price by carat. Facet by both cut and color."
+  q5[[2]] <- "Plot the relationship of price by carat. Set the shape equal to cut and facet by color with 2 rows."
+  q5[[3]] <- "Plot the relationship of price by carat. Set the color equal to color. Facet by cut and change the scales to free."
+} else if(sample_data == 2){
+  q5[[1]] <- "Plot the relationship of limit by income. Facet by both married and cards. use the labeller argument to label both facets."
+  q5[[2]] <- "Plot the relationship of limit by income. Set the shape equal to married and facet by own with 2 rows."
+  q5[[3]] <- "Plot the relationship of limit by income. Set the color equal to own. Facet by married and change the scales to free."
+} else if(sample_data == 3){
+  q5[[1]] <- "Plot the relationship of horsepower by weight. Facet by both origin and cylinders."
+  q5[[2]] <- "Plot the relationship of horsepower by weight. Set the shape equal to cylinders and facet by origin with 3 rows."
+  q5[[3]] <- "Plot the relationship of horsepower by weight. Set the color equal to origins. Facet by cylinders and change the scales to free."
+} else{
+  q5[[1]] <- "Plot the relationship of bikers by temp. Facet by both weathersit and season."
+  q5[[2]] <- "Plot the relationship of bikers by temp. Set the shape equal to weathersit and facet by month with 4 rows."
+  q5[[3]] <- "Plot the relationship of bikers by temp. Set the color equal to weathersit. Facet by season and change the scales to free."
+}
+
+text_server(id = "Q5", text = q5[[rand_q[5]]])
+```
+
+
+```{r Question5}
+text_ui(id = "Q5")
+```
+
+
+```{r Q5, exercise=TRUE}
+
+```
+
+```{r Q5-solution, exercise.reveal_solution = FALSE}
+
+```
+
+```{r Q5-check}
+grade_this_code(
+  correct = "Submitted",
+  incorrect = "Submitted"
+)
+```
+
+## Submit
+
+Once you are finished:
+
+-   Click "Check Submissions" to make sure all questions and exercises are submitted -- **Un-submitted questions will receive a 0.**
+-   Once all questions/exercises are submitted click the 'Lock Exam' button. Once you click this you will not be able to make any changes to your exam!
+-   Once the lock is pressed a `Download Exam` option will become available,
+-   Download and **Check your HTML!**
+
+-  You have 3 attempts on this proficiency quiz. Submit the quiz you want to be graded to Canvas. The grader will only be grading one quiz per student.
+
+```{r}
+lock_check_ui(id = "lock")
+```
+<br>
+```{r}
+lock_button_ui(id = "lock")
+```
+
+
+## Retry
+
+The retry button is available 24 hours after you lock the quiz. 
+
+You have 3 attempts on this quiz. 
+
+Once you click retry your quiz will be erased and a new set of questions will be generated. Make sure you downloaded your quiz and check that everything is correct prior to clicking the retry button. Once you click retry there will be no way to retrieve your prior attempt.
+
+
+```{r}
+reset_button_ui(id = "reset")
+```
