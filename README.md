@@ -16,7 +16,7 @@ remotes::install_github("NUstat/r4dsQuizzes", dependencies = TRUE)
 # List of quiz tutorials
 
 | Tutorial Name | Topics Covered                     | R for Data Science (2e) |
-|---------------|-----------------------------|-----------------------------|
+|---------------|------------------------------------|-------------------------|
 | quiz-1        | Visualizations and Transformations | Chapters 1 - 3          |
 | quiz-2        |                                    |                         |
 | quiz-3        |                                    |                         |
