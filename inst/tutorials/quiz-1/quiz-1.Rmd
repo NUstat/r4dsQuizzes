@@ -57,7 +57,7 @@ data <- c("diamonds", "credit", "auto", "bikeshare")
 
 ```{r, context = "server"}
 lock_server("lock")
-reset_server("reset")
+reset_server("reset", file_name = "quiz-1", package_name = "r4dsQuizzes")
 ```
 
 ```{r Name}
