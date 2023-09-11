@@ -16,7 +16,6 @@ Imports:
     learnr (>= 0.10.1.9008),
     tutorialExtras
 Suggests:
-    diamonds,
     dplyr,
     ISLR2,
     janitor,
