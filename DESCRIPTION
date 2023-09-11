@@ -1,12 +1,12 @@
 Type: Package
 Package: r4dsQuizzes
-Title: Proficiency Quizzes for R for Data Science (2e) by Hadley Wickham 
+Title: Proficiency Quizzes for R for Data Science (2e)
 Version: 0.0.0.9000
 Authors@R: 
     person("Danielle", "Sass", , "danielle.sass@northwestern.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9755-738X"))
 Description: A series of 'learnr' tutorials with quiz adaptations using the 'tutorialExtras' package. These quizzes 
-contain questions and exercises based on learning goals from the R for Data Science (2e) textbook. 
+contain questions and exercises based on learning goals from the R for Data Science (2e) textbook by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund. 
 The quizzes are geared towards mastery with randomized question selection and 3 attempts per quiz.
 License: CC BY 4.0
 Depends:
