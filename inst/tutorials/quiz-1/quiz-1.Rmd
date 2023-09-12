@@ -341,21 +341,21 @@ grade_this_code(
 ```{r, context = "server"}
 q3 <- list()
 if(sample_data == 1){
-  q3[[1]] <- "Calculate the mean, standard deviation, and count of diamond price for each cut."
-  q3[[2]] <- "Calculate the count of diamonds of each color and arrange from most to least."
-  q3[[3]] <- "Calculate the minimum, maximum, and count of diamond price for each color."
+  q3[[1]] <- "Calculate the mean, standard deviation, and count of diamond `price` for each `cut`."
+  q3[[2]] <- "Calculate the count of diamonds of each `color` and arrange from most to least."
+  q3[[3]] <- "Calculate the minimum, maximum, and count of diamond `price` for each `color`."
 } else if(sample_data == 2){
-  q3[[1]] <- "Calculate the mean, standard deviation, and count of balance for each region."
-  q3[[2]] <- "Calculate the count of observations from each region and arrange from least to greatest."
-  q3[[3]] <- "Calculate the minimum and maximum balance for Own and married."
+  q3[[1]] <- "Calculate the mean, standard deviation, and count of `balance` for each `region`."
+  q3[[2]] <- "Calculate the count of observations from each `region` and arrange from least to greatest."
+  q3[[3]] <- "Calculate the minimum and maximum `balance` by whether an individual `own` s a house and if the individual is `married`. ie(balance of owns a house and married, owns a house and not married, etc.)"
 } else if(sample_data == 3){
-  q3[[1]] <- "Calculate the mean, standard deviation, and count of mpg for each origin."
-  q3[[2]] <- "Calculate the count of cars of each origin and arrange from most to least."
-  q3[[3]] <- "Calculate the minimum, maximum, and count of mpg for each origin."
+  q3[[1]] <- "Calculate the mean, standard deviation, and count of `mpg` for each `origin`."
+  q3[[2]] <- "Calculate the count of cars of each `origin` and arrange from most to least."
+  q3[[3]] <- "Calculate the minimum, maximum, and count of `mpg` for each `origin`."
 } else{
-  q3[[1]] <- "Calculate the mean, standard deviation, and count of bikers for each weathersit."
-  q3[[2]] <- "Calculate the count of weathersit and arrange from most to least."
-  q3[[3]] <- "Calculate the minimum, maximum, and count of bikers for each weathersit."
+  q3[[1]] <- "Calculate the mean, standard deviation, and count of `bikers` for each `weathersit`."
+  q3[[2]] <- "Calculate the count of `weathersit` and arrange from most to least."
+  q3[[3]] <- "Calculate the minimum, maximum, and count of `bikers` for each `weathersit`."
 }
 
 text_server(id = "Q3", text = q3[[rand_q[3]]])
@@ -388,25 +388,25 @@ grade_this_code(
 #| warning: false
 q4 <- list()
 if(sample_data == 1){
-  q4[[1]] <- "Create a new variable called `price_per_carat` which is calculated as price divided by carat. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
-  q4[[2]] <- "Create a new variable called `price_per_carat` which is calculated as price divided by carat. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
-  q4[[3]] <- "Create a new variable called `price_per_carat` which is calculated as price divided by carat. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
-  q4[[4]] <- "Create a new variable called `price_per_carat` which is calculated as price divided by carat. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
+  q4[[1]] <- "Create a new variable called `price_per_carat` which is calculated as `price` divided by `carat`. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
+  q4[[2]] <- "Create a new variable called `price_per_carat` which is calculated as `price` divided by `carat`. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
+  q4[[3]] <- "Create a new variable called `price_per_carat` which is calculated as `price` divided by `carat`. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
+  q4[[4]] <- "Create a new variable called `price_per_carat` which is calculated as `price` divided by `carat`. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
 } else if(sample_data == 2){
-  q4[[1]] <- "Create a new variable called `prop_limit_used` which is calculated as balance divided by limit. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
-  q4[[2]] <- "Create a new variable called `prop_limit_used` which is calculated as balance divided by limit. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
-  q4[[3]] <- "Create a new variable called `prop_limit_used` which is calculated as balance divided by limit. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
-  q4[[4]] <- "Create a new variable called `prop_limit_used` which is calculated as balance divided by limit. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
+  q4[[1]] <- "Create a new variable called `prop_limit_used` which is calculated as `balance` divided by `limit`. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
+  q4[[2]] <- "Create a new variable called `prop_limit_used` which is calculated as `balance` divided by `limit`. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
+  q4[[3]] <- "Create a new variable called `prop_limit_used` which is calculated as `balance` divided by `limit`. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
+  q4[[4]] <- "Create a new variable called `prop_limit_used` which is calculated as `balance` divided by `limit`. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
 } else if(sample_data == 3){
-  q4[[1]] <- "Create a new variable called `power_weight_ratio` which is calculated as horsepower divided by weight. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
-  q4[[2]] <- "Create a new variable called `power_weight_ratio` which is calculated as horsepower divided by weight. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
-  q4[[3]] <- "Create a new variable called `power_weight_ratio` which is calculated as horsepower divided by weight. Move this new variable to the beginning of the dataframe and only print the smallest 4 observations based on this new variable."
-  q4[[4]] <- "Create a new variable called `power_weight_ratio` which is calculated as horsepower divided by weight. Move this new variable to the beginning of the dataframe and only print the first 5 observations of the data frame."
+  q4[[1]] <- "Create a new variable called `power_weight_ratio` which is calculated as `horsepower` divided by `weight`. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
+  q4[[2]] <- "Create a new variable called `power_weight_ratio` which is calculated as `horsepower` divided by `weight`. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
+  q4[[3]] <- "Create a new variable called `power_weight_ratio` which is calculated as `horsepower` divided by `weight`. Move this new variable to the beginning of the dataframe and only print the smallest 4 observations based on this new variable."
+  q4[[4]] <- "Create a new variable called `power_weight_ratio` which is calculated as `horsepower` divided by `weight`. Move this new variable to the beginning of the dataframe and only print the first 5 observations of the data frame."
 } else{
-  q4[[1]] <- "Create a new variable called `prop_registered` which is calculated as registered divided by bikers. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
-  q4[[2]] <- "Create a new variable called `prop_registered` which is calculated as registered divided by bikers. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
-  q4[[3]] <- "Create a new variable called `prop_registered` which is calculated as registered divided by bikers. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
-  q4[[4]] <- "Create a new variable called `prop_registered` which is calculated as registered divided by bikers. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
+  q4[[1]] <- "Create a new variable called `prop_registered` which is calculated as `registered` divided by `bikers`. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
+  q4[[2]] <- "Create a new variable called `prop_registered` which is calculated as `registered` divided by `bikers`. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
+  q4[[3]] <- "Create a new variable called `prop_registered` which is calculated as `registered` divided by `bikers`. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
+  q4[[4]] <- "Create a new variable called `prop_registered` which is calculated as `registered` divided by `bikers`. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
 }
 
 text_server(id = "Q4", text = q4[[rand_q[4]]])
@@ -440,21 +440,21 @@ grade_this_code(
 #| warning: false
 q5 <- list()
 if(sample_data == 1){
-  q5[[1]] <- "Plot the relationship of price by carat. Facet by both cut and color."
-  q5[[2]] <- "Plot the relationship of price by carat. Set the shape equal to cut and facet by color with 2 rows."
-  q5[[3]] <- "Plot the relationship of price by carat. Set the color equal to color. Facet by cut and change the scales to free."
+  q5[[1]] <- "Plot the relationship of `price` by `carat`. Facet by both `cut` and `color`."
+  q5[[2]] <- "Plot the relationship of `price` by `carat`. Set the shape equal to `cut` and facet by `color` with 2 rows."
+  q5[[3]] <- "Plot the relationship of `price` by `carat`. Set the color equal to `color`. Facet by `cut` and change the scales to free."
 } else if(sample_data == 2){
-  q5[[1]] <- "Plot the relationship of limit by income. Facet by both married and cards. use the labeller argument to label both facets."
-  q5[[2]] <- "Plot the relationship of limit by income. Set the shape equal to married and facet by own with 2 rows."
-  q5[[3]] <- "Plot the relationship of limit by income. Set the color equal to own. Facet by married and change the scales to free."
+  q5[[1]] <- "Plot the relationship of `limit` by `income`. Facet by both `married` and `cards`. use the labeller argument to label both facets."
+  q5[[2]] <- "Plot the relationship of `limit` by `income`. Set the shape equal to `married` and facet by `own` with 2 rows."
+  q5[[3]] <- "Plot the relationship of `limit` by `income`. Set the color equal to `own`. Facet by `married` and change the scales to free."
 } else if(sample_data == 3){
-  q5[[1]] <- "Plot the relationship of horsepower by weight. Facet by both origin and cylinders."
-  q5[[2]] <- "Plot the relationship of horsepower by weight. Set the shape equal to cylinders and facet by origin with 3 rows."
-  q5[[3]] <- "Plot the relationship of horsepower by weight. Set the color equal to origins. Facet by cylinders and change the scales to free."
+  q5[[1]] <- "Plot the relationship of `horsepower` by `weight`. Facet by both `origin` and `cylinders`."
+  q5[[2]] <- "Plot the relationship of `horsepower` by `weight`. Set the shape equal to `cylinders` and facet by `origin` with 3 rows."
+  q5[[3]] <- "Plot the relationship of `horsepower` by `weight`. Set the color equal to `origins`. Facet by `cylinders` and change the scales to free."
 } else{
-  q5[[1]] <- "Plot the relationship of bikers by temp. Facet by both weathersit and season."
-  q5[[2]] <- "Plot the relationship of bikers by temp. Set the shape equal to weathersit and facet by month with 4 rows."
-  q5[[3]] <- "Plot the relationship of bikers by temp. Set the color equal to weathersit. Facet by season and change the scales to free."
+  q5[[1]] <- "Plot the relationship of `bikers` by `temp`. Facet by both `weathersit` and `season`."
+  q5[[2]] <- "Plot the relationship of `bikers` by `temp`. Set the shape equal to `weathersit` and facet by `month` with 4 rows."
+  q5[[3]] <- "Plot the relationship of `bikers` by `temp`. Set the color equal to `weathersit`. Facet by `season` and change the scales to free."
 }
 
 text_server(id = "Q5", text = q5[[rand_q[5]]])
