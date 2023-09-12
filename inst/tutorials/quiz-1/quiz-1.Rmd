@@ -27,9 +27,9 @@ gradethis_setup(pass = "submitted",
                 fail.hint = FALSE
                 )
 
-isds_setup(isds_exam = TRUE,
-           max_retry = 3,
-           retry_cooldown = 24)
+tutorialExtras_setup(is_exam = TRUE,
+                     max_retry = Inf,
+                     retry_cooldown = 0)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -326,7 +326,7 @@ text_ui(id = "Q2")
 ```
 
 ```{r Q2-solution, exercise.reveal_solution = FALSE}
-
+ggplot()
 ```
 
 ```{r Q2-check}
@@ -372,7 +372,7 @@ text_ui(id = "Q3")
 ```
 
 ```{r Q3-solution, exercise.reveal_solution = FALSE}
-
+ggplot()
 ```
 
 ```{r Q3-check}
@@ -422,7 +422,7 @@ text_ui(id = "Q4")
 ```
 
 ```{r Q4-solution, exercise.reveal_solution = FALSE}
-
+ggplot()
 ```
 
 ```{r Q4-check}
@@ -471,7 +471,7 @@ text_ui(id = "Q5")
 ```
 
 ```{r Q5-solution, exercise.reveal_solution = FALSE}
-
+ggplot()
 ```
 
 ```{r Q5-check}

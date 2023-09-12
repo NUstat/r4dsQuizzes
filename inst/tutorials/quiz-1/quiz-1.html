@@ -138,23 +138,23 @@ Exam’ button.</li>
 </div>
 <div id="section-the-data" class="section level2">
 <h2>The Data</h2>
-<p>The following set of questions are based on the <code>credit</code>
-data set. A skim, glimpse, and explanation of the variables are provided
-below.</p>
+<p>The following set of questions are based on the
+<code>bikeshare</code> data set. A skim, glimpse, and explanation of the
+variables are provided below.</p>
 <table>
 <caption>Data summary</caption>
 <tbody>
 <tr class="odd">
 <td align="left">Name</td>
-<td align="left">credit</td>
+<td align="left">bikeshare</td>
 </tr>
 <tr class="even">
 <td align="left">Number of rows</td>
-<td align="left">400</td>
+<td align="left">8645</td>
 </tr>
 <tr class="odd">
 <td align="left">Number of columns</td>
-<td align="left">11</td>
+<td align="left">15</td>
 </tr>
 <tr class="even">
 <td align="left">_______________________</td>
@@ -166,11 +166,11 @@ below.</p>
 </tr>
 <tr class="even">
 <td align="left">factor</td>
-<td align="left">4</td>
+<td align="left">3</td>
 </tr>
 <tr class="odd">
 <td align="left">numeric</td>
-<td align="left">7</td>
+<td align="left">12</td>
 </tr>
 <tr class="even">
 <td align="left">________________________</td>
@@ -185,12 +185,12 @@ below.</p>
 <p><strong>Variable type: factor</strong></p>
 <table>
 <colgroup>
-<col width="16%" />
-<col width="12%" />
-<col width="16%" />
-<col width="9%" />
+<col width="14%" />
 <col width="10%" />
-<col width="33%" />
+<col width="14%" />
+<col width="8%" />
+<col width="9%" />
+<col width="41%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -204,52 +204,44 @@ below.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">own</td>
+<td align="left">mnth</td>
 <td align="right">0</td>
 <td align="right">1</td>
 <td align="left">FALSE</td>
-<td align="right">2</td>
-<td align="left">Yes: 207, No: 193</td>
+<td align="right">12</td>
+<td align="left">May: 744, Jul: 744, Oct: 743, Dec: 741</td>
 </tr>
 <tr class="even">
-<td align="left">student</td>
+<td align="left">hr</td>
 <td align="right">0</td>
 <td align="right">1</td>
 <td align="left">FALSE</td>
-<td align="right">2</td>
-<td align="left">No: 360, Yes: 40</td>
+<td align="right">24</td>
+<td align="left">16: 365, 17: 365, 12: 364, 13: 364</td>
 </tr>
 <tr class="odd">
-<td align="left">married</td>
+<td align="left">weathersit</td>
 <td align="right">0</td>
 <td align="right">1</td>
 <td align="left">FALSE</td>
-<td align="right">2</td>
-<td align="left">Yes: 245, No: 155</td>
-</tr>
-<tr class="even">
-<td align="left">region</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="left">FALSE</td>
-<td align="right">3</td>
-<td align="left">Sou: 199, Wes: 102, Eas: 99</td>
+<td align="right">4</td>
+<td align="left">cle: 5645, clo: 2218, lig: 781, hea: 1</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="14%" />
-<col width="10%" />
-<col width="14%" />
-<col width="8%" />
-<col width="8%" />
+<col width="15%" />
+<col width="11%" />
+<col width="15%" />
 <col width="7%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="9%" />
+<col width="7%" />
+<col width="5%" />
+<col width="6%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
 <col width="6%" />
 </colgroup>
 <thead>
@@ -269,111 +261,180 @@ below.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">income</td>
+<td align="left">season</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">45.22</td>
-<td align="right">35.24</td>
-<td align="right">10.35</td>
-<td align="right">21.01</td>
-<td align="right">33.12</td>
-<td align="right">57.47</td>
-<td align="right">186.63</td>
-<td align="left">▇▂▁▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">limit</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">4735.60</td>
-<td align="right">2308.20</td>
-<td align="right">855.00</td>
-<td align="right">3088.00</td>
-<td align="right">4622.50</td>
-<td align="right">5872.75</td>
-<td align="right">13913.00</td>
-<td align="left">▆▇▃▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">rating</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">354.94</td>
-<td align="right">154.72</td>
-<td align="right">93.00</td>
-<td align="right">247.25</td>
-<td align="right">344.00</td>
-<td align="right">437.25</td>
-<td align="right">982.00</td>
-<td align="left">▆▇▃▁▁</td>
-</tr>
-<tr class="even">
-<td align="left">cards</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">2.96</td>
-<td align="right">1.37</td>
+<td align="right">2.51</td>
+<td align="right">1.11</td>
 <td align="right">1.00</td>
 <td align="right">2.00</td>
 <td align="right">3.00</td>
+<td align="right">3.00</td>
 <td align="right">4.00</td>
-<td align="right">9.00</td>
-<td align="left">▇▇▂▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">age</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">55.67</td>
-<td align="right">17.25</td>
-<td align="right">23.00</td>
-<td align="right">41.75</td>
-<td align="right">56.00</td>
-<td align="right">70.00</td>
-<td align="right">98.00</td>
-<td align="left">▆▇▇▇▁</td>
+<td align="left">▇▇▁▇▇</td>
 </tr>
 <tr class="even">
-<td align="left">education</td>
+<td align="left">day</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">13.45</td>
-<td align="right">3.13</td>
-<td align="right">5.00</td>
-<td align="right">11.00</td>
-<td align="right">14.00</td>
-<td align="right">16.00</td>
-<td align="right">20.00</td>
-<td align="left">▂▅▇▇▂</td>
+<td align="right">184.40</td>
+<td align="right">104.82</td>
+<td align="right">1.00</td>
+<td align="right">94.00</td>
+<td align="right">185.00</td>
+<td align="right">275.00</td>
+<td align="right">365.00</td>
+<td align="left">▇▇▇▇▇</td>
 </tr>
 <tr class="odd">
-<td align="left">balance</td>
+<td align="left">holiday</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">520.02</td>
-<td align="right">459.76</td>
+<td align="right">0.03</td>
+<td align="right">0.16</td>
 <td align="right">0.00</td>
-<td align="right">68.75</td>
-<td align="right">459.50</td>
-<td align="right">863.00</td>
-<td align="right">1999.00</td>
-<td align="left">▇▅▃▂▁</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+<td align="right">1.00</td>
+<td align="left">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td align="left">weekday</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3.01</td>
+<td align="right">2.01</td>
+<td align="right">0.00</td>
+<td align="right">1.00</td>
+<td align="right">3.00</td>
+<td align="right">5.00</td>
+<td align="right">6.00</td>
+<td align="left">▇▃▃▃▇</td>
+</tr>
+<tr class="odd">
+<td align="left">workingday</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0.68</td>
+<td align="right">0.47</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+<td align="right">1.00</td>
+<td align="right">1.00</td>
+<td align="right">1.00</td>
+<td align="left">▃▁▁▁▇</td>
+</tr>
+<tr class="even">
+<td align="left">temp</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0.49</td>
+<td align="right">0.20</td>
+<td align="right">0.02</td>
+<td align="right">0.32</td>
+<td align="right">0.50</td>
+<td align="right">0.66</td>
+<td align="right">0.96</td>
+<td align="left">▂▇▇▇▂</td>
+</tr>
+<tr class="odd">
+<td align="left">atemp</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0.47</td>
+<td align="right">0.18</td>
+<td align="right">0.00</td>
+<td align="right">0.32</td>
+<td align="right">0.48</td>
+<td align="right">0.62</td>
+<td align="right">1.00</td>
+<td align="left">▂▆▇▆▁</td>
+</tr>
+<tr class="even">
+<td align="left">hum</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0.64</td>
+<td align="right">0.20</td>
+<td align="right">0.00</td>
+<td align="right">0.49</td>
+<td align="right">0.65</td>
+<td align="right">0.81</td>
+<td align="right">1.00</td>
+<td align="left">▁▃▇▇▆</td>
+</tr>
+<tr class="odd">
+<td align="left">windspeed</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0.19</td>
+<td align="right">0.12</td>
+<td align="right">0.00</td>
+<td align="right">0.10</td>
+<td align="right">0.19</td>
+<td align="right">0.28</td>
+<td align="right">0.85</td>
+<td align="left">▇▆▂▁▁</td>
+</tr>
+<tr class="even">
+<td align="left">casual</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">28.60</td>
+<td align="right">38.84</td>
+<td align="right">0.00</td>
+<td align="right">3.00</td>
+<td align="right">14.00</td>
+<td align="right">38.00</td>
+<td align="right">272.00</td>
+<td align="left">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td align="left">registered</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">115.19</td>
+<td align="right">109.46</td>
+<td align="right">0.00</td>
+<td align="right">26.00</td>
+<td align="right">90.00</td>
+<td align="right">168.00</td>
+<td align="right">567.00</td>
+<td align="left">▇▃▁▁▁</td>
+</tr>
+<tr class="even">
+<td align="left">bikers</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">143.79</td>
+<td align="right">133.80</td>
+<td align="right">1.00</td>
+<td align="right">31.00</td>
+<td align="right">109.00</td>
+<td align="right">211.00</td>
+<td align="right">651.00</td>
+<td align="left">▇▃▂▁▁</td>
 </tr>
 </tbody>
 </table>
-<pre><code>## Rows: 400
-## Columns: 11
-## $ income    &lt;dbl&gt; 14.891, 106.025, 104.593, 148.924, 55.882, 80.180, 20.996, 7…
-## $ limit     &lt;dbl&gt; 3606, 6645, 7075, 9504, 4897, 8047, 3388, 7114, 3300, 6819, …
-## $ rating    &lt;dbl&gt; 283, 483, 514, 681, 357, 569, 259, 512, 266, 491, 589, 138, …
-## $ cards     &lt;dbl&gt; 2, 3, 4, 3, 2, 4, 2, 2, 5, 3, 4, 3, 1, 1, 2, 3, 3, 3, 1, 2, …
-## $ age       &lt;dbl&gt; 34, 82, 71, 36, 68, 77, 37, 87, 66, 41, 30, 64, 57, 49, 75, …
-## $ education &lt;dbl&gt; 11, 15, 11, 11, 16, 10, 12, 9, 13, 19, 14, 16, 7, 9, 13, 15,…
-## $ own       &lt;fct&gt; No, Yes, No, Yes, No, No, Yes, No, Yes, Yes, No, No, Yes, No…
-## $ student   &lt;fct&gt; No, Yes, No, No, No, No, No, No, No, Yes, No, No, No, No, No…
-## $ married   &lt;fct&gt; Yes, Yes, No, No, Yes, No, No, No, No, Yes, Yes, No, Yes, Ye…
-## $ region    &lt;fct&gt; South, West, West, West, South, South, East, West, South, Ea…
-## $ balance   &lt;dbl&gt; 333, 903, 580, 964, 331, 1151, 203, 872, 279, 1350, 1407, 0,…</code></pre>
+<pre><code>## Rows: 8,645
+## Columns: 15
+## $ season     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ mnth       &lt;fct&gt; Jan, Jan, Jan, Jan, Jan, Jan, Jan, Jan, Jan, Jan, Jan, Jan,…
+## $ day        &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ hr         &lt;fct&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…
+## $ holiday    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ weekday    &lt;dbl&gt; 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,…
+## $ workingday &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ weathersit &lt;fct&gt; clear, clear, clear, clear, clear, cloudy/misty, clear, cle…
+## $ temp       &lt;dbl&gt; 0.24, 0.22, 0.22, 0.24, 0.24, 0.24, 0.22, 0.20, 0.24, 0.32,…
+## $ atemp      &lt;dbl&gt; 0.2879, 0.2727, 0.2727, 0.2879, 0.2879, 0.2576, 0.2727, 0.2…
+## $ hum        &lt;dbl&gt; 0.81, 0.80, 0.80, 0.75, 0.75, 0.75, 0.80, 0.86, 0.75, 0.76,…
+## $ windspeed  &lt;dbl&gt; 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0896, 0.0000, 0.0…
+## $ casual     &lt;dbl&gt; 3, 8, 5, 3, 0, 0, 2, 1, 1, 8, 12, 26, 29, 47, 35, 40, 41, 1…
+## $ registered &lt;dbl&gt; 13, 32, 27, 10, 1, 1, 0, 2, 7, 6, 24, 30, 55, 47, 71, 70, 5…
+## $ bikers     &lt;dbl&gt; 16, 40, 32, 13, 1, 1, 2, 3, 8, 14, 36, 56, 84, 94, 106, 110…</code></pre>
 </div>
 <div id="section-question-1" class="section level2">
 <h2>Question 1</h2>
@@ -488,9 +549,9 @@ gradethis_setup(pass = "submitted",
                 fail.hint = FALSE
                 )
 
-isds_setup(isds_exam = TRUE,
-           max_retry = 3,
-           retry_cooldown = 24)
+tutorialExtras_setup(is_exam = TRUE,
+                     max_retry = 3,
+                     retry_cooldown = 24)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -544,7 +605,7 @@ reset_server("reset", file_name = "quiz-1", package_name = "r4dsQuizzes")
 
 <script type="application/shiny-prerendered" data-context="server">
 tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text", label = "Name", question = structure("Name:", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_9a329ac", 
+"character")), answers = list(structure(list(id = "lnr_ans_654545", 
     option = "function (value) \n{\n    if (length(value) >= 1) {\n        return(mark_as(TRUE))\n    }\n    return(mark_as(FALSE))\n}", 
     value = "function (value) \n{\n    if (length(value) >= 1) {\n        return(mark_as(TRUE))\n    }\n    return(mark_as(FALSE))\n}", 
     label = NULL, correct = NULL, message = NULL, type = "function"), class = c("tutorial_question_answer", 
@@ -555,15 +616,15 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text",
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "Name-answer", question = "Name"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 1430809768.83373, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 2098792246.02267, 
     options = list(placeholder = "Enter answer here...", trim = TRUE)), class = c("learnr_text", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_numeric", label = "Concept1", question = structure("How many observations are in the dataset?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_2e43e83", 
-    option = "400", value = 400, label = structure("400", html = TRUE, class = c("html", 
+"character")), answers = list(structure(list(id = "lnr_ans_ac380b3", 
+    option = "8645", value = 8645, label = structure("8645", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
 "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
@@ -572,7 +633,7 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_numeri
 "character")), incorrect = structure("submitted", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "Concept1-answer", question = "Concept1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 870132001.594813, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 1308463351.3907, 
     options = list(min = NA, max = NA, step = 0.01, tolerance = 1.5e-08)), class = c("learnr_numeric", 
 "tutorial_question")), session = session)
 </script>
@@ -580,8 +641,8 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_numeri
 
 <script type="application/shiny-prerendered" data-context="server">
 tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_numeric", label = "Concept2", question = structure("How many variables in the dataset are coded as categorical?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_5ab6d9a", 
-    option = "4", value = 4, label = structure("4", html = TRUE, class = c("html", 
+"character")), answers = list(structure(list(id = "lnr_ans_a5233cf", 
+    option = "3", value = 3, label = structure("3", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
 "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
@@ -590,19 +651,20 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_numeri
 "character")), incorrect = structure("submitted", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "Concept2-answer", question = "Concept2"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 323345605.84943, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 1523795447.79043, 
     options = list(min = NA, max = NA, step = 0.01, tolerance = 1.5e-08)), class = c("learnr_numeric", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 tutorialExtras:::question_prerendered_chunk(structure(list(type = "wordbank", label = "Concept3-1", question = structure("Which function/verb would you use to…", html = TRUE, class = c("html", 
-"character")), choices = c("create a new variable", "keep only observations that meet a criteria"
-), wordbank = c("slice_max()", "count()", "mutate()", "group_by()", 
-"filter()", "select()", "summarize()", "arrange()", "rename()", 
-"relocate()", "slice_min()", "slice_head()"), box = 6, arrange = "ordered", 
-    answers = list(structure(list(id = "lnr_ans_9e766e7", option = c("mutate()", 
-    "filter()"), value = c("mutate()", "filter()"), label = structure("mutate()\nfilter()", html = TRUE, class = c("html", 
+"character")), choices = c("perform an action per category", 
+"select the rows with the highest n values of a variable."), 
+    wordbank = c("slice_max()", "count()", "mutate()", "group_by()", 
+    "filter()", "select()", "summarize()", "arrange()", "rename()", 
+    "relocate()", "slice_min()", "slice_head()"), box = 6, arrange = "ordered", 
+    answers = list(structure(list(id = "lnr_ans_8fb602", option = c("group_by()", 
+    "slice_max()"), value = c("group_by()", "slice_max()"), label = structure("group_by()\nslice_max()", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", 
     "character")), try_again = structure("Try Again", html = TRUE, class = c("html", 
@@ -613,7 +675,7 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "wordbank", la
         answer = "Concept3-1-answer", question = "Concept3-1"), 
     loading = structure("<strong>Loading:<\u002fstrong>\nWhich function/verb would you use to…\n<br/><br/><br/>", html = TRUE, class = c("html", 
     "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1061191924.50584, options = list(group = "definition")), class = c("wordbank", 
+    seed = 604661328.718433, options = list(group = "definition")), class = c("wordbank", 
 "tutorial_question")), session = session)
 </script>
 
@@ -699,8 +761,8 @@ learnr:::store_exercise_cache(structure(list(label = "Q2", global_setup = struct
 "library(gradethis)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                error_checker.message = \"submitted\",", 
 "                fail.hint = FALSE", "                )", "", 
-"isds_setup(isds_exam = TRUE,", "           max_retry = 3,", 
-"           retry_cooldown = 24)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
+"                     retry_cooldown = 24)", "", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "credit <- ISLR2::Credit |> ", "  janitor::clean_names()", 
 "", "auto <- ISLR2::Auto |> ", "  janitor::clean_names() |> ", 
 "  mutate(origin = factor(origin, ", "                         levels = c(\"1\", \"2\", \"3\"), ", 
@@ -714,7 +776,7 @@ learnr:::store_exercise_cache(structure(list(label = "Q2", global_setup = struct
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"Submitted\",", "  incorrect = \"Submitted\"", 
-    ")"), chunk_opts = list(label = "Q2-check")), solution = structure("", chunk_opts = list(
+    ")"), chunk_opts = list(label = "Q2-check")), solution = structure("ggplot()", chunk_opts = list(
         label = "Q2-solution", exercise.reveal_solution = FALSE)), 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
@@ -777,8 +839,8 @@ learnr:::store_exercise_cache(structure(list(label = "Q3", global_setup = struct
 "library(gradethis)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                error_checker.message = \"submitted\",", 
 "                fail.hint = FALSE", "                )", "", 
-"isds_setup(isds_exam = TRUE,", "           max_retry = 3,", 
-"           retry_cooldown = 24)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
+"                     retry_cooldown = 24)", "", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "credit <- ISLR2::Credit |> ", "  janitor::clean_names()", 
 "", "auto <- ISLR2::Auto |> ", "  janitor::clean_names() |> ", 
 "  mutate(origin = factor(origin, ", "                         levels = c(\"1\", \"2\", \"3\"), ", 
@@ -792,7 +854,7 @@ learnr:::store_exercise_cache(structure(list(label = "Q3", global_setup = struct
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"Submitted\",", "  incorrect = \"Submitted\"", 
-    ")"), chunk_opts = list(label = "Q3-check")), solution = structure("", chunk_opts = list(
+    ")"), chunk_opts = list(label = "Q3-check")), solution = structure("ggplot()", chunk_opts = list(
         label = "Q3-solution", exercise.reveal_solution = FALSE)), 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
@@ -860,8 +922,8 @@ learnr:::store_exercise_cache(structure(list(label = "Q4", global_setup = struct
 "library(gradethis)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                error_checker.message = \"submitted\",", 
 "                fail.hint = FALSE", "                )", "", 
-"isds_setup(isds_exam = TRUE,", "           max_retry = 3,", 
-"           retry_cooldown = 24)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
+"                     retry_cooldown = 24)", "", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "credit <- ISLR2::Credit |> ", "  janitor::clean_names()", 
 "", "auto <- ISLR2::Auto |> ", "  janitor::clean_names() |> ", 
 "  mutate(origin = factor(origin, ", "                         levels = c(\"1\", \"2\", \"3\"), ", 
@@ -875,7 +937,7 @@ learnr:::store_exercise_cache(structure(list(label = "Q4", global_setup = struct
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"Submitted\",", "  incorrect = \"Submitted\"", 
-    ")"), chunk_opts = list(label = "Q4-check")), solution = structure("", chunk_opts = list(
+    ")"), chunk_opts = list(label = "Q4-check")), solution = structure("ggplot()", chunk_opts = list(
         label = "Q4-solution", exercise.reveal_solution = FALSE)), 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
@@ -938,8 +1000,8 @@ learnr:::store_exercise_cache(structure(list(label = "Q5", global_setup = struct
 "library(gradethis)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                error_checker.message = \"submitted\",", 
 "                fail.hint = FALSE", "                )", "", 
-"isds_setup(isds_exam = TRUE,", "           max_retry = 3,", 
-"           retry_cooldown = 24)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
+"                     retry_cooldown = 24)", "", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "credit <- ISLR2::Credit |> ", "  janitor::clean_names()", 
 "", "auto <- ISLR2::Auto |> ", "  janitor::clean_names() |> ", 
 "  mutate(origin = factor(origin, ", "                         levels = c(\"1\", \"2\", \"3\"), ", 
@@ -953,7 +1015,7 @@ learnr:::store_exercise_cache(structure(list(label = "Q5", global_setup = struct
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"Submitted\",", "  incorrect = \"Submitted\"", 
-    ")"), chunk_opts = list(label = "Q5-check")), solution = structure("", chunk_opts = list(
+    ")"), chunk_opts = list(label = "Q5-check")), solution = structure("ggplot()", chunk_opts = list(
         label = "Q5-solution", exercise.reveal_solution = FALSE)), 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
