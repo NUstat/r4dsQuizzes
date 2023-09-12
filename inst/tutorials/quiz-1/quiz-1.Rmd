@@ -2,7 +2,7 @@
 title: "Visualizations and Transformations"
 tutorial:
   id: "301_q1"
-  version: 0.1
+  version: 0.2
   
 output:
   learnr::tutorial:
