@@ -20,6 +20,7 @@ library(learnr)
 library(tidyverse)
 library(tutorialExtras)
 library(gradethis)
+library(countdown)
 
 gradethis_setup(pass = "submitted",
                 fail = "submitted",
@@ -73,9 +74,15 @@ question_text("Name:",
               allow_retry = FALSE )
 ```
 
+```{r}
+countdown(minutes = 30L, seconds = 0L, top = 0, right = 0, start_immediately = TRUE,
+          color_background = "gray80", color_running_background = "#E4E0EE")
+```
+
+
 ## Instructions
 
-You have 30 minutes to complete this quiz. Set a timer, as it is self timed!
+You have 30 minutes to complete this quiz.
 
 The quiz covers data visualization and transformations.
 

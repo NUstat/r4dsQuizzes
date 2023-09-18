@@ -16,6 +16,8 @@ Imports:
     learnr (>= 0.10.1.9008),
     tutorialExtras
 Suggests:
+    countdown,
+    dcldata,
     dplyr,
     ISLR2,
     janitor,
@@ -26,6 +28,7 @@ Suggests:
     tidyr,
     tidyverse
 Remotes: 
+    dcl-docs/dcldata,
     rstudio/learnr,
     rstudio/gradethis,
     NUstat/tutorialExtras
