@@ -447,21 +447,21 @@ grade_this_code(
 #| warning: false
 q5 <- list()
 if(sample_data == 1){
-  q5[[1]] <- "Plot the relationship of `price` by `carat`. Facet by both `cut` and `color`."
-  q5[[2]] <- "Plot the relationship of `price` by `carat`. Set the shape equal to `cut` and facet by `color` with 2 rows."
-  q5[[3]] <- "Plot the relationship of `price` by `carat`. Set the color equal to `color`. Facet by `cut` and change the scales to free."
+  q5[[1]] <- "Plot the relationship of `price` by `carat`. Facet by both the variable `cut` and the variable `color`."
+  q5[[2]] <- "Plot the relationship of `price` by `carat`. Set the shape equal to the variable `cut` and facet by the variable `color` with 2 rows."
+  q5[[3]] <- "Plot the relationship of `price` by `carat`. Set the color equal to the variable `color`. Facet by the variable `cut` and change the scales to free."
 } else if(sample_data == 2){
-  q5[[1]] <- "Plot the relationship of `limit` by `income`. Facet by both `married` and `cards`. use the labeller argument to label both facets."
-  q5[[2]] <- "Plot the relationship of `limit` by `income`. Set the shape equal to `married` and facet by `own` with 2 rows."
-  q5[[3]] <- "Plot the relationship of `limit` by `income`. Set the color equal to `own`. Facet by `married` and change the scales to free."
+  q5[[1]] <- "Plot the relationship of `limit` by `income`. Facet by both the variable `married` and the variable `cards`. use the labeller argument to label both facets."
+  q5[[2]] <- "Plot the relationship of `limit` by `income`. Set the shape equal to the variable `married` and facet by the variable `own` with 2 rows."
+  q5[[3]] <- "Plot the relationship of `limit` by `income`. Set the color equal to the variable `own`. Facet by the variable `married` and change the scales to free."
 } else if(sample_data == 3){
-  q5[[1]] <- "Plot the relationship of `horsepower` by `weight`. Facet by both `origin` and `cylinders`."
-  q5[[2]] <- "Plot the relationship of `horsepower` by `weight`. Set the shape equal to `cylinders` and facet by `origin` with 3 rows."
-  q5[[3]] <- "Plot the relationship of `horsepower` by `weight`. Set the color equal to `origins`. Facet by `cylinders` and change the scales to free."
+  q5[[1]] <- "Plot the relationship of `horsepower` by `weight`. Facet by both the variable `origin` and the variable `cylinders`."
+  q5[[2]] <- "Plot the relationship of `horsepower` by `weight`. Set the shape equal to the variable `cylinders` and facet by the variable `origin` with 3 rows."
+  q5[[3]] <- "Plot the relationship of `horsepower` by `weight`. Set the color equal to the variable `origins`. Facet by the variable `cylinders` and change the scales to free."
 } else{
-  q5[[1]] <- "Plot the relationship of `bikers` by `temp`. Facet by both `weathersit` and `season`."
-  q5[[2]] <- "Plot the relationship of `bikers` by `temp`. Set the shape equal to `weathersit` and facet by `month` with 4 rows."
-  q5[[3]] <- "Plot the relationship of `bikers` by `temp`. Set the color equal to `weathersit`. Facet by `season` and change the scales to free."
+  q5[[1]] <- "Plot the relationship of `bikers` by `temp`. Facet by both the variable `weathersit` and the variable `season`."
+  q5[[2]] <- "Plot the relationship of `bikers` by `temp`. Set the shape equal to the variable `weathersit` and facet by the variable `month` with 4 rows."
+  q5[[3]] <- "Plot the relationship of `bikers` by `temp`. Set the color equal to the variable `weathersit`. Facet by the variable `season` and change the scales to free."
 }
 
 text_server(id = "Q5", text = q5[[rand_q[5]]])
