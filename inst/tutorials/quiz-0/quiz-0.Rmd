@@ -1,0 +1,374 @@
+---
+title: "Sample Quiz"
+tutorial:
+  id: "301_q0"
+  version: 0.1
+  
+output:
+  learnr::tutorial:
+    progressive: false
+    allow_skip: true
+    css: ["css/nu-theme.css"]
+runtime: shiny_prerendered
+description: >
+  Data Science in R proficiency quiz example.
+---
+
+```{r setup, include=FALSE}
+library(skimr)
+library(learnr)
+library(tidyverse)
+library(tutorialExtras)
+library(gradethis)
+library(countdown)
+
+library(palmerpenguins)
+
+
+gradethis_setup(pass = "submitted",
+                fail = "submitted",
+                exercise.completion = FALSE,
+                error_checker.message = "submitted",
+                fail.hint = FALSE
+                )
+
+tutorialExtras_setup(is_exam = TRUE,
+                     max_retry = 3,
+                     retry_cooldown = 24)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+
+rand_q <- c(sample(1:3,1), sample(1:3, 1), sample(1:3, 1), sample(1:2, 1), sample(1:2, 1))
+
+```
+
+```{r, context = "server"}
+lock_server("lock", exclude = c("Name"), show_correct = TRUE, num_blanks = FALSE)
+reset_server("reset", file_name = "quiz-0", package_name = "r4dsQuizzes")
+```
+
+```{r Name}
+# student name
+question_text("Name:",
+              answer_fn(function(value){
+                              if(length(value) >= 1 ) {
+                                return(mark_as(TRUE))
+                                }
+                              return(mark_as(FALSE) )
+                              }),
+              correct = "submitted",
+              incorrect = "submitted",
+              allow_retry = FALSE )
+```
+
+```{r}
+countdown(minutes = 30L, seconds = 0L, top = 0, right = 0, start_immediately = TRUE,
+          color_background = "gray80", color_running_background = "#E4E0EE")
+```
+
+
+## Instructions
+
+You have 30 minutes to complete this quiz.
+
+This quiz is a sample quiz for demonstration.
+
+As always make sure your code is well organized in proper formatting and using tidyverse functions.
+
+Once you are finished:
+
+-   Check Submissions to make sure every question/exercise has been **submitted**.
+-   Click the 'Lock Exam' button. You will not be able to make any changes once this is clicked.
+-   Once the exam is locked you will be able to click on the 'Download Exam' button.
+-   Submit the completed html to Canvas.
+
+## The Data
+
+If a data set is relevant to the quiz, details will be provided here.
+
+**Example:** The following set of questions are based on the `penguins` data set.
+A `skim` and `glimpse` of the variables are provided below.
+
+```{r}
+skim(penguins)
+```
+
+
+```{r}
+glimpse(penguins)
+```
+
+
+## Question 1
+
+```{r Concept1}
+q1 <- list()
+q1[[1]] <- question_numeric("This is a numeric question. Type the number 1000 into the text box.",
+                    answer(1000, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+q1[[2]] <- question_numeric("This is a numeric question. Type the number 5000 into the text box.",
+                    answer(5000, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+q1[[3]] <- question_numeric("This is a numeric question. Type the number 1234 into the text box.",
+                    answer(1234, correct = TRUE),
+                    allow_retry = TRUE,
+                    step = 0.01,
+                    correct = "submitted",
+                    incorrect = "submitted"
+                    )
+
+
+q1[[rand_q[1]]]
+```
+
+
+```{r Concept2}
+q1b <- list()
+q1b[[1]] <- question_dropdown("This is a dropdown question. Pick the letter A",
+                              learnr::answer("A", correct = TRUE),
+                              learnr::answer("B"),
+                              learnr::answer("C"),
+                              learnr::answer("D"),
+                              allow_retry = TRUE,
+                              random_answer_order = TRUE,
+                              correct = "submitted",
+                              incorrect = "submitted"
+                              )
+q1b[[2]] <- question_dropdown("This is a dropdown question. Pick the letter B",
+                              learnr::answer("A"),
+                              learnr::answer("B", correct = TRUE),
+                              learnr::answer("C"),
+                              learnr::answer("D"),
+                              allow_retry = TRUE,
+                              random_answer_order = TRUE,
+                              correct = "submitted",
+                              incorrect = "submitted"
+                              )
+q1b[[3]] <- question_dropdown("This is a dropdown question. Pick the letter C",
+                              learnr::answer("A"),
+                              learnr::answer("B"),
+                              learnr::answer("C", correct = TRUE),
+                              learnr::answer("D"),
+                              allow_retry = TRUE,
+                              random_answer_order = TRUE,
+                              correct = "submitted",
+                              incorrect = "submitted"
+                              )
+
+q1b[[rand_q[1]]]
+```
+
+
+```{r Concept3}
+exam(
+  caption = NULL,
+  question_wordbank("This is a wordbank question. Match the letters to their corresponding place in the alphabet.",
+                    choices = c("C", "B", "A", "D"),
+                    wordbank = c("1", "2", "3", "4", "5", "6", "7", "8"),
+                    learnr::answer(c("3", "2", "1", "4"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("This is a wordbank question. Match the letters to their corresponding place in the alphabet.",
+                    choices = c("E", "B", "H", "D"),
+                    learnr::answer(c("5", "2", "8", "4"), correct = TRUE),
+                    wordbank = c("1", "2", "3", "4", "5", "6", "7", "8"),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("This is a wordbank question. Match the letters to their corresponding place in the alphabet.",
+                    choices = c("C", "G", "A", "F"),
+                    learnr::answer(c("3", "7", "1", "6"), correct = TRUE),
+                    wordbank = c("1", "2", "3", "4", "5", "6", "7", "8"),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    )
+)
+```
+
+
+
+## Question 2
+
+The name of a `variable` from the data set is displayed as `code`.
+
+```{r, context = "server"}
+q2 <- list()
+
+q2[[1]] <- HTML("Plot the distribution of <code>species</code>.")
+q2[[2]] <- HTML("Plot the distribution of <code>island</code>.")
+q2[[3]] <- HTML("Plot the distribution of <code>body_mass_g</code>.")
+
+text_server(id = "Q2", text = q2[[rand_q[2]]])
+```
+
+
+```{r Question2}
+text_ui(id = "Q2")
+```
+
+
+```{r Q2, exercise=TRUE}
+
+```
+
+```{r Q2-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q2-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+## Question 3
+
+```{r, context = "server"}
+q3 <- list()
+
+q3[[1]] <- "Type an equation that evaluates to 4."
+q3[[2]] <- "Type an equation that evaluates to 6."
+q3[[3]] <- "Type an equation that evaluates to 10."
+
+text_server(id = "Q3", text = q3[[rand_q[3]]])
+```
+
+
+```{r Question3}
+text_ui(id = "Q3")
+```
+
+
+```{r Q3, exercise=TRUE}
+
+```
+
+```{r Q3-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q3-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+## Question 4
+
+```{r, context = "server"}
+#| warning: false
+q4 <- list()
+
+q4[[1]] <- "Type an equation that evaluates to TRUE."
+q4[[2]] <- "Type an equation that evaluates to FALSE."
+
+text_server(id = "Q4", text = q4[[rand_q[4]]])
+```
+
+
+```{r Question4}
+text_ui(id = "Q4")
+```
+
+```{r Q4, exercise=TRUE}
+
+```
+
+```{r Q4-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q4-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+<br>
+
+## Question 5
+
+```{r, context = "server"}
+#| warning: false
+q5 <- list()
+
+q5[[1]] <- HTML("Another random question. Don't forget to click <b>Submit Answer</b> when using a code chunk!")
+
+text_server(id = "Q5", text = q5[[1]])
+```
+
+
+```{r Question5}
+text_ui(id = "Q5")
+```
+
+
+```{r Q5, exercise=TRUE}
+
+```
+
+```{r Q5-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q5-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+## Submit
+
+Once you are finished:
+
+-   Click **Check Submissions** to make sure all questions and exercises are submitted -- Un-submitted questions will receive a 0.
+-   Once all questions/exercises are submitted click the **Lock Exam** button. Once you click this you will not be able to make any changes to your exam!
+-   Once the lock is pressed a **Download Exam** option will become available,
+-   Download and **Check your HTML!**
+
+-  You have 3 attempts on this proficiency quiz. Submit the quiz you want to be graded to Canvas. The grader will ONLY be grading one quiz per student. You can submit multiple attempts but the grader will only grade your LAST submission.
+
+```{r}
+lock_check_ui(id = "lock")
+```
+<br>
+```{r}
+lock_button_ui(id = "lock")
+```
+
+
+## Retry
+
+The retry button is available 24 hours after you lock the quiz. 
+
+You have 3 attempts on this quiz. 
+
+Once you click retry, your quiz will be erased and a new set of questions will be generated. Make sure you downloaded your quiz and check that everything is correct **prior to clicking the retry button**. Once you click retry there will be no way to retrieve your prior attempt.
+
+
+```{r}
+reset_button_ui(id = "reset")
+```

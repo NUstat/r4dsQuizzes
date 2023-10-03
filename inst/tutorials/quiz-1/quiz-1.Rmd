@@ -24,30 +24,37 @@ library(countdown)
 
 gradethis_setup(pass = "submitted",
                 fail = "submitted",
+                exercise.completion = FALSE,
                 error_checker.message = "submitted",
                 fail.hint = FALSE
                 )
 
 tutorialExtras_setup(is_exam = TRUE,
-                     max_retry = Inf,
-                     retry_cooldown = 0)
+                     max_retry = 3,
+                     retry_cooldown = 24)
 
 knitr::opts_chunk$set(echo = FALSE)
 
-credit <- ISLR2::Credit |> 
-  janitor::clean_names()
+# credit <- ISLR2::Credit |> 
+#   janitor::clean_names()
+credit <- read_rds("data/credit.rds")
 
-auto <- ISLR2::Auto |> 
-  janitor::clean_names() |> 
-  mutate(origin = factor(origin, 
-                         levels = c("1", "2", "3"), 
-                         labels = c("American", "European", "Japanese")))
+#write_rds(diamonds, "inst/tutorials/quiz-1/data/diamonds.rds")
 
-bikeshare <- ISLR2::Bikeshare |> 
-  janitor::clean_names()
+# auto <- ISLR2::Auto |> 
+#   janitor::clean_names() |> 
+#   mutate(origin = factor(origin, 
+#                          levels = c("1", "2", "3"), 
+#                          labels = c("American", "European", "Japanese")))
+auto <- read_rds("data/auto.rds")
 
-diamonds <- diamonds |> 
-  janitor::clean_names()
+# bikeshare <- ISLR2::Bikeshare |> 
+#   janitor::clean_names()
+bikeshare <- read_rds("data/bikeshare.rds")
+
+# diamonds <- diamonds |> 
+#   janitor::clean_names()
+diamonds <- read_rds("data/diamonds.rds")
 
 sample_data <- ceiling((rand_int*4/10))
 
@@ -57,7 +64,7 @@ data <- c("diamonds", "credit", "auto", "bikeshare")
 ```
 
 ```{r, context = "server"}
-lock_server("lock")
+lock_server("lock", exclude = c("Name"), num_blanks = FALSE, show_correct = FALSE)
 reset_server("reset", file_name = "quiz-1", package_name = "r4dsQuizzes")
 ```
 
@@ -71,6 +78,7 @@ question_text("Name:",
                               return(mark_as(FALSE) )
                               }),
               correct = "submitted",
+              incorrect = "submitted",
               allow_retry = FALSE )
 ```
 
@@ -212,7 +220,6 @@ exam(
                     incorrect = "submitted",
                     options = list(group = "definition")
                     ),
-  
   question_wordbank("Which function/verb would you use to...",
                     choices = c("orders the rows of a data frame by the values of selected columns", "keep only desired variables"),
                     wordbank = c("slice_max()", "count()", "mutate()", "group_by()", "filter()", "select()", "summarize()", "arrange()", "rename()", "relocate()", "slice_min()", "slice_head()"),
@@ -257,47 +264,6 @@ Recreate the following visualization:
 
 ```{r, context = "server"}
 q2 <- list()
-# if(sample_data == 1){
-#   q2[[1]] <- ggplot(diamonds, aes(x = carat)) +
-#     geom_density(aes(fill = cut), alpha = 0.25) +
-#     labs(title = "Diamond Weight in Carats by Cut")
-#   q2[[2]] <- ggplot(diamonds, aes(x = carat, y = cut)) +
-#   geom_boxplot(fill = "skyblue") +
-#     labs(title = "Diamond Weight in Carats by Cut")
-#   q2[[3]] <- ggplot(diamonds, aes(x = carat, fill = cut)) +
-#     geom_histogram(color = "white") +
-#     labs(title = "Diamond by Cut and Color")
-# } else if(sample_data == 2){
-#   q2[[1]] <- ggplot(credit, aes(x = balance)) +
-#     geom_density(aes(fill = region), alpha = 0.25) +
-#     labs(title = "Credit Card Balance by Region")
-#   q2[[2]] <- ggplot(credit, aes(x = balance, y = region)) +
-#     geom_boxplot(fill = "skyblue") +
-#     labs(title = "Credit Card Balance by Region")
-#   q2[[3]] <- ggplot(credit, aes(x = balance, fill = region)) +
-#     geom_histogram(color = "white") +
-#     labs(title = "Credit Card Balance by Region")
-# } else if(sample_data == 3){
-#   q2[[1]] <- ggplot(auto, aes(x = mpg)) +
-#   geom_density(aes(fill = origin), alpha = 0.25) +
-#     labs(title = "Car MPG based on Origin")
-#   q2[[2]] <- ggplot(auto, aes(x = mpg, y = origin)) +
-#   geom_boxplot(fill = "skyblue") +
-#     labs(title = "Car MPG based on Origin")
-#   q2[[3]] <- ggplot(auto, aes(x = mpg, fill = origin)) +
-#     geom_histogram(color = "white") +
-#     labs(title = "Car MPG based on Origin")
-# } else{
-#   q2[[1]] <- ggplot(bikeshare, aes(x = bikers)) +
-#     geom_density(aes(fill = weathersit), alpha = 0.25) +
-#     labs(title = "Number of Bikers by Weather")
-#   q2[[2]] <- ggplot(bikeshare, aes(x = bikers, y = weathersit)) +
-#     geom_boxplot(fill = "skyblue") +
-#     labs(title = "Number of Bikers by Weather")
-#   q2[[3]] <- ggplot(bikeshare, aes(x = bikers, fill = weathersit)) +
-#     geom_histogram(color = "white") +
-#     labs(title = "Number of Bikers by Weather")
-# }
 
 if(sample_data == 1){
   q2[[1]] <- "images/q2_p1_a.png"
@@ -348,21 +314,21 @@ grade_this_code(
 ```{r, context = "server"}
 q3 <- list()
 if(sample_data == 1){
-  q3[[1]] <- "Calculate the mean, standard deviation, and count of diamond `price` for each `cut`."
-  q3[[2]] <- "Calculate the count of diamonds of each `color` and arrange from most to least."
-  q3[[3]] <- "Calculate the minimum, maximum, and count of diamond `price` for each `color`."
+  q3[[1]] <- HTML("Calculate the mean, standard deviation, and count of diamond <code>price</code> for each <code>cut</code>.")
+  q3[[2]] <- HTML("Calculate the count of diamonds of each <code>color</code> and arrange from most to least.")
+  q3[[3]] <- HTML("Calculate the minimum, maximum, and count of diamond <code>price</code> for each <code>color</code>.")
 } else if(sample_data == 2){
-  q3[[1]] <- "Calculate the mean, standard deviation, and count of `balance` for each `region`."
-  q3[[2]] <- "Calculate the count of observations from each `region` and arrange from least to greatest."
-  q3[[3]] <- "Calculate the minimum and maximum `balance` by whether an individual `own` s a house and if the individual is `married`. ie(balance of owns a house and married, owns a house and not married, etc.)"
+  q3[[1]] <- HTML("Calculate the mean, standard deviation, and count of <code>balance</code> for each <code>region</code>.")
+  q3[[2]] <- HTML("Calculate the count of observations from each <code>region</code> and arrange from least to greatest.")
+  q3[[3]] <- HTML("Calculate the minimum and maximum <code>balance</code> by whether an individual <code>own</code> s a house and if the individual is <code>married</code>. ie: balance of owns a house and married, owns a house and not married, etc.")
 } else if(sample_data == 3){
-  q3[[1]] <- "Calculate the mean, standard deviation, and count of `mpg` for each `origin`."
-  q3[[2]] <- "Calculate the count of cars of each `origin` and arrange from most to least."
-  q3[[3]] <- "Calculate the minimum, maximum, and count of `mpg` for each `origin`."
+  q3[[1]] <- HTML("Calculate the mean, standard deviation, and count of <code>mpg</code> for each `origin</code>.")
+  q3[[2]] <- HTML("Calculate the count of cars of each <code>origin</code> and arrange from most to least.")
+  q3[[3]] <- HTML("Calculate the minimum, maximum, and count of <code>mpg</code> for each <code>origin</code>.")
 } else{
-  q3[[1]] <- "Calculate the mean, standard deviation, and count of `bikers` for each `weathersit`."
-  q3[[2]] <- "Calculate the count of `weathersit` and arrange from most to least."
-  q3[[3]] <- "Calculate the minimum, maximum, and count of `bikers` for each `weathersit`."
+  q3[[1]] <- HTML("Calculate the mean, standard deviation, and count of <code>bikers</code> for each <code>weathersit</code>.")
+  q3[[2]] <- HTML("Calculate the count of <code>weathersit</code> and arrange from most to least.")
+  q3[[3]] <- HTML("Calculate the minimum, maximum, and count of <code>bikers</code> for each <code>weathersit</code>.")
 }
 
 text_server(id = "Q3", text = q3[[rand_q[3]]])
@@ -395,25 +361,25 @@ grade_this_code(
 #| warning: false
 q4 <- list()
 if(sample_data == 1){
-  q4[[1]] <- "Create a new variable called `price_per_carat` which is calculated as `price` divided by `carat`. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
-  q4[[2]] <- "Create a new variable called `price_per_carat` which is calculated as `price` divided by `carat`. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
-  q4[[3]] <- "Create a new variable called `price_per_carat` which is calculated as `price` divided by `carat`. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
-  q4[[4]] <- "Create a new variable called `price_per_carat` which is calculated as `price` divided by `carat`. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
+  q4[[1]] <- HTML("Create a new variable called <code>price_per_carat</code> which is calculated as <code>price</code> divided by <code>carat</code>. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable.")
+  q4[[2]] <- HTML("Create a new variable called <code>price_per_carat</code> which is calculated as <code>price</code> divided by <code>carat</code>. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable.")
+  q4[[3]] <- HTML("Create a new variable called <code>price_per_carat</code> which is calculated as <code>price</code> divided by <code>carat</code>. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable.")
+  q4[[4]] <- HTML("Create a new variable called <code>price_per_carat</code> which is calculated as <code>price</code> divided by <code>carat</code>. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame.")
 } else if(sample_data == 2){
-  q4[[1]] <- "Create a new variable called `prop_limit_used` which is calculated as `balance` divided by `limit`. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
-  q4[[2]] <- "Create a new variable called `prop_limit_used` which is calculated as `balance` divided by `limit`. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
-  q4[[3]] <- "Create a new variable called `prop_limit_used` which is calculated as `balance` divided by `limit`. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
-  q4[[4]] <- "Create a new variable called `prop_limit_used` which is calculated as `balance` divided by `limit`. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
+  q4[[1]] <- HTML("Create a new variable called <code>prop_limit_used</code> which is calculated as <code>balance</code> divided by <code>limit</code>. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable.")
+  q4[[2]] <- HTML("Create a new variable called <code>prop_limit_used</code> which is calculated as <code>balance</code> divided by <code>limit</code>. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable.")
+  q4[[3]] <- HTML("Create a new variable called <code>prop_limit_used</code> which is calculated as <code>balance</code> divided by <code>limit</code>. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable.")
+  q4[[4]] <- HTML("Create a new variable called <code>prop_limit_used</code> which is calculated as <code>balance</code> divided by <code>limit</code>. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame.")
 } else if(sample_data == 3){
-  q4[[1]] <- "Create a new variable called `power_weight_ratio` which is calculated as `horsepower` divided by `weight`. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
-  q4[[2]] <- "Create a new variable called `power_weight_ratio` which is calculated as `horsepower` divided by `weight`. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
-  q4[[3]] <- "Create a new variable called `power_weight_ratio` which is calculated as `horsepower` divided by `weight`. Move this new variable to the beginning of the dataframe and only print the smallest 4 observations based on this new variable."
-  q4[[4]] <- "Create a new variable called `power_weight_ratio` which is calculated as `horsepower` divided by `weight`. Move this new variable to the beginning of the dataframe and only print the first 5 observations of the data frame."
+  q4[[1]] <- HTML("Create a new variable called <code>power_weight_ratio</code> which is calculated as <code>horsepower</code> divided by <code>weight</code>. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable.")
+  q4[[2]] <- HTML("Create a new variable called <code>power_weight_ratio</code> which is calculated as <code>horsepower</code> divided by <code>weight</code>. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable.")
+  q4[[3]] <- HTML("Create a new variable called <code>power_weight_ratio</code> which is calculated as <code>horsepower</code> divided by <code>weight</code>. Move this new variable to the beginning of the dataframe and only print the smallest 4 observations based on this new variable.")
+  q4[[4]] <- HTML("Create a new variable called <code>power_weight_ratio</code> which is calculated as <code>horsepower</code> divided by <code>weight</code>. Move this new variable to the beginning of the dataframe and only print the first 5 observations of the data frame.")
 } else{
-  q4[[1]] <- "Create a new variable called `prop_registered` which is calculated as `registered` divided by `bikers`. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable."
-  q4[[2]] <- "Create a new variable called `prop_registered` which is calculated as `registered` divided by `bikers`. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable."
-  q4[[3]] <- "Create a new variable called `prop_registered` which is calculated as `registered` divided by `bikers`. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable."
-  q4[[4]] <- "Create a new variable called `prop_registered` which is calculated as `registered` divided by `bikers`. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame."
+  q4[[1]] <- HTML("Create a new variable called <code>prop_registered</code> which is calculated as <code>registered</code> divided by <code>bikers</code>. Only print the first 3 observations of the data frame and only include the columns used in the calculation in addition to the new variable.")
+  q4[[2]] <- HTML("Create a new variable called <code>prop_registered</code> which is calculated as <code>registered</code> divided by <code>bikers</code>. Only print the largest 5 observations based on this new variable and only include the columns used in the calculation in addition to the new variable.")
+  q4[[3]] <- HTML("Create a new variable called <code>prop_registered</code> which is calculated as <code>registered</code> divided by <code>bikers</code>. Move this new variable to the beginning of the data frame and only print the smallest 4 observations based on this new variable.")
+  q4[[4]] <- HTML("Create a new variable called <code>prop_registered</code> which is calculated as <code>registered</code> divided by <code>bikers</code>. Move this new variable to the beginning of the data frame and only print the last 5 observations of the data frame.")
 }
 
 text_server(id = "Q4", text = q4[[rand_q[4]]])
@@ -447,21 +413,21 @@ grade_this_code(
 #| warning: false
 q5 <- list()
 if(sample_data == 1){
-  q5[[1]] <- "Plot the relationship of `price` by `carat`. Facet by both the variable `cut` and the variable `color`."
-  q5[[2]] <- "Plot the relationship of `price` by `carat`. Set the shape equal to the variable `cut` and facet by the variable `color` with 2 rows."
-  q5[[3]] <- "Plot the relationship of `price` by `carat`. Set the color equal to the variable `color`. Facet by the variable `cut` and change the scales to free."
+  q5[[1]] <- HTML("Plot the relationship of <code>price</code> by <code>carat</code>. Facet by both the variable <code>cut</code> and the variable <code>color</code>.")
+  q5[[2]] <- HTML("Plot the relationship of <code>price</code> by <code>carat</code>. Set the shape equal to the variable <code>cut</code> and facet by the variable <code>color</code> with 2 rows.")
+  q5[[3]] <- HTML("Plot the relationship of <code>price</code> by <code>carat</code>. Set the color equal to the variable <code>color</code>. Facet by the variable <code>cut</code> and change the scales to free.")
 } else if(sample_data == 2){
-  q5[[1]] <- "Plot the relationship of `limit` by `income`. Facet by both the variable `married` and the variable `cards`. use the labeller argument to label both facets."
-  q5[[2]] <- "Plot the relationship of `limit` by `income`. Set the shape equal to the variable `married` and facet by the variable `own` with 2 rows."
-  q5[[3]] <- "Plot the relationship of `limit` by `income`. Set the color equal to the variable `own`. Facet by the variable `married` and change the scales to free."
+  q5[[1]] <- HTML("Plot the relationship of <code>limit</code> by <code>income</code>. Facet by both the variable <code>married</code> and the variable <code>cards</code>. use the labeller argument to label both facets.")
+  q5[[2]] <- HTML("Plot the relationship of <code>limit</code> by <code>income</code>. Set the shape equal to the variable <code>married</code> and facet by the variable <code>own</code> with 2 rows.")
+  q5[[3]] <- HTML("Plot the relationship of <code>limit</code> by <code>income</code>. Set the color equal to the variable <code>own</code>. Facet by the variable <code>married</code> and change the scales to free.")
 } else if(sample_data == 3){
-  q5[[1]] <- "Plot the relationship of `horsepower` by `weight`. Facet by both the variable `origin` and the variable `cylinders`."
-  q5[[2]] <- "Plot the relationship of `horsepower` by `weight`. Set the shape equal to the variable `cylinders` and facet by the variable `origin` with 3 rows."
-  q5[[3]] <- "Plot the relationship of `horsepower` by `weight`. Set the color equal to the variable `origins`. Facet by the variable `cylinders` and change the scales to free."
+  q5[[1]] <- HTML("Plot the relationship of <code>horsepower</code> by <code>weight</code>. Facet by both the variable <code>origin</code> and the variable <code>cylinders</code>.")
+  q5[[2]] <- HTML("Plot the relationship of <code>horsepower</code> by <code>weight</code>. Set the shape equal to the variable <code>cylinders</code> and facet by the variable <code>origin</code> with 3 rows.")
+  q5[[3]] <- HTML("Plot the relationship of <code>horsepower</code> by <code>weight</code>. Set the color equal to the variable <code>origin</code>. Facet by the variable <code>cylinders</code> and change the scales to free.")
 } else{
-  q5[[1]] <- "Plot the relationship of `bikers` by `temp`. Facet by both the variable `weathersit` and the variable `season`."
-  q5[[2]] <- "Plot the relationship of `bikers` by `temp`. Set the shape equal to the variable `weathersit` and facet by the variable `month` with 4 rows."
-  q5[[3]] <- "Plot the relationship of `bikers` by `temp`. Set the color equal to the variable `weathersit`. Facet by the variable `season` and change the scales to free."
+  q5[[1]] <- HTML("Plot the relationship of <code>bikers</code> by <code>temp</code>. Facet by both the variable <code>weathersit</code> and the variable <code>season</code>.")
+  q5[[2]] <- HTML("Plot the relationship of <code>bikers</code> by <code>temp</code>. Set the shape equal to the variable <code>weathersit</code> and facet by the variable <code>month</code> with 4 rows.")
+  q5[[3]] <- HTML("Plot the relationship of <code>bikers</code> by <code>temp</code>. Set the color equal to the variable <code>weathersit</code>. Facet by the variable <code>season</code> and change the scales to free.")
 }
 
 text_server(id = "Q5", text = q5[[rand_q[5]]])
@@ -492,12 +458,12 @@ grade_this_code(
 
 Once you are finished:
 
--   Click "Check Submissions" to make sure all questions and exercises are submitted -- **Un-submitted questions will receive a 0.**
--   Once all questions/exercises are submitted click the 'Lock Exam' button. Once you click this you will not be able to make any changes to your exam!
--   Once the lock is pressed a `Download Exam` option will become available,
+-   Click **Check Submissions** to make sure all questions and exercises are submitted -- Un-submitted questions will receive a 0.
+-   Once all questions/exercises are submitted click the **Lock Exam** button. Once you click this you will not be able to make any changes to your exam!
+-   Once the lock is pressed a **Download Exam** option will become available,
 -   Download and **Check your HTML!**
 
--  You have 3 attempts on this proficiency quiz. Submit the quiz you want to be graded to Canvas. The grader will only be grading one quiz per student.
+-  You have 3 attempts on this proficiency quiz. Submit the quiz you want to be graded to Canvas. The grader will ONLY be grading one quiz per student. You can submit multiple attempts but the grader will only grade your LAST submission.
 
 ```{r}
 lock_check_ui(id = "lock")
@@ -514,7 +480,7 @@ The retry button is available 24 hours after you lock the quiz.
 
 You have 3 attempts on this quiz. 
 
-Once you click retry your quiz will be erased and a new set of questions will be generated. Make sure you downloaded your quiz and check that everything is correct prior to clicking the retry button. Once you click retry there will be no way to retrieve your prior attempt.
+Once you click retry, your quiz will be erased and a new set of questions will be generated. Make sure you downloaded your quiz and check that everything is correct **prior to clicking the retry button**. Once you click retry there will be no way to retrieve your prior attempt.
 
 
 ```{r}
