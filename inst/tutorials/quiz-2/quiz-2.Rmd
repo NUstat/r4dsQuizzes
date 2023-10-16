@@ -1,0 +1,481 @@
+---
+title: "Tidy, Imports, and EDA"
+tutorial:
+  id: "301_q2"
+  version: 0.2
+  
+output:
+  learnr::tutorial:
+    progressive: false
+    allow_skip: true
+    css: ["css/nu-theme.css"]
+runtime: shiny_prerendered
+description: >
+  Data Science in R proficiency quiz on tidy data, importing data, tibbles, and exploratory data analysis.
+---
+
+```{r setup, include=FALSE}
+library(skimr)
+library(learnr)
+library(tidyverse)
+library(tutorialExtras)
+library(gradethis)
+library(countdown)
+
+#data needed
+library(palmerpenguins)
+library(dcldata)
+library(nycflights13)
+library(openintro)
+
+gradethis_setup(pass = "submitted",
+                fail = "submitted",
+                exercise.completion = FALSE,
+                error_checker.message = "submitted",
+                fail.hint = FALSE
+                )
+
+tutorialExtras_setup(is_exam = TRUE,
+                     max_retry = Inf,
+                     retry_cooldown = 0)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+#sample_data <- ceiling((rand_int*4/10))
+
+rand_q <- c(0, sample(1:7, 1), sample(1:6, 1), sample(1:9, 1), sample(1:6, 1))
+
+messy <- tibble(
+  `2022` = sample(20:40, 10),
+  `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)
+)
+
+```
+
+```{r, context = "server"}
+lock_server("lock", exclude = c("Name"), show_correct = FALSE)
+reset_server("reset", file_name = "quiz-2", package_name = "r4dsQuizzes")
+```
+
+```{r Name}
+# student name
+question_text("Name:",
+              answer_fn(function(value){
+                              if(length(value) >= 1 ) {
+                                return(mark_as(TRUE))
+                                }
+                              return(mark_as(FALSE) )
+                              }),
+              correct = "submitted",
+              allow_retry = FALSE )
+```
+
+```{r}
+countdown(minutes = 30L, seconds = 0L, top = 0, right = 0, start_immediately = TRUE,
+          color_background = "gray80", color_running_background = "#E4E0EE")
+```
+
+
+## Instructions
+
+You have 30 minutes to complete this quiz. Set a timer, as it is self timed!
+
+The quiz covers tidy data, imports, and EDA.
+
+As always make sure your code is well organized in proper formatting and using tidyverse functions.
+
+Once you are finished:
+
+-   Check Submissions to make sure every question/exercise has been **submitted**.
+-   Click the 'Lock Exam' button. You will not be able to make any changes once this is clicked.
+-   Once the exam is locked you will be able to click on the 'Download Exam' button.
+-   Submit the completed html to Canvas.
+
+
+## Question 1 
+
+
+```{r Concept1}
+exam(
+  caption = NULL,
+  question_wordbank("Which function/verb...",
+                    choices = c("helps format reproducible example", "tidy a dataset by increasing the number of rows and decresing the number of columns", "turns variable names to snakecase"),
+                    wordbank = c("pivot_longer()", "pivot_wider()", "read.csv()", "read_csv()", "writeRDS()", "write_rds()", "clean_names()", "janitor()", "clean_vars()", "coord_cartesian()", "zoom()", "xlim()/ylim()", "variation", "covariation", "tibble()", "tribble()", "reprex()"),
+                    answer(c("reprex()", "pivot_longer()", "clean_names()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("Which function/verb...",
+                    choices = c("readr function to read in data file with comma separated values", "layer added to zoom the plot while not changing the underlying data", "creates a tidyverse data frame using a row-by-row layout"),
+                    wordbank = c("pivot_longer()", "pivot_wider()", "read.csv()", "read_csv()", "writeRDS()", "write_rds()", "clean_names()", "janitor()", "clean_vars()", "coord_cartesian()", "zoom()", "xlim()/ylim()", "variation", "covariation", "tibble()", "tribble()", "reprex()"),
+                    answer(c("read_csv()", "coord_cartesian()", "tribble()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("Which function/verb...",
+                    choices = c("layer added to zoom the plot and any data outside limits will be replaced with NA", "tendency of the values of a variable to change from measurement to measurement", "transforms data by increasing the number of columns and decreasing the number of rows"),
+                    wordbank = c("pivot_longer()", "pivot_wider()", "read.csv()", "read_csv()", "writeRDS()", "write_rds()", "clean_names()", "janitor()", "clean_vars()", "coord_cartesian()", "zoom()", "xlim()/ylim()", "variation", "covariation", "tibble()", "tribble()", "reprex()"),
+                    answer(c("xlim()/ylim()", "variation", "pivot_wider()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("Which function/verb...",
+                    choices = c("the tendency for the values of two or more variables to vary together in a related way", "tidyverse equivalent of data.frame()", "readr function to save out rds file type"),
+                    wordbank = c("pivot_longer()", "pivot_wider()", "read.csv()", "read_csv()", "writeRDS()", "write_rds()", "clean_names()", "janitor()", "clean_vars()", "coord_cartesian()", "zoom()", "xlim()/ylim()", "variation", "covariation", "tibble()", "tribble()", "reprex()"),
+                    answer(c("covariation", "tibble()", "write_rds()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("Which function/verb...",
+                    choices = c("readr function to save out rds file type", "transforms data by increasing the number of columns and decreasing the number of rows", "layer added to zoom the plot while not changing the underlying data"),
+                    wordbank = c("pivot_longer()", "pivot_wider()", "read.csv()", "read_csv()", "writeRDS()", "write_rds()", "clean_names()", "janitor()", "clean_vars()", "coord_cartesian()", "zoom()", "xlim()/ylim()", "variation", "covariation", "tibble()", "tribble()", "reprex()"),
+                    answer(c("write_rds()", "pivot_wider()", "coord_cartesian()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("Which function/verb...",
+                    choices = c("tidy a dataset by increasing the number of rows and decresing the number of columns", "creates a tidyverse data frame using a row-by-row layout", "the tendency for the values of two or more variables to vary together in a related way"),
+                    wordbank = c("pivot_longer()", "pivot_wider()", "read.csv()", "read_csv()", "writeRDS()", "write_rds()", "clean_names()", "janitor()", "clean_vars()", "coord_cartesian()", "zoom()", "xlim()/ylim()", "variation", "covariation", "tibble()", "tribble()", "reprex()"),
+                    answer(c("pivot_longer()", "tribble()", "covariation"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("Which function/verb...",
+          choices = c("turns variable names ot snakecase",
+                      "layer added to zoom the plot and any data outside limits will be replaced with NA", "tidyverse equivalent of data.frame()"),
+                    wordbank = c("pivot_longer()", "pivot_wider()", "read.csv()", "read_csv()", "writeRDS()", "write_rds()", "clean_names()", "janitor()", "clean_vars()", "coord_cartesian()", "zoom()", "xlim()/ylim()", "variation", "covariation", "tibble()", "tribble()", "reprex()"),
+                    answer(c("clean_names()", "xlim()/ylim()", "tibble()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    ),
+  question_wordbank("Which function/verb...",
+          choices = c("tendency of the values of a variable to change from measurement to measurement", "readr function to read in data file with comma separated values", "helps format reproducible example"),
+                    wordbank = c("pivot_longer()", "pivot_wider()", "read.csv()", "read_csv()", "writeRDS()", "write_rds()", "clean_names()", "janitor()", "clean_vars()", "coord_cartesian()", "zoom()", "xlim()/ylim()", "variation", "covariation", "tibble()", "tribble()", "reprex()"),
+                    answer(c("variation", "read_csv()", "reprex()"), correct = TRUE),
+                    allow_retry = TRUE,
+                    arrange = "ordered",
+                    correct = "submitted",
+                    incorrect = "submitted",
+                    options = list(group = "definition")
+                    )
+)
+```
+
+
+## Question 2
+
+
+```{r, context = "server"}
+q2 <- list()
+
+q2[[1]] <- HTML("Consider the dataset named <code>relig_income</code>. Tidy the dataset so that it has 3 columns named <code>religion</code>, <code>income_range</code>, and <code>count</code>.")
+
+q2[[2]] <- HTML("Consider the dataset named <code>example_eagle_nests</code>. Tidy the dataset so that it has 3 columns named <code>region</code>, <code>year</code>, and <code>num_nests</code>.")
+
+q2[[3]] <- HTML("Consider the dataset named <code>example_eagle_pairs</code>. Tidy the dataset so that it has 4 columns named <code>state</code>, <code>state_abbr</code>, <code>year</code>, and <code>num_pairs</code>.")
+
+q2[[4]] <- HTML("Consider the dataset named <code>example_migration</code>. Tidy the dataset so that it has 3 columns named <code>dest</code>, <code>origins</code>, and <code>migrants</code>. Drop the NA values.")
+
+q2[[5]] <- HTML("Consider the dataset named <code>table_1</code>. Tidy the dataset so that it has 4 columns named <code>country</code>, <code>year</code>, <code>type</code>, and <code>count</code>.")
+
+q2[[6]] <- HTML("Consider the dataset named <code>example_eagle_nests_tidy</code>. Untidy the dataset so that it has 3 columns named <code>region</code>, <code>2007</code>, and </ode>2009</code>.")
+
+q2[[7]] <- HTML("Consider the dataset named <code>example_acs_1</code>. Untidy the dataset so that it has 5 columns named <code>geoid</code>, <code>name</code>, <code>pop_housed</code>, <code>pop_renter</code>, and <code>median_rent</code>.")
+
+text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
+```
+
+
+```{r Question2}
+text_ui(id = "Q2")
+```
+
+<br>
+
+The first few rows of the dataset are shown below:
+
+```{r}
+data <- list(relig_income, example_eagle_nests, example_eagle_pairs, example_migration, table1, example_eagle_nests_tidy, example_acs_1)
+
+data[[ rand_q[[2]] ]] |> 
+  slice_head(n = 5)
+```
+
+
+```{r Q2, exercise=TRUE}
+
+```
+
+```{r Q2-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q2-check}
+grade_this_code(
+  correct = "Submitted",
+  incorrect = "Submitted"
+)
+```
+
+## Question 3
+
+
+```{r, context = "server"}
+q3 <- list()
+
+q3[[1]] <- HTML("Consider the dataset named <code>mpg</code> from the ggplot2 package. The package is pre-loaded for you. Use an appropriate <code>readr</code> function to write the dataset to a <code>data</code> subdirectory as a csv file named <code>mpg_clean.csv</code>.")
+
+q3[[2]] <- HTML("Consider the dataset named <code>diamonds</code> from the ggplot2 package. The package is pre-loaded for you. Use an appropriate <code>readr</code> function to write the dataset to a <code>data</code> subdirectory as a csv file named <code>diamonds_clean.csv</code>.")
+
+q3[[3]] <- HTML("Consider the dataset named <code>penguins</code> from the palmerpenguins package. The package is pre-loaded for you. Use an appropriate <code>readr</code> function to write the dataset to a <code>data</code> subdirectory as an rds file named <code>penguins_clean.rds</code>.")
+
+q3[[4]] <- HTML("Consider a dataset named <code>mpg_data</code> located in a <code>data</code> subdirectory. The file is a csv extension with comma separated values. Use an appropriate <code>readr</code> function to read the dataset in and store the dataset as <code>mpg_raw</code>.")
+
+q3[[5]] <- HTML("Consider a dataset named <code>diamonds_data</code> located in a <code>data</code> subdirectory. The file is a csv extension with comma separated values. Use an appropriate <code>readr`</code> function to read the dataset in and store the dataset as <code>diamonds_raw</code>.")
+
+q3[[6]] <- HTML("Consider a dataset named <code>penguins_data</code> located in a <code>data</code> subdirectory. The file is an rds extension. Use an appropriate <code>readr</code> function to read the dataset in and store the dataset as <code>penguins_raw</code>.")
+
+text_server(id = "Q3", text = q3[[rand_q[3]]])
+```
+
+
+```{r Question3}
+text_ui(id = "Q3")
+```
+
+
+```{r Q3, exercise=TRUE}
+
+```
+
+```{r Q3-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q3-check}
+grade_this_code(
+  correct = "Submitted",
+  incorrect = "Submitted"
+)
+```
+
+## Question 4
+
+
+```{r, context = "server"}
+#| warning: false
+q4 <- list()
+
+q4[[1]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. Store this data frame as <code>report_card</code> and print the output.")
+
+q4[[2]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. Store this data frame as <code>report_card</code> and print the output.")
+
+q4[[3]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. Store this data frame as <code>coffee</code> and print the output.")
+
+q4[[4]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. Store this data frame as <code>coffee</code> and print the output.")
+
+q4[[5]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. Store this data frame as <code>my_table</code> and print the output.")
+
+q4[[6]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. Store this data frame as <code>my_table</code> and print the output.")
+
+
+q4[[7]] <- HTML("Consider the dataset named <code>messy</code>. It has already been pre-loaded for you. Create a new column called <code>diff</code> which is <code>2023</code> minus <code>2022</code>.")
+
+q4[[8]] <- HTML("Consider the dataset named <code>messy</code>. It has already been pre-loaded for you. Create a new column called <code>2024</code> which is <code>2022</code> times <code>2023</code>.")
+
+q4[[9]] <- HTML("Consider the dataset named <code>messy</code>. It has already been pre-loaded for you. Make a scatterplot of <code>2023</code> by <code>2022</code>.")
+
+  
+text_server(id = "Q4", text = q4[[rand_q[4]]])
+```
+
+
+```{r Question4}
+text_ui(id = "Q4")
+```
+
+```{r}
+
+if(rand_q[4] %in% c(1, 2)){
+  htmltools::img(
+				src = "images/table1.png", width = 500, height = 150)
+}else if(rand_q[4] %in% c(3, 4)){
+  htmltools::img(
+				src = "images/table2.png", width = 500, height = 100)
+}else if(rand_q[4] %in% c(5, 6)){
+  htmltools::img(
+				src = "images/table3.png", width = 500, height = 150)
+}else{
+  messy
+}
+
+
+```
+
+
+
+```{r Q4, exercise=TRUE}
+
+```
+
+```{r Q4-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q4-check}
+grade_this_code(
+  correct = "Submitted",
+  incorrect = "Submitted"
+)
+```
+
+<br>
+
+## Question 5
+
+**Codebook:**
+
+```{r}
+babies_codebook <- tibble(variable = c("case", "bwt", "gestation", "parity", "age", "height", "weight", "smoke"),
+                          meaning = c("id number", 
+                                      "birthweight, in ounces", 
+                                      "length of gestation (pregnancy), in days",
+                                      "binary indicator for a first pregnancy (0 = first pregnancy",
+                                      "mother's age in years",
+                                      "mother's height in inches",
+                                      "mother's weight in pounds",
+                                      "binary indicator for whether the mother smokes (1 = smokes)"))
+
+nc_births_codebook <- tibble(variable = c("fage", "mage", "mature", "weeks", "premie", "visits", "gained", "weight", "lowbirthweight", "gender", "habit", "marital", "whitemom"),
+                             meaning = c("Father's age in years", 
+                                         "Mother's age in years",
+                                         "Maturity status of mother",
+                                         "Length of pregnancy in weeks",
+                                         "Whether the birth was classified as premature (premie) or full-term",
+                                         "Number of hospital visits during pregnancy",
+                                         "Weight gained by mother during pregnancy in pounds",
+                                         "Weight of the baby at birth in pounds",
+                                         "Whether baby was classified as low birthweight (low) or not (not low)",
+                                         "Gender of the baby, female or male",
+                                         "Status of the mother as a nonsmoker or a smoker",
+                                         "Whether mother is married or not married at birth",
+                                         "Whether mom is white or not white"))
+
+fastfood_codebook <- tibble(variable = c("restaurant", "item", "calories", "cal_fat", "total_fat", "sat_fat", "trans_fat", "cholesterol", "sodium", "total_carb", "fiber", "sugar", "protien", "vit_a", "vit_c", "calcium", "salad"),
+                            meaning = c("Name of restaurant", "Name of item", "Number of calories", "calories from fat", "total fat", "saturated fat", "trans fat", "cholesterol", "sodium", "total carbohydrates", "fiber", "sugar", "protien", "vitamin a", "vitamin c", "calcium", "salad or not"))
+
+if(rand_q[5] %in% c(1, 4)){
+  babies_codebook
+}else if(rand_q[5] %in% c(2, 5)){
+  nc_births_codebook
+}else{
+  fastfood_codebook
+}
+```
+
+<br>
+
+```{r, context = "server"}
+q5 <- list()
+
+q5[[1]] <- HTML("Use functions from the <code>naniar</code> package to check for missingness issues in the dataset called <code>babies</code>. Explore the dataset and check for any weird values. Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
+
+q5[[2]] <- HTML("Use functions from the <code>naniar</code> package to check for missingness issues in the dataset called <code>ncbirths</code>. Explore the dataset and check for any weird values. Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
+
+q5[[3]] <- HTML("Use functions from the <code>naniar</code> package to check for missingness issues in the dataset called <code>fastfood</code>. Explore the dataset and check for any weird values. Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
+
+q5[[4]] <- HTML("What variable(s) in the <code>babies</code> dataset appears to be most important for predicting the body weight of the baby (<code>bwt</code>)? Submit any relevant work in the code chunk. Explain which variable(s) you selected and why.")
+
+q5[[5]] <- HTML("What variable(s) in the <code>ncbirths</code> dataset appears to be most important for predicting the body weight of the baby (<code>weight</code>)? Submit any relevant work in the code chunk. Explain which variable(s) you selected and why.")
+
+q5[[6]] <- HTML("What variable(s) in the <code>fastfood</code> dataset appears to be most important for predicting the calories in the food (<code>calories</code>)? Submit any relevant work in the code chunk. Explain which variable(s) you selected and why.")
+
+
+text_server(id = "Q5", text = q5[[rand_q[5]]])
+```
+
+
+```{r Question5}
+text_ui(id = "Q5")
+```
+
+<br>
+
+*Tip: Watch your time! It's easy to go down the rabbit hole in an EDA. Focus your analysis and know when to stop.*
+
+```{r Q5, exercise=TRUE}
+
+```
+
+```{r Q5-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q5-check}
+grade_this_code(
+  correct = "Submitted",
+  incorrect = "Submitted"
+)
+```
+
+```{r Q5-desc}
+question_text("", incorrect = "submitted",
+              answer("ManuallyGradedEverythingWrong", 
+                     correct = TRUE),
+              allow_retry = TRUE,
+              rows = 8)
+```
+
+
+## Submit
+
+Once you are finished:
+
+-   Click **Check Submissions** to make sure all questions and exercises are submitted -- Un-submitted questions will receive a 0.
+-   Once all questions/exercises are submitted click the **Lock Exam** button. Once you click this you will not be able to make any changes to your exam!
+-   Once the lock is pressed a **Download Exam** option will become available,
+-   Download and **Check your HTML!**
+
+-  You have 3 attempts on this proficiency quiz. Submit the quiz you want to be graded to Canvas. The grader will ONLY be grading one quiz per student. You can submit multiple attempts but the grader will only grade your LAST submission.
+
+```{r}
+lock_check_ui(id = "lock")
+```
+<br>
+```{r}
+lock_button_ui(id = "lock")
+```
+
+
+## Retry
+
+The retry button is available 24 hours after you lock the quiz. 
+
+You have 3 attempts on this quiz. 
+
+Once you click retry, your quiz will be erased and a new set of questions will be generated. Make sure you downloaded your quiz and check that everything is correct **prior to clicking the retry button**. Once you click retry there will be no way to retrieve your prior attempt.
+
+```{r}
+reset_button_ui(id = "reset")
+```
