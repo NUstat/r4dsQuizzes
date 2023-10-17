@@ -187,11 +187,54 @@ data-diagnostics="1" data-startover="1" data-lines="0">
 <div id="section-question-5" class="section level2">
 <h2>Question 5</h2>
 <p><strong>Codebook:</strong></p>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["variable"],"name":[1],"type":["chr"],"align":["left"]},{"label":["meaning"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"case","2":"id number"},{"1":"bwt","2":"birthweight, in ounces"},{"1":"gestation","2":"length of gestation (pregnancy), in days"},{"1":"parity","2":"binary indicator for a first pregnancy (0 = first pregnancy; 1 = has had previous pregnancy)"},{"1":"age","2":"mother's age in years"},{"1":"height","2":"mother's height in inches"},{"1":"weight","2":"mother's weight in pounds"},{"1":"smoke","2":"binary indicator for whether the mother smokes (0 = does not smoke; 1 = smokes)"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="90%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="left">meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">case</td>
+<td align="left">id number</td>
+</tr>
+<tr class="even">
+<td align="left">bwt</td>
+<td align="left">birthweight, in ounces</td>
+</tr>
+<tr class="odd">
+<td align="left">gestation</td>
+<td align="left">length of gestation (pregnancy), in days</td>
+</tr>
+<tr class="even">
+<td align="left">parity</td>
+<td align="left">binary indicator for a first pregnancy (0 = first
+pregnancy; 1 = has had previous pregnancy)</td>
+</tr>
+<tr class="odd">
+<td align="left">age</td>
+<td align="left">mother’s age in years</td>
+</tr>
+<tr class="even">
+<td align="left">height</td>
+<td align="left">mother’s height in inches</td>
+</tr>
+<tr class="odd">
+<td align="left">weight</td>
+<td align="left">mother’s weight in pounds</td>
+</tr>
+<tr class="even">
+<td align="left">smoke</td>
+<td align="left">binary indicator for whether the mother smokes (0 =
+does not smoke; 1 = smokes)</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <div id="Q5-text" class="shiny-html-output"></div>
 <p><br></p>
@@ -281,6 +324,24 @@ messy <- tibble(
   `2022` = sample(20:40, 10),
   `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)
 )
+
+# babies <- babies
+# 
+# write_rds(babies, "data/babies.rds")
+# 
+# ncbirths <- ncbirths |>
+#   select(-fage, -whitemom, -mature) |>
+#   rename(age = mage)
+# 
+# write_rds(ncbirths, "data/ncbirths.rds")
+# 
+# fastfood <- fastfood |>
+#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))
+# write_rds(fastfood, "inst/tutorials/quiz-2/data/fastfood.rds")
+
+fastfood <- read_rds("data/fastfood.rds")
+ncbirths <- read_rds("data/ncbirths.rds")
+babies <- read_rds("data/babies.rds")
 
 </script>
  
@@ -397,10 +458,17 @@ learnr:::store_exercise_cache(structure(list(label = "Q2", global_setup = struct
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "#sample_data <- ceiling((rand_int*4/10))", 
 "", "rand_q <- c(0, sample(1:7, 1), sample(1:6, 1), sample(1:9, 1), sample(1:6, 1))", 
 "", "messy <- tibble(", "  `2022` = sample(20:40, 10),", "  `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
-")", ""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "Q2", code = "", 
-        opts = list(label = "\"Q2\"", exercise = "TRUE"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = structure(c("grade_this_code(", 
+")", "", "# babies <- babies", "# ", "# write_rds(babies, \"data/babies.rds\")", 
+"# ", "# ncbirths <- ncbirths |>", "#   select(-fage, -whitemom, -mature) |>", 
+"#   rename(age = mage)", "# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", 
+"# ", "# fastfood <- fastfood |>", "#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
+"# write_rds(fastfood, \"inst/tutorials/quiz-2/data/fastfood.rds\")", 
+"", "fastfood <- read_rds(\"data/fastfood.rds\")", "ncbirths <- read_rds(\"data/ncbirths.rds\")", 
+"babies <- read_rds(\"data/babies.rds\")", ""), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q2", code = "", opts = list(label = "\"Q2\"", 
+        exercise = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"Submitted\",", "  incorrect = \"Submitted\"", 
     ")"), chunk_opts = list(label = "Q2-check")), solution = structure("ggplot()", chunk_opts = list(
         label = "Q2-solution", exercise.reveal_solution = FALSE)), 
@@ -467,10 +535,17 @@ learnr:::store_exercise_cache(structure(list(label = "Q3", global_setup = struct
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "#sample_data <- ceiling((rand_int*4/10))", 
 "", "rand_q <- c(0, sample(1:7, 1), sample(1:6, 1), sample(1:9, 1), sample(1:6, 1))", 
 "", "messy <- tibble(", "  `2022` = sample(20:40, 10),", "  `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
-")", ""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "Q3", code = "", 
-        opts = list(label = "\"Q3\"", exercise = "TRUE"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = structure(c("grade_this_code(", 
+")", "", "# babies <- babies", "# ", "# write_rds(babies, \"data/babies.rds\")", 
+"# ", "# ncbirths <- ncbirths |>", "#   select(-fage, -whitemom, -mature) |>", 
+"#   rename(age = mage)", "# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", 
+"# ", "# fastfood <- fastfood |>", "#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
+"# write_rds(fastfood, \"inst/tutorials/quiz-2/data/fastfood.rds\")", 
+"", "fastfood <- read_rds(\"data/fastfood.rds\")", "ncbirths <- read_rds(\"data/ncbirths.rds\")", 
+"babies <- read_rds(\"data/babies.rds\")", ""), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q3", code = "", opts = list(label = "\"Q3\"", 
+        exercise = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"Submitted\",", "  incorrect = \"Submitted\"", 
     ")"), chunk_opts = list(label = "Q3-check")), solution = structure("ggplot()", chunk_opts = list(
         label = "Q3-solution", exercise.reveal_solution = FALSE)), 
@@ -546,10 +621,17 @@ learnr:::store_exercise_cache(structure(list(label = "Q4", global_setup = struct
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "#sample_data <- ceiling((rand_int*4/10))", 
 "", "rand_q <- c(0, sample(1:7, 1), sample(1:6, 1), sample(1:9, 1), sample(1:6, 1))", 
 "", "messy <- tibble(", "  `2022` = sample(20:40, 10),", "  `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
-")", ""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "Q4", code = "", 
-        opts = list(label = "\"Q4\"", exercise = "TRUE"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = structure(c("grade_this_code(", 
+")", "", "# babies <- babies", "# ", "# write_rds(babies, \"data/babies.rds\")", 
+"# ", "# ncbirths <- ncbirths |>", "#   select(-fage, -whitemom, -mature) |>", 
+"#   rename(age = mage)", "# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", 
+"# ", "# fastfood <- fastfood |>", "#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
+"# write_rds(fastfood, \"inst/tutorials/quiz-2/data/fastfood.rds\")", 
+"", "fastfood <- read_rds(\"data/fastfood.rds\")", "ncbirths <- read_rds(\"data/ncbirths.rds\")", 
+"babies <- read_rds(\"data/babies.rds\")", ""), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q4", code = "", opts = list(label = "\"Q4\"", 
+        exercise = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"Submitted\",", "  incorrect = \"Submitted\"", 
     ")"), chunk_opts = list(label = "Q4-check")), solution = structure("ggplot()", chunk_opts = list(
         label = "Q4-solution", exercise.reveal_solution = FALSE)), 
@@ -617,11 +699,18 @@ learnr:::store_exercise_cache(structure(list(label = "Q5", global_setup = struct
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "#sample_data <- ceiling((rand_int*4/10))", 
 "", "rand_q <- c(0, sample(1:7, 1), sample(1:6, 1), sample(1:9, 1), sample(1:6, 1))", 
 "", "messy <- tibble(", "  `2022` = sample(20:40, 10),", "  `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
-")", ""), chunk_opts = list(label = "setup", include = FALSE)), 
-    setup = NULL, chunks = list(list(label = "Q5", code = "", 
-        opts = list(label = "\"Q5\"", exercise = "TRUE"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = structure(c("grade_this_code(", 
-    "  correct = \"Submitted\",", "  incorrect = \"Submitted\"", 
+")", "", "# babies <- babies", "# ", "# write_rds(babies, \"data/babies.rds\")", 
+"# ", "# ncbirths <- ncbirths |>", "#   select(-fage, -whitemom, -mature) |>", 
+"#   rename(age = mage)", "# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", 
+"# ", "# fastfood <- fastfood |>", "#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
+"# write_rds(fastfood, \"inst/tutorials/quiz-2/data/fastfood.rds\")", 
+"", "fastfood <- read_rds(\"data/fastfood.rds\")", "ncbirths <- read_rds(\"data/ncbirths.rds\")", 
+"babies <- read_rds(\"data/babies.rds\")", ""), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q5", code = "", opts = list(label = "\"Q5\"", 
+        exercise = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = structure(c("grade_this_code(", 
+    "  correct = \"submitted\",", "  incorrect = \"submitted\"", 
     ")"), chunk_opts = list(label = "Q5-check")), solution = structure("ggplot()", chunk_opts = list(
         label = "Q5-solution", exercise.reveal_solution = FALSE)), 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 

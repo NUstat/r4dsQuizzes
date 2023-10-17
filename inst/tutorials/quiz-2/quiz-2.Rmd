@@ -50,6 +50,24 @@ messy <- tibble(
   `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)
 )
 
+# babies <- babies
+# 
+# write_rds(babies, "data/babies.rds")
+# 
+# ncbirths <- ncbirths |>
+#   select(-fage, -whitemom, -mature) |>
+#   rename(age = mage)
+# 
+# write_rds(ncbirths, "data/ncbirths.rds")
+# 
+# fastfood <- fastfood |>
+#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))
+# write_rds(fastfood, "inst/tutorials/quiz-2/data/fastfood.rds")
+
+fastfood <- read_rds("data/fastfood.rds")
+ncbirths <- read_rds("data/ncbirths.rds")
+babies <- read_rds("data/babies.rds")
+
 ```
 
 ```{r, context = "server"}
@@ -369,30 +387,31 @@ babies_codebook <- tibble(variable = c("case", "bwt", "gestation", "parity", "ag
                                       "mother's weight in pounds",
                                       "binary indicator for whether the mother smokes (0 = does not smoke; 1 = smokes)"))
 
-nc_births_codebook <- tibble(variable = c("fage", "mage", "mature", "weeks", "premie", "visits", "gained", "weight", "lowbirthweight", "gender", "habit", "marital", "whitemom"),
-                             meaning = c("Father's age in years", 
-                                         "Mother's age in years",
-                                         "Maturity status of mother",
+nc_births_codebook <- tibble(variable = c("age", "weeks", "premie", "visits", "marital", "gained", "weight", "lowbirthweight", "gender", "habit"),
+                             meaning = c("Mother's age in years",
                                          "Length of pregnancy in weeks",
-                                         "Whether the birth was classified as premature (premie) or full-term",
+                                         "Whether the birth was classified as premature (levels: premie; full term)",
                                          "Number of hospital visits during pregnancy",
+                                         "Whether mother is married or not married at birth (levels: not married; married)",
                                          "Weight gained by mother during pregnancy in pounds",
                                          "Weight of the baby at birth in pounds",
-                                         "Whether baby was classified as low birthweight (low) or not (not low)",
-                                         "Gender of the baby, female or male",
-                                         "Status of the mother as a nonsmoker or a smoker",
-                                         "Whether mother is married or not married at birth",
-                                         "Whether mom is white or not white"))
+                                         "Whether baby was classified as low birthweight (levels: low; not low)",
+                                         "Gender of the baby, (levels: female; male)",
+                                         "Status of the mother as a nonsmoker or a smoker (levels: smoker; nonsmoker)"
+                                         ))
 
-fastfood_codebook <- tibble(variable = c("restaurant", "item", "calories", "cal_fat", "total_fat", "sat_fat", "trans_fat", "cholesterol", "sodium", "total_carb", "fiber", "sugar", "protien", "vit_a", "vit_c", "calcium", "salad"),
-                            meaning = c("Name of restaurant", "Name of item", "Number of calories", "calories from fat", "total fat", "saturated fat", "trans fat", "cholesterol", "sodium", "total carbohydrates", "fiber", "sugar", "protien", "vitamin a", "vitamin c", "calcium", "salad or not"))
+fastfood_codebook <- tibble(variable = c("restaurant", "item", "calories", "total_fat", "cholesterol", "sodium", "total_carb", "fiber", "sugar", "protien"),
+                            meaning = c("Name of restaurant", "Name of item", "Number of calories", "total fat",  "cholesterol", "sodium", "total carbohydrates", "fiber", "sugar", "protien"))
 
 if(rand_q[5] %in% c(1, 4)){
-  babies_codebook
+  babies_codebook |> 
+    knitr::kable()
 }else if(rand_q[5] %in% c(2, 5)){
-  nc_births_codebook
+  nc_births_codebook |> 
+    knitr::kable()
 }else{
-  fastfood_codebook
+  fastfood_codebook |> 
+    knitr::kable()
 }
 ```
 
@@ -436,8 +455,8 @@ ggplot()
 
 ```{r Q5-check}
 grade_this_code(
-  correct = "Submitted",
-  incorrect = "Submitted"
+  correct = "submitted",
+  incorrect = "submitted"
 )
 ```
 
