@@ -30,14 +30,14 @@ library(openintro)
 
 gradethis_setup(pass = "submitted",
                 fail = "submitted",
-                exercise.completion = FALSE,
+                # exercise.completion = FALSE,
                 error_checker.message = "submitted",
                 fail.hint = FALSE
                 )
 
 tutorialExtras_setup(is_exam = TRUE,
-                     max_retry = Inf,
-                     retry_cooldown = 0)
+                     max_retry = 3,
+                     retry_cooldown = 24)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -53,7 +53,8 @@ messy <- tibble(
 ```
 
 ```{r, context = "server"}
-lock_server("lock", exclude = c("Name"), show_correct = FALSE)
+lock_server("lock", exclude = c("Name"), manual = "Q5-desc", 
+            manual_pts = c(1), show_correct = FALSE)
 reset_server("reset", file_name = "quiz-2", package_name = "r4dsQuizzes")
 ```
 
@@ -67,13 +68,14 @@ question_text("Name:",
                               return(mark_as(FALSE) )
                               }),
               correct = "submitted",
+              incorrect = "submitted",
               allow_retry = FALSE )
 ```
 
-```{r}
-countdown(minutes = 30L, seconds = 0L, top = 0, right = 0, start_immediately = TRUE,
-          color_background = "gray80", color_running_background = "#E4E0EE")
-```
+<!-- ```{r} -->
+<!-- countdown(minutes = 30L, seconds = 0L, top = 0, right = 0, start_immediately = TRUE, -->
+<!--           color_background = "gray80", color_running_background = "#E4E0EE") -->
+<!-- ``` -->
 
 
 ## Instructions
@@ -98,7 +100,7 @@ Once you are finished:
 ```{r Concept1}
 exam(
   caption = NULL,
-  question_wordbank("Which function/verb...",
+  question_wordbank("Match the correct item to the given description.",
                     choices = c("helps format reproducible example", "tidy a dataset by increasing the number of rows and decresing the number of columns", "turns variable names to snakecase"),
                     wordbank = c("pivot_longer()", "pivot_wider()", "read.csv()", "read_csv()", "writeRDS()", "write_rds()", "clean_names()", "janitor()", "clean_vars()", "coord_cartesian()", "zoom()", "xlim()/ylim()", "variation", "covariation", "tibble()", "tribble()", "reprex()"),
                     answer(c("reprex()", "pivot_longer()", "clean_names()"), correct = TRUE),
@@ -189,19 +191,19 @@ exam(
 ```{r, context = "server"}
 q2 <- list()
 
-q2[[1]] <- HTML("Consider the dataset named <code>relig_income</code>. Tidy the dataset so that it has 3 columns named <code>religion</code>, <code>income_range</code>, and <code>count</code>.")
+q2[[1]] <- HTML("Consider the dataset named <code>relig_income</code>. Tidy the dataset so that it has 3 columns named <code>religion</code>, <code>income_range</code>, and <code>count</code>. Must display/print the resulting dataset.")
 
-q2[[2]] <- HTML("Consider the dataset named <code>example_eagle_nests</code>. Tidy the dataset so that it has 3 columns named <code>region</code>, <code>year</code>, and <code>num_nests</code>.")
+q2[[2]] <- HTML("Consider the dataset named <code>example_eagle_nests</code>. Tidy the dataset so that it has 3 columns named <code>region</code>, <code>year</code>, and <code>num_nests</code>. Must display/print the resulting dataset.")
 
-q2[[3]] <- HTML("Consider the dataset named <code>example_eagle_pairs</code>. Tidy the dataset so that it has 4 columns named <code>state</code>, <code>state_abbr</code>, <code>year</code>, and <code>num_pairs</code>.")
+q2[[3]] <- HTML("Consider the dataset named <code>example_eagle_pairs</code>. Tidy the dataset so that it has 4 columns named <code>state</code>, <code>state_abbr</code>, <code>year</code>, and <code>num_pairs</code>. Must display/print the resulting dataset.")
 
-q2[[4]] <- HTML("Consider the dataset named <code>example_migration</code>. Tidy the dataset so that it has 3 columns named <code>dest</code>, <code>origins</code>, and <code>migrants</code>. Drop the NA values.")
+q2[[4]] <- HTML("Consider the dataset named <code>example_migration</code>. Tidy the dataset so that it has 3 columns named <code>dest</code>, <code>origins</code>, and <code>migrants</code>. Drop the NA values. Must display/print the resulting dataset.")
 
-q2[[5]] <- HTML("Consider the dataset named <code>table_1</code>. Tidy the dataset so that it has 4 columns named <code>country</code>, <code>year</code>, <code>type</code>, and <code>count</code>.")
+q2[[5]] <- HTML("Consider the dataset named <code>table_1</code>. Tidy the dataset so that it has 4 columns named <code>country</code>, <code>year</code>, <code>type</code>, and <code>count</code>. Must display/print the resulting dataset.")
 
-q2[[6]] <- HTML("Consider the dataset named <code>example_eagle_nests_tidy</code>. Untidy the dataset so that it has 3 columns named <code>region</code>, <code>2007</code>, and </ode>2009</code>.")
+q2[[6]] <- HTML("Consider the dataset named <code>example_eagle_nests_tidy</code>. Untidy the dataset so that it has 3 columns named <code>region</code>, <code>2007</code>, and </ode>2009</code>. Must display/print the resulting dataset.")
 
-q2[[7]] <- HTML("Consider the dataset named <code>example_acs_1</code>. Untidy the dataset so that it has 5 columns named <code>geoid</code>, <code>name</code>, <code>pop_housed</code>, <code>pop_renter</code>, and <code>median_rent</code>.")
+q2[[7]] <- HTML("Consider the dataset named <code>example_acs_1</code>. Untidy the dataset so that it has 5 columns named <code>geoid</code>, <code>name</code>, <code>pop_housed</code>, <code>pop_renter</code>, and <code>median_rent</code>. Must display/print the resulting dataset.")
 
 text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
 ```
@@ -250,11 +252,11 @@ q3[[2]] <- HTML("Consider the dataset named <code>diamonds</code> from the ggplo
 
 q3[[3]] <- HTML("Consider the dataset named <code>penguins</code> from the palmerpenguins package. The package is pre-loaded for you. Use an appropriate <code>readr</code> function to write the dataset to a <code>data</code> subdirectory as an rds file named <code>penguins_clean.rds</code>.")
 
-q3[[4]] <- HTML("Consider a dataset named <code>mpg_data</code> located in a <code>data</code> subdirectory. The file is a csv extension with comma separated values. Use an appropriate <code>readr</code> function to read the dataset in and store the dataset as <code>mpg_raw</code>.")
+q3[[4]] <- HTML("Consider a file named <code>mpg_data</code> located in a <code>data</code> subdirectory. The file is a csv extension with comma separated values. Use an appropriate <code>readr</code> function to read the dataset in and store the dataset as <code>mpg_raw</code>.")
 
-q3[[5]] <- HTML("Consider a dataset named <code>diamonds_data</code> located in a <code>data</code> subdirectory. The file is a csv extension with comma separated values. Use an appropriate <code>readr`</code> function to read the dataset in and store the dataset as <code>diamonds_raw</code>.")
+q3[[5]] <- HTML("Consider a file named <code>diamonds_data</code> located in a <code>data</code> subdirectory. The file is a csv extension with comma separated values. Use an appropriate <code>readr</code> function to read the dataset in and store the dataset as <code>diamonds_raw</code>.")
 
-q3[[6]] <- HTML("Consider a dataset named <code>penguins_data</code> located in a <code>data</code> subdirectory. The file is an rds extension. Use an appropriate <code>readr</code> function to read the dataset in and store the dataset as <code>penguins_raw</code>.")
+q3[[6]] <- HTML("Consider a file named <code>penguins_data</code> located in a <code>data</code> subdirectory. The file is an rds extension. Use an appropriate <code>readr</code> function to read the dataset in and store the dataset as <code>penguins_raw</code>.")
 
 text_server(id = "Q3", text = q3[[rand_q[3]]])
 ```
@@ -291,9 +293,9 @@ q4[[1]] <- HTML("Manually input the data table below using the <code>tibble()</c
 
 q4[[2]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. Store this data frame as <code>report_card</code> and print the output.")
 
-q4[[3]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. Store this data frame as <code>coffee</code> and print the output.")
+q4[[3]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. Store this data frame as <code>coffee</code> and print the output. The printed output should convery the exact same information as the data table provided.")
 
-q4[[4]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. Store this data frame as <code>coffee</code> and print the output.")
+q4[[4]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. Store this data frame as <code>coffee</code> and print the output. The printed output should convery the exact same information as the data table provided.")
 
 q4[[5]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. Store this data frame as <code>my_table</code> and print the output.")
 
@@ -361,11 +363,11 @@ babies_codebook <- tibble(variable = c("case", "bwt", "gestation", "parity", "ag
                           meaning = c("id number", 
                                       "birthweight, in ounces", 
                                       "length of gestation (pregnancy), in days",
-                                      "binary indicator for a first pregnancy (0 = first pregnancy",
+                                      "binary indicator for a first pregnancy (0 = first pregnancy; 1 = has had previous pregnancy)",
                                       "mother's age in years",
                                       "mother's height in inches",
                                       "mother's weight in pounds",
-                                      "binary indicator for whether the mother smokes (1 = smokes)"))
+                                      "binary indicator for whether the mother smokes (0 = does not smoke; 1 = smokes)"))
 
 nc_births_codebook <- tibble(variable = c("fage", "mage", "mature", "weeks", "premie", "visits", "gained", "weight", "lowbirthweight", "gender", "habit", "marital", "whitemom"),
                              meaning = c("Father's age in years", 
