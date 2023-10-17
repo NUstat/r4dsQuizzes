@@ -1,0 +1,12 @@
+name: quiz-1
+title: quiz-1
+username: amkuyper
+account: amkuyper
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9808860
+bundleId: 7675874
+url: https://amkuyper.shinyapps.io/quiz-1/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
