@@ -100,7 +100,7 @@ question_text("Name:",
 
 You have 30 minutes to complete this quiz. Set a timer, as it is self timed!
 
-The quiz covers tidy data, imports, and EDA.
+The quiz covers tidy data, imports, and EDA. The quiz is open notes, book, and documentation. Cannot use generative AI.
 
 As always make sure your code is well organized in proper formatting and using tidyverse functions.
 
