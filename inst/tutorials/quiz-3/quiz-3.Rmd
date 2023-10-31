@@ -1,0 +1,440 @@
+---
+title: "Logicals, Numbers, Strings, and Factors"
+tutorial:
+  id: "301_q3"
+  version: 0.1
+  
+output:
+  learnr::tutorial:
+    progressive: false
+    allow_skip: true
+    css: ["css/nu-theme.css"]
+runtime: shiny_prerendered
+description: >
+  Data Science in R proficiency quiz on logicals, numbers, strings, and factors.
+---
+
+```{r setup, include=FALSE}
+library(skimr)
+library(learnr)
+library(tidyverse)
+library(tutorialExtras)
+library(gradethis)
+library(countdown)
+
+#data needed
+library(palmerpenguins)
+library(dcldata)
+library(nycflights13)
+library(openintro)
+
+gradethis_setup(pass = "submitted",
+                fail = "submitted",
+                # exercise.completion = FALSE,
+                error_checker.message = "submitted",
+                fail.hint = FALSE
+                )
+
+tutorialExtras_setup(is_exam = TRUE,
+                     max_retry = Inf,
+                     retry_cooldown = 0)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+sample_data <- ceiling((rand_int*3/10))
+
+rand_q <- c(sample(1:3, 1), sample(1:3, 1), sample(1:4, 1), sample(1:4, 1), sample(1:3, 1))
+
+
+airport <- read_rds("data/airport.rds")
+pizza <- read_rds("data/pizza.rds")
+fastfood <- read_rds("data/fastfood.rds")
+
+data <- c("airport", "pizza", "fastfood")
+```
+
+```{r, context = "server"}
+lock_server("lock", exclude = c("Name"), show_correct = FALSE)
+reset_server("reset", file_name = "quiz-3", package_name = "r4dsQuizzes")
+```
+
+```{r Name}
+# student name
+question_text("Name:",
+              answer_fn(function(value){
+                              if(length(value) >= 1 ) {
+                                return(mark_as(TRUE))
+                                }
+                              return(mark_as(FALSE) )
+                              }),
+              correct = "submitted",
+              incorrect = "submitted",
+              allow_retry = FALSE )
+```
+
+
+```{r}
+countdown(minutes = 30L, seconds = 0L, top = 0, right = 0, start_immediately = TRUE,
+          color_background = "gray80", color_running_background = "#E4E0EE")
+```
+
+
+## Instructions
+
+You have 30 minutes to complete this quiz.
+
+The quiz covers logicals, numbers, strings, and factors. The quiz is open notes, book, and documentation. Cannot use generative AI.
+
+As always make sure your code is well organized in proper formatting and using tidyverse functions.
+
+Once you are finished:
+
+-   Check Submissions to make sure every question/exercise has been **submitted**.
+-   Click the 'Lock Exam' button. You will not be able to make any changes once this is clicked.
+-   Once the exam is locked you will be able to click on the 'Download Exam' button.
+-   Submit the completed html to Canvas.
+
+
+## The Data
+
+The following set of questions are based on the ` `r data[sample_data]` ` data set.
+A skim and glimpse of the variables are provided below.
+
+```{r}
+if(sample_data == 1){
+  skim(airport)
+} else if(sample_data == 2){
+  skim(pizza)
+} else{
+  skim(fastfood)
+}
+```
+
+
+```{r}
+if(sample_data == 1){
+  glimpse(airport)
+} else if(sample_data == 2){
+  glimpse(pizza)
+} else{
+  glimpse(fastfood)
+}
+```
+
+## Codebook
+
+The following set of questions are based on the ` `r data[sample_data]` ` data set.
+An explanation of the variables are provided below.
+
+```{r}
+airport_codebook <- tibble(variable = c("faa", "name", "lat", "lon", "alt", "tz", "dst", "tzone", "coord"),
+                          meaning = c("FAA airport code", 
+                                      "Usual name of the airport", 
+                                      "Location of airport (latitude)",
+                                      "Location of airport (longitude)",
+                                      "Altitude, in feet",
+                                      "Timezone offset from GMT",
+                                      "Daylight savings time zone factor: A = Standard US DST; U = unknown; N = No dst",
+                                      "IANA time zone, as determined by GeoNames webservice",
+                                      "Location of airport: lat, lon"))
+
+pizza_codebook <- tibble(variable = c("id", "date", "time", "order", "size", "type", "price", "first_name", "last_name"),
+                             meaning = c("ID for the order",
+                                         "A character representatio of the order date 'YYYY-MM-DD'",
+                                         "A character representation of the time of order: HH:MM:SS",
+                                         "The short name for the pizza", 
+                                         "size of the pizza which can either be 'S', 'M', 'L', 'XL', 'XXL'",
+                                         "type of pizza: 'classic', 'chicken', 'supreme', or 'veggie'",
+                                         "price of pizza in (in USD)",
+                                         "first name of customer",
+                                         "last name of customer"
+                                         ))
+
+fastfood_codebook <- tibble(variable = c("id","restaurant", "item", "type" ,"calories", "total_fat", "cholesterol", "sodium", "total_carb", "fiber", "sugar", "protein"),
+                            meaning = c("Unique ID for menu item","Name of restaurant where 1 = McDonalds; 2 = Burger King; 3 = Taco Bell; 4 = Other", "Name of food item", "Type of food with levels: beef, chicken, fish, other, salad, steak", "Number of calories", "total fat",  "cholesterol", "sodium", "total carbohydrates", "fiber", "sugar", "protein"))
+
+if(sample_data == 1){
+  airport_codebook |> 
+    knitr::kable()
+}else if(sample_data == 2){
+  pizza_codebook |> 
+    knitr::kable()
+}else{
+  fastfood_codebook |> 
+    knitr::kable()
+}
+```
+
+
+
+## Question 1
+
+```{r, context = "server"}
+q1 <- list()
+
+if(sample_data == 1){
+  q1[[1]] <- HTML("Round the variable <code>lat</code> to two decimal places ie: 41.13047 rounds to 41.13.")
+  q1[[2]] <- HTML("Use the <code>cut</code> function to break the variable <code>lat</code> into bins of increment 15. ie: (15,30], (30,45], (45,60], (60,75].")
+  q1[[3]] <- HTML("Round the variable <code>alt</code> <b>DOWN</b> to the nearest tens place. ie: 9078 would become 9070.")
+} else if(sample_data == 2){
+  q1[[1]] <- HTML("Round the variable <code>price</code> <b>UP</b> to the nearest whole number ie: 13.2 rounds to 14.")
+  q1[[2]] <- HTML("Use the <code>cut</code> function to break the variable <code>price</code> into bins of increment 10. ie: (0,10], (10,20], (20,30], (30,40].")
+  q1[[3]] <- HTML("Use modular arithmetic (ie: <code>%/%</code> or <code>%%</code>) to create a variable called <code>cents</code> which is derived from <code>price</code> ie: For a <code>price</code> of 13.2 the <code>cents</code> would be 2.")
+} else{
+  q1[[1]] <- HTML("Round the variable <code>calories</code> <b>UP</b> to the nearest tens place. ie: 372 would become 380.")
+  q1[[2]] <- HTML("Use the <code>cut</code> function to break the variable <code>calories</code> into bins of increment 500. ie: (0,500], (500,1000], (1000,1500], (1500,2000], (2000,2500].")
+  q1[[3]] <- HTML("Round the variable <code>calories</code> <b>UP</b> to the nearest hundreds place. ie: 372 would become 400.")
+}
+
+text_server(id = "Q1", text = q1[[ rand_q[[1]] ]])
+```
+
+```{r Question1}
+text_ui(id = "Q1")
+```
+
+<br>
+
+*Print your output to prove you were successful.*
+
+```{r Q1, exercise=TRUE}
+
+```
+
+```{r Q1-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q1-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+
+## Question 2
+
+```{r, context = "server"}
+q2 <- list()
+
+# q2[[1]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create a new variable that has the value <code>casual</code> if there are more casual bikers than <code>registered</code> bikers and the value <code>registered</code> otherwise.")
+#   q2[[2]] <- HTML("The variable <code>season</code> has a values of 1, 2, 3, or 4. Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to change these values to winter, spring, summer, and fall, respectively (can either create a new variable or overwrite <code>season</code>).")
+#   q2[[3]] <- HTML("Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to create a variable with the value `cold` if <code>temp</code> is less than xx; `afternoon` if <code>hr</code> is xxx; and `hot` if <code>hr</code> is 17 to 23.")
+
+if(sample_data == 1){
+  q2[[1]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create a new variable that has the value <code>west</code> if <code>lat</code> is less than 0 and the value <code>east</code> otherwise.")
+  q2[[2]] <- HTML("Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to create a variable with the value `high alt` if <code>alt</code> is greater than 1500; `low alt` if <code>alt</code> is less than 500; and `avg alt` otherwise.")
+  q2[[3]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create a new variable called <code>high_alt</code> that is TRUE if the <code>alt</code> is greater than 1500 and has a value of FALSE, otherwise.")
+} else if(sample_data == 2){
+   q2[[1]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create a new variable that has the value <code>veggie</code> if the <code>type</code> is either 'veggie' or 'classic' and a value of <code>meat</code> otherwise.")
+  q2[[2]] <- HTML("Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to create a variable with the value 'Under 20' if the <code>price</code> is less than 20, '20 to 30', if the <code>price</code> is between 20 and 30, inclusive, or 'Over 30' if the <code>price</code> is over 30.")
+  q2[[3]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create an indicator variable that is TRUE if the <code>type</code> is classic and has a value of FALSE, otherwise.")
+} else{
+  q2[[1]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create a new variable that has the value <code>High in fiber</code> if there are more than 5 grams of fiber and a value of <code>Low in fiber</code>, otherwise.")
+  q2[[2]] <- HTML("Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to change the values in restaurant c(1, 2, 3, 4) to c('McD', 'BK', 'Taco', 'Other'), respectively (can either create a new variable or overwrite <code>restaurant</code>).")
+  q2[[3]] <- HTML("Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to create a variable with the value `low cal` if <code>calories</code> is less than 500; `avg cal` if <code>calories</code> is less than 1000 (and greater than or equal to 500); and `high cal`, otherwise.")
+}
+
+text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
+```
+
+```{r Question2}
+text_ui(id = "Q2")
+```
+
+
+<br>
+
+*Print your output to prove you were successful.*
+
+```{r Q2, exercise=TRUE}
+
+```
+
+```{r Q2-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q2-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+## Question 3
+
+```{r, context = "server"}
+q3 <- list()
+
+if(sample_data == 1){
+  q3[[1]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>tzones</code>s  that contain the word 'America'.")
+  q3[[2]] <- HTML("Use a function from the <code>stringr</code> package to find all international flights. The <code>name</code> of international flights contain the word 'Int'.")
+  q3[[3]] <- HTML("Use a function from the <code>stringr</code> package to convert all  <code>name</code>s to lowercase letters.")
+} else if(sample_data == 2){
+  q3[[1]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>first_name</code>s that have six letters or more.")
+  q3[[2]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>last_name</code>s that start with a vowel.")
+  q3[[3]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>first_name</code>s that end in the letter <code>a</code>.")
+  q3[[4]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>last_name</code>s that are exactly 4 letters long.")
+} else{
+  q3[[1]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>item</code>s that contain the word 'Sandwich'.")
+  q3[[2]] <- HTML("Use a function from the <code>stringr</code> package to convert all  <code>item</code>s to lowercase letters.")
+  q3[[3]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>item</code>s that contain the word <code>Chicken</code>.")
+  q3[[4]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>item</code>s that start with a vowel.")
+}
+
+text_server(id = "Q3", text = q3[[ rand_q[[3]] ]])
+```
+
+
+```{r Question3}
+text_ui(id = "Q3")
+```
+
+<br>
+
+*Print your output to prove you were successful.*
+
+```{r Q3, exercise=TRUE}
+
+```
+
+```{r Q3-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q3-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+
+## Question 4
+
+```{r, context = "server"}
+q4 <- list()
+
+if(sample_data == 1){
+  q4[[1]] <- HTML("Use a function from the <code>stringr</code> package to create a new variable called <code>location</code> that reads as 'Lat: {lat} Lon: {lon}'. ie: the first observation of <code>location</code> would read 'Lat: 41.13047 Lon: -80.61958' and the second observation would read as 'Lat: 32.46057 Lon: -85.68003'")
+  q4[[2]] <- HTML("Use a function from the <code>stringr</code> package to separate <code>tzone</code> into a column called <code>country</code> and <code>city</code>. ie: the first observation 'America/New_York' will have a <code>country</code> America and <code>city</code> New_York.")
+  q4[[3]] <- HTML("Use a function from the <code>stringr</code> package to subset each <code>name</code> to only contain the first 7 letters. ie: the first observation 'Lansdowne Airport' would be 'Lansdow'.")
+  q4[[4]] <- HTML("Use a function from the <code>stringr</code> package to separate <code>coord</code> into a column called <code>latitude</code> and <code>longitude</code>. ie: the first observation '41.13, -80.62' will have a <code>latitude</code> 41.13 and <code>longitude</code> -80.62.")
+  
+} else if(sample_data == 2){
+  q4[[1]] <- HTML("Use a function from the <code>stringr</code> package to create a new variable called <code>full_name</code> that combines <code>first_name</code> and <code>last_name</code>. ie: the first observation of your new variable should read <code>Jorge Patel</code>.")
+  q4[[2]] <- HTML("Use a function from the <code>stringr</code> package to separate <code>id</code> into a column called <code>year</code> and <code>order</code>. ie: the first observation '2015-000001' will have a <code>year</code> 2015 and <code>order</code> 000001 (or 1).")
+  q4[[3]] <- HTML("Use a function from the <code>stringr</code> package to separate <code>time</code> into three separate columns called <code>hour</code>, <code>minute</code>, and <code>second</code>. ie: the first observation '11:38:36' will have an <code>hour</code> 11, <code>minute</code> 38, and <code>second</code> 36.")
+  q4[[4]] <- HTML("Use a function from the <code>stringr</code> package to replace the variable <code>last_name</code> with just the first letter of the last name. ie: the first observation `Patel` will now be <code>P</code>.")
+} else{
+  q4[[1]] <- HTML("Use a function from the <code>stringr</code> package to create a new variable called <code>phrase</code> that reads as '{item} contains {calories} calories'. ie: the first observation of <code>phrase</code> would read 'Artisan Grilled Chicken Sandwich contains 378 calories.'")
+  q4[[2]] <- HTML("Use a function from the <code>stringr</code> package to subset each <code>item</code> to only contain the first 5 letters. ie: the first observation 'Artisan Grilled Chicken Sandwich' would be 'Artis'.")
+  q4[[3]] <- HTML("Use a function from the <code>stringr</code> package to separate <code>id</code> into two separate columns called <code>name</code>, and <code>number</code>. ie: the first observation 'McD_1' will have a <code>name</code> McD and <code>number</code> 1.")
+  q4[[4]] <- HTML("Use a function from the <code>stringr</code> package to count the number of letters in each <code>item</code>.")
+}
+
+text_server(id = "Q4", text = q4[[ rand_q[[4]] ]])
+```
+
+
+```{r Question4}
+text_ui(id = "Q4")
+```
+
+<br>
+
+*Print your output to prove you were successful.*
+
+```{r Q4, exercise=TRUE}
+
+```
+
+```{r Q4-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q4-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+## Question 5
+
+```{r, context = "server"}
+q5 <- list()
+
+if(sample_data == 1){
+   q5[[1]] <- HTML("Using the <code>airport</code> dataset, the variable <code>tz</code> is a factor with levels '-10', '-9', '-8' '-7', '-6', '-5', '8'. Re-order the levels to be '8', '-5', '-6', '-7', '-8', '-9', '-10. Prove this is successful by making a simple bar graph.")
+  q5[[2]] <- HTML("Using the <code>airport</code> dataset, the variable <code>dst</code> is a factor with levels 'A', 'N', 'U'. Name the labels to be read 'DST', 'No DST', 'Unknown'. Prove this is successful by making a simple bar graph.")
+  q5[[3]] <- HTML("Using the <code>airport</code> dataset, the variable <code>tz</code> is a factor with levels  '-10', '-9', '-8' '-7', '-6', '-5', '8'. Collapse `tz` into a smaller set of categories with new levels: '-10 to -8', '-7 to -5', '0+'. Prove this is successful by making a simple bar graph.")
+  
+} else if(sample_data == 2){
+  q5[[1]] <- HTML("Using the <code>pizza</code> dataset, the variable <code>size</code> is a factor with levels 'L', 'M', 'S', 'XL', 'XXL'. Re-order the levels to be 'S', 'M', 'L', 'XL', 'XXL'. Prove this is successful by making a simple bar graph.")
+  q5[[2]] <- HTML("Using the <code>pizza</code> dataset, the variable <code>size</code> is a factor with levels 'L', 'M', 'S', 'XL', 'XXL'. Name the labels to be read 'large', 'medium', 'small', 'x-large', 'xx-large'. Prove this is successful by making a simple bar graph.")
+  q5[[3]] <- HTML("Using the <code>pizza</code> dataset, the variable <code>size</code> is a factor with levels 'L', 'M', 'S', 'XL', 'XXL'. Collapse `size` into a smaller set of categories with levels: 'small', 'bigger', 'biggest'. You can choose how to categorize 'S', 'M', 'L', 'XL', 'XXL' into those subcategories. Prove this is successful by making a simple bar graph.")
+} else{
+  q5[[1]] <- HTML("Using the <code>fastfood</code> dataset, convert the variable <code>restaurant</code> to a factor. Name the labels 'McDonalds', 'Burger King', 'Taco Bell', 'Other'. Prove this is successful by making a simple bar graph.")
+  q5[[2]] <- HTML("Using the <code>fastfood</code> dataset, the variable <code>type</code> is a factor with levels 'beef', 'chicken', 'fish', 'other', 'salad', 'steak'.  Reorder the levels to be 'beef', 'steak', 'chicken', 'fish' 'salad', 'other'. Prove this is successful by making a simple bar graph.")
+  q5[[3]] <- HTML("Using the <code>fastfood</code> dataset, the variable <code>type</code> is a factor with levels 'beef', 'chicken', 'fish', 'other', 'salad', 'steak'. Collapse `type` into a smaller set of categories with levels: 'red', 'white', 'neither'. Where 'red' is 'beef' and 'steak'; 'white' is 'chicken' and 'fish', and 'neither' is 'other' and 'salad. Prove this is successful by making a simple bar graph.")
+}
+
+text_server(id = "Q5", text = q5[[rand_q[5]]])
+```
+
+
+```{r Question5}
+text_ui(id = "Q5")
+```
+
+
+```{r Q5, exercise=TRUE}
+
+```
+
+```{r Q5-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q5-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+## Submit
+
+Once you are finished:
+
+-   Click "Check Submissions" to make sure all questions and exercises are submitted -- **Un-submitted questions will receive a 0.**
+-   Once all questions/exercises are submitted click the 'Lock Exam' button. Once you click this you will not be able to make any changes to your exam!
+-   Once the lock is pressed a `Download Exam` option will become available,
+-   Download and **Check your HTML!**
+
+-  You have 3 attempts on this proficiency quiz. Submit the quiz you want to be graded to Canvas. The grader will only be grading one quiz per student.
+
+```{r}
+lock_check_ui(id = "lock")
+```
+<br>
+```{r}
+lock_button_ui(id = "lock")
+```
+
+
+## Retry
+
+The retry button is available 24 hours after you lock the quiz. 
+
+You have 3 attempts on this quiz. 
+
+Once you click retry your quiz will be erased and a new set of questions will be generated. Make sure you downloaded your quiz and check that everything is correct prior to clicking the retry button. Once you click retry there will be no way to retrieve your prior attempt.
+
+
+```{r}
+reset_button_ui(id = "reset")
+```

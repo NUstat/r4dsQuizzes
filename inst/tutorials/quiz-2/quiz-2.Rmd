@@ -217,7 +217,7 @@ q2[[3]] <- HTML("Consider the dataset named <code>example_eagle_pairs</code>. Ti
 
 q2[[4]] <- HTML("Consider the dataset named <code>example_migration</code>. Tidy the dataset so that it has 3 columns named <code>dest</code>, <code>origins</code>, and <code>migrants</code>. Drop the NA values. Must display/print the resulting dataset.")
 
-q2[[5]] <- HTML("Consider the dataset named <code>table_1</code>. Tidy the dataset so that it has 4 columns named <code>country</code>, <code>year</code>, <code>type</code>, and <code>count</code>. Must display/print the resulting dataset.")
+q2[[5]] <- HTML("Consider the dataset named <code>table1</code>. Tidy the dataset so that it has 4 columns named <code>country</code>, <code>year</code>, <code>type</code>, and <code>count</code>. Must display/print the resulting dataset.")
 
 q2[[6]] <- HTML("Consider the dataset named <code>example_eagle_nests_tidy</code>. Untidy the dataset so that it has 3 columns named <code>region</code>, <code>2007</code>, and </ode>2009</code>. Must display/print the resulting dataset.")
 
