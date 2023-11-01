@@ -118,7 +118,7 @@ if (window.hljs) {
 <script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
 </div>
 </div>
-<div class="countdown" id="timer_17c41af1" data-update-every="1" data-start-immediately="true" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_a0ec23c8" data-update-every="1" data-start-immediately="true" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -142,14 +142,15 @@ Exam’ button.</li>
 </div>
 <div id="section-the-data" class="section level2">
 <h2>The Data</h2>
-<p>The following set of questions are based on the <code>airport</code>
-data set. A skim and glimpse of the variables are provided below.</p>
+<p>The following set of questions are based on the
+<code>mod_airport</code> data set. A skim and glimpse of the variables
+are provided below.</p>
 <table>
 <caption>Data summary</caption>
 <tbody>
 <tr class="odd">
 <td align="left">Name</td>
-<td align="left">airport</td>
+<td align="left">mod_airport</td>
 </tr>
 <tr class="even">
 <td align="left">Number of rows</td>
@@ -379,8 +380,9 @@ data set. A skim and glimpse of the variables are provided below.</p>
 </div>
 <div id="section-codebook" class="section level2">
 <h2>Codebook</h2>
-<p>The following set of questions are based on the <code>airport</code>
-data set. An explanation of the variables are provided below.</p>
+<p>The following set of questions are based on the
+<code>mod_airport</code> data set. An explanation of the variables are
+provided below.</p>
 <table>
 <colgroup>
 <col width="10%" />
@@ -438,7 +440,8 @@ webservice</td>
 <h2>Question 1</h2>
 <div id="Q1-text" class="shiny-html-output"></div>
 <p><br></p>
-<p><em>Print your output to prove you were successful.</em></p>
+<p><em>Print your output so that your reformatted variable is easy to
+see.</em></p>
 <div class="tutorial-exercise" data-label="Q1" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
@@ -448,7 +451,8 @@ data-diagnostics="1" data-startover="1" data-lines="0">
 <h2>Question 2</h2>
 <div id="Q2-text" class="shiny-html-output"></div>
 <p><br></p>
-<p><em>Print your output to prove you were successful.</em></p>
+<p><em>Print your output so that your created variable is easy to
+see.</em></p>
 <div class="tutorial-exercise" data-label="Q2" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
@@ -458,7 +462,8 @@ data-diagnostics="1" data-startover="1" data-lines="0">
 <h2>Question 3</h2>
 <div id="Q3-text" class="shiny-html-output"></div>
 <p><br></p>
-<p><em>Print your output to prove you were successful.</em></p>
+<p><em>Print your output so that your created variable is easy to
+see.</em></p>
 <div class="tutorial-exercise" data-label="Q3" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
@@ -468,7 +473,8 @@ data-diagnostics="1" data-startover="1" data-lines="0">
 <h2>Question 4</h2>
 <div id="Q4-text" class="shiny-html-output"></div>
 <p><br></p>
-<p><em>Print your output to prove you were successful.</em></p>
+<p><em>Print your output so that your created variable is easy to
+see.</em></p>
 <div class="tutorial-exercise" data-label="Q4" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
@@ -525,12 +531,6 @@ library(tutorialExtras)
 library(gradethis)
 library(countdown)
 
-#data needed
-library(palmerpenguins)
-library(dcldata)
-library(nycflights13)
-library(openintro)
-
 gradethis_setup(pass = "submitted",
                 fail = "submitted",
                 # exercise.completion = FALSE,
@@ -539,8 +539,8 @@ gradethis_setup(pass = "submitted",
                 )
 
 tutorialExtras_setup(is_exam = TRUE,
-                     max_retry = Inf,
-                     retry_cooldown = 0)
+                     max_retry = 3,
+                     retry_cooldown = 24)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -549,11 +549,11 @@ sample_data <- ceiling((rand_int*3/10))
 rand_q <- c(sample(1:3, 1), sample(1:3, 1), sample(1:4, 1), sample(1:4, 1), sample(1:3, 1))
 
 
-airport <- read_rds("data/airport.rds")
+mod_airport <- read_rds("data/mod_airport.rds")
 pizza <- read_rds("data/pizza.rds")
 fastfood <- read_rds("data/fastfood.rds")
 
-data <- c("airport", "pizza", "fastfood")
+data <- c("mod_airport", "pizza", "fastfood")
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
@@ -610,7 +610,7 @@ if(sample_data == 1){
 } else if(sample_data == 2){
   q1[[1]] <- HTML("Round the variable <code>price<\u002fcode> <b>UP<\u002fb> to the nearest whole number ie: 13.2 rounds to 14.")
   q1[[2]] <- HTML("Use the <code>cut<\u002fcode> function to break the variable <code>price<\u002fcode> into bins of increment 10. ie: (0,10], (10,20], (20,30], (30,40].")
-  q1[[3]] <- HTML("Use modular arithmetic (ie: <code>%/%<\u002fcode> or <code>%%<\u002fcode>) to create a variable called <code>cents<\u002fcode> which is derived from <code>price<\u002fcode> ie: For a <code>price<\u002fcode> of 13.2 the <code>cents<\u002fcode> would be 2.")
+  q1[[3]] <- HTML("Create a variable called <code>cents<\u002fcode> which is derived from the variable <code>price<\u002fcode> ie: For a <code>price<\u002fcode> of 13.20 the <code>cents<\u002fcode> would be 20.")
 } else{
   q1[[1]] <- HTML("Round the variable <code>calories<\u002fcode> <b>UP<\u002fb> to the nearest tens place. ie: 372 would become 380.")
   q1[[2]] <- HTML("Use the <code>cut<\u002fcode> function to break the variable <code>calories<\u002fcode> into bins of increment 500. ie: (0,500], (500,1000], (1000,1500], (1500,2000], (2000,2500].")
@@ -631,19 +631,18 @@ output$`tutorial-exercise-Q1-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "Q1", global_setup = structure(c("library(skimr)", 
 "library(learnr)", "library(tidyverse)", "library(tutorialExtras)", 
-"library(gradethis)", "library(countdown)", "", "#data needed", 
-"library(palmerpenguins)", "library(dcldata)", "library(nycflights13)", 
-"library(openintro)", "", "gradethis_setup(pass = \"submitted\",", 
+"library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
 "                )", "", "tutorialExtras_setup(is_exam = TRUE,", 
-"                     max_retry = Inf,", "                     retry_cooldown = 0)", 
+"                     max_retry = 3,", "                     retry_cooldown = 24)", 
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "sample_data <- ceiling((rand_int*3/10))", 
 "", "rand_q <- c(sample(1:3, 1), sample(1:3, 1), sample(1:4, 1), sample(1:4, 1), sample(1:3, 1))", 
-"", "", "airport <- read_rds(\"data/airport.rds\")", "pizza <- read_rds(\"data/pizza.rds\")", 
-"fastfood <- read_rds(\"data/fastfood.rds\")", "", "data <- c(\"airport\", \"pizza\", \"fastfood\")"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "Q1", code = "", opts = list(label = "\"Q1\"", 
+"", "", "mod_airport <- read_rds(\"data/mod_airport.rds\")", 
+"pizza <- read_rds(\"data/pizza.rds\")", "fastfood <- read_rds(\"data/fastfood.rds\")", 
+"", "data <- c(\"mod_airport\", \"pizza\", \"fastfood\")"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q1", code = "", opts = list(label = "\"Q1\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"submitted\",", "  incorrect = \"submitted\"", 
@@ -677,22 +676,18 @@ learnr:::store_exercise_cache(structure(list(label = "Q1", global_setup = struct
 <script type="application/shiny-prerendered" data-context="server">
 q2 <- list()
 
-# q2[[1]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with an <code>if_else<\u002fcode> statement to create a new variable that has the value <code>casual<\u002fcode> if there are more casual bikers than <code>registered<\u002fcode> bikers and the value <code>registered<\u002fcode> otherwise.")
-#   q2[[2]] <- HTML("The variable <code>season<\u002fcode> has a values of 1, 2, 3, or 4. Use a <code>mutate<\u002fcode> function in conjunction with a <code>case_when<\u002fcode> statement to change these values to winter, spring, summer, and fall, respectively (can either create a new variable or overwrite <code>season<\u002fcode>).")
-#   q2[[3]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with a <code>case_when<\u002fcode> statement to create a variable with the value `cold` if <code>temp<\u002fcode> is less than xx; `afternoon` if <code>hr<\u002fcode> is xxx; and `hot` if <code>hr<\u002fcode> is 17 to 23.")
-
 if(sample_data == 1){
-  q2[[1]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with an <code>if_else<\u002fcode> statement to create a new variable that has the value <code>west<\u002fcode> if <code>lat<\u002fcode> is less than 0 and the value <code>east<\u002fcode> otherwise.")
-  q2[[2]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with a <code>case_when<\u002fcode> statement to create a variable with the value `high alt` if <code>alt<\u002fcode> is greater than 1500; `low alt` if <code>alt<\u002fcode> is less than 500; and `avg alt` otherwise.")
-  q2[[3]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with an <code>if_else<\u002fcode> statement to create a new variable called <code>high_alt<\u002fcode> that is TRUE if the <code>alt<\u002fcode> is greater than 1500 and has a value of FALSE, otherwise.")
+  q2[[1]] <- HTML("We want to identify airports that are east and west of Chicago. Use <code>mutate()<\u002fcode> in conjunction with <code>if_else()<\u002fcode> to create a new variable that has the value <code>west<\u002fcode> if <code>lon<\u002fcode> is less than -87.6 and the value <code>east<\u002fcode> otherwise.")
+  q2[[2]] <- HTML("Use <code>mutate()<\u002fcode> in conjunction with <code>case_when()<\u002fcode> to create a variable with the value `high alt` if <code>alt<\u002fcode> is greater than 1500; `low alt` if <code>alt<\u002fcode> is less than 500; and `avg alt` otherwise.")
+  q2[[3]] <- HTML("Use <code>mutate()<\u002fcode> in conjunction with <code>if_else()<\u002fcode> to create a new variable called <code>high_alt<\u002fcode> that is TRUE if the <code>alt<\u002fcode> is greater than 1500 and has a value of FALSE, otherwise.")
 } else if(sample_data == 2){
-   q2[[1]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with an <code>if_else<\u002fcode> statement to create a new variable that has the value <code>veggie<\u002fcode> if the <code>type<\u002fcode> is either 'veggie' or 'classic' and a value of <code>meat<\u002fcode> otherwise.")
-  q2[[2]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with a <code>case_when<\u002fcode> statement to create a variable with the value 'Under 20' if the <code>price<\u002fcode> is less than 20, '20 to 30', if the <code>price<\u002fcode> is between 20 and 30, inclusive, or 'Over 30' if the <code>price<\u002fcode> is over 30.")
-  q2[[3]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with an <code>if_else<\u002fcode> statement to create an indicator variable that is TRUE if the <code>type<\u002fcode> is classic and has a value of FALSE, otherwise.")
+   q2[[1]] <- HTML("Use <code>mutate()<\u002fcode> in conjunction with <code>if_else()<\u002fcode> to create a new variable that has the value <code>veggie<\u002fcode> if the <code>type<\u002fcode> is either 'veggie' or 'classic' and a value of <code>meat<\u002fcode> otherwise.")
+  q2[[2]] <- HTML("Use <code>mutate()<\u002fcode> in conjunction with <code>case_when()<\u002fcode> to create a variable with the value 'Under 20' if the <code>price<\u002fcode> is less than 20, '20 to 30', if the <code>price<\u002fcode> is between 20 and 30, inclusive, or 'Over 30' if the <code>price<\u002fcode> is over 30.")
+  q2[[3]] <- HTML("Use <code>mutate()<\u002fcode> in conjunction with <code>if_else()<\u002fcode> to create an indicator variable that is TRUE if the <code>type<\u002fcode> is classic and has a value of FALSE, otherwise.")
 } else{
-  q2[[1]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with an <code>if_else<\u002fcode> statement to create a new variable that has the value <code>High in fiber<\u002fcode> if there are more than 5 grams of fiber and a value of <code>Low in fiber<\u002fcode>, otherwise.")
-  q2[[2]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with a <code>case_when<\u002fcode> statement to change the values in restaurant c(1, 2, 3, 4) to c('McD', 'BK', 'Taco', 'Other'), respectively (can either create a new variable or overwrite <code>restaurant<\u002fcode>).")
-  q2[[3]] <- HTML("Use a <code>mutate<\u002fcode> function in conjunction with a <code>case_when<\u002fcode> statement to create a variable with the value `low cal` if <code>calories<\u002fcode> is less than 500; `avg cal` if <code>calories<\u002fcode> is less than 1000 (and greater than or equal to 500); and `high cal`, otherwise.")
+  q2[[1]] <- HTML("Use <code>mutate()<\u002fcode> in conjunction with <code>if_else()<\u002fcode> to create a new variable that has the value <code>High in fiber<\u002fcode> if there are more than 5 grams of fiber and a value of <code>Low in fiber<\u002fcode>, otherwise.")
+  q2[[2]] <- HTML("Use <code>mutate()<\u002fcode> in conjunction with <code>case_when()<\u002fcode> to change the values in restaurant c(1, 2, 3, 4) to c('McD', 'BK', 'Taco', 'Other'), respectively (can either create a new variable or overwrite <code>restaurant<\u002fcode>).")
+  q2[[3]] <- HTML("Use <code>mutate()<\u002fcode> in conjunction with <code>case_when()<\u002fcode> to create a variable with the value `low cal` if <code>calories<\u002fcode> is less than 500; `avg cal` if <code>calories<\u002fcode> is less than 1000 (and greater than or equal to 500); and `high cal`, otherwise.")
 }
 
 text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
@@ -709,19 +704,18 @@ output$`tutorial-exercise-Q2-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "Q2", global_setup = structure(c("library(skimr)", 
 "library(learnr)", "library(tidyverse)", "library(tutorialExtras)", 
-"library(gradethis)", "library(countdown)", "", "#data needed", 
-"library(palmerpenguins)", "library(dcldata)", "library(nycflights13)", 
-"library(openintro)", "", "gradethis_setup(pass = \"submitted\",", 
+"library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
 "                )", "", "tutorialExtras_setup(is_exam = TRUE,", 
-"                     max_retry = Inf,", "                     retry_cooldown = 0)", 
+"                     max_retry = 3,", "                     retry_cooldown = 24)", 
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "sample_data <- ceiling((rand_int*3/10))", 
 "", "rand_q <- c(sample(1:3, 1), sample(1:3, 1), sample(1:4, 1), sample(1:4, 1), sample(1:3, 1))", 
-"", "", "airport <- read_rds(\"data/airport.rds\")", "pizza <- read_rds(\"data/pizza.rds\")", 
-"fastfood <- read_rds(\"data/fastfood.rds\")", "", "data <- c(\"airport\", \"pizza\", \"fastfood\")"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "Q2", code = "", opts = list(label = "\"Q2\"", 
+"", "", "mod_airport <- read_rds(\"data/mod_airport.rds\")", 
+"pizza <- read_rds(\"data/pizza.rds\")", "fastfood <- read_rds(\"data/fastfood.rds\")", 
+"", "data <- c(\"mod_airport\", \"pizza\", \"fastfood\")"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q2", code = "", opts = list(label = "\"Q2\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"submitted\",", "  incorrect = \"submitted\"", 
@@ -758,6 +752,8 @@ if(sample_data == 1){
   q3[[1]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to find all <code>tzones<\u002fcode>s  that contain the word 'America'.")
   q3[[2]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to find all international flights. The <code>name<\u002fcode> of international flights contain the word 'Int'.")
   q3[[3]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to convert all  <code>name<\u002fcode>s to lowercase letters.")
+  q3[[4]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to find all <code>name<\u002fcode>s that contain the word 'Regional'.")
+  # q4
 } else if(sample_data == 2){
   q3[[1]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to find all <code>first_name<\u002fcode>s that have six letters or more.")
   q3[[2]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to find all <code>last_name<\u002fcode>s that start with a vowel.")
@@ -784,19 +780,18 @@ output$`tutorial-exercise-Q3-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "Q3", global_setup = structure(c("library(skimr)", 
 "library(learnr)", "library(tidyverse)", "library(tutorialExtras)", 
-"library(gradethis)", "library(countdown)", "", "#data needed", 
-"library(palmerpenguins)", "library(dcldata)", "library(nycflights13)", 
-"library(openintro)", "", "gradethis_setup(pass = \"submitted\",", 
+"library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
 "                )", "", "tutorialExtras_setup(is_exam = TRUE,", 
-"                     max_retry = Inf,", "                     retry_cooldown = 0)", 
+"                     max_retry = 3,", "                     retry_cooldown = 24)", 
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "sample_data <- ceiling((rand_int*3/10))", 
 "", "rand_q <- c(sample(1:3, 1), sample(1:3, 1), sample(1:4, 1), sample(1:4, 1), sample(1:3, 1))", 
-"", "", "airport <- read_rds(\"data/airport.rds\")", "pizza <- read_rds(\"data/pizza.rds\")", 
-"fastfood <- read_rds(\"data/fastfood.rds\")", "", "data <- c(\"airport\", \"pizza\", \"fastfood\")"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "Q3", code = "", opts = list(label = "\"Q3\"", 
+"", "", "mod_airport <- read_rds(\"data/mod_airport.rds\")", 
+"pizza <- read_rds(\"data/pizza.rds\")", "fastfood <- read_rds(\"data/fastfood.rds\")", 
+"", "data <- c(\"mod_airport\", \"pizza\", \"fastfood\")"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q3", code = "", opts = list(label = "\"Q3\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"submitted\",", "  incorrect = \"submitted\"", 
@@ -832,18 +827,18 @@ q4 <- list()
 
 if(sample_data == 1){
   q4[[1]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to create a new variable called <code>location<\u002fcode> that reads as 'Lat: {lat} Lon: {lon}'. ie: the first observation of <code>location<\u002fcode> would read 'Lat: 41.13047 Lon: -80.61958' and the second observation would read as 'Lat: 32.46057 Lon: -85.68003'")
-  q4[[2]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to separate <code>tzone<\u002fcode> into a column called <code>country<\u002fcode> and <code>city<\u002fcode>. ie: the first observation 'America/New_York' will have a <code>country<\u002fcode> America and <code>city<\u002fcode> New_York.")
-  q4[[3]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to subset each <code>name<\u002fcode> to only contain the first 7 letters. ie: the first observation 'Lansdowne Airport' would be 'Lansdow'.")
-  q4[[4]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to separate <code>coord<\u002fcode> into a column called <code>latitude<\u002fcode> and <code>longitude<\u002fcode>. ie: the first observation '41.13, -80.62' will have a <code>latitude<\u002fcode> 41.13 and <code>longitude<\u002fcode> -80.62.")
+  q4[[2]] <- HTML("Use a function from the <code>tidyr<\u002fcode> (preferred) or <code>stringr<\u002fcode> package to separate <code>tzone<\u002fcode> into a column called <code>country<\u002fcode> and <code>city<\u002fcode>. ie: the first observation 'America/New_York' will have a <code>country<\u002fcode> America and <code>city<\u002fcode> New_York.")
+  q4[[3]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to subset each <code>name<\u002fcode> to only contain UP TO the first 7 characters. ie: 'Lansdowne Airport' would be 'Lansdow'; 'Moton Field Municipal Airport' would be 'Moton F'; 'Arcata` would be 'Arcata'.")
+  q4[[4]] <- HTML("Use a function from the <code>tidyr<\u002fcode> (preferred) or <code>stringr<\u002fcode> package to separate <code>coord<\u002fcode> into a column called <code>latitude<\u002fcode> and <code>longitude<\u002fcode>. ie: the first observation '41.13, -80.62' will have a <code>latitude<\u002fcode> 41.13 and <code>longitude<\u002fcode> -80.62.")
   
 } else if(sample_data == 2){
   q4[[1]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to create a new variable called <code>full_name<\u002fcode> that combines <code>first_name<\u002fcode> and <code>last_name<\u002fcode>. ie: the first observation of your new variable should read <code>Jorge Patel<\u002fcode>.")
-  q4[[2]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to separate <code>id<\u002fcode> into a column called <code>year<\u002fcode> and <code>order<\u002fcode>. ie: the first observation '2015-000001' will have a <code>year<\u002fcode> 2015 and <code>order<\u002fcode> 000001 (or 1).")
-  q4[[3]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to separate <code>time<\u002fcode> into three separate columns called <code>hour<\u002fcode>, <code>minute<\u002fcode>, and <code>second<\u002fcode>. ie: the first observation '11:38:36' will have an <code>hour<\u002fcode> 11, <code>minute<\u002fcode> 38, and <code>second<\u002fcode> 36.")
+  q4[[2]] <- HTML("Use a function from the <code>tidyr<\u002fcode> (preferred) or <code>stringr<\u002fcode> package to separate <code>id<\u002fcode> into a column called <code>year<\u002fcode> and <code>order<\u002fcode>. ie: the first observation '2015-000001' will have a <code>year<\u002fcode> 2015 and <code>order<\u002fcode> 000001 (or 1).")
+  q4[[3]] <- HTML("Use a function from the <code>tidyr<\u002fcode> (preferred) or <code>stringr<\u002fcode> package to separate <code>time<\u002fcode> into three separate columns called <code>hour<\u002fcode>, <code>minute<\u002fcode>, and <code>second<\u002fcode>. ie: the first observation '11:38:36' will have an <code>hour<\u002fcode> 11, <code>minute<\u002fcode> 38, and <code>second<\u002fcode> 36.")
   q4[[4]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to replace the variable <code>last_name<\u002fcode> with just the first letter of the last name. ie: the first observation `Patel` will now be <code>P<\u002fcode>.")
 } else{
   q4[[1]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to create a new variable called <code>phrase<\u002fcode> that reads as '{item} contains {calories} calories'. ie: the first observation of <code>phrase<\u002fcode> would read 'Artisan Grilled Chicken Sandwich contains 378 calories.'")
-  q4[[2]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to subset each <code>item<\u002fcode> to only contain the first 5 letters. ie: the first observation 'Artisan Grilled Chicken Sandwich' would be 'Artis'.")
+  q4[[2]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to subset each <code>item<\u002fcode> to only contain UP TO the first 5 characters. ie: the first observation 'Artisan Grilled Chicken Sandwich' would be 'Artis'.")
   q4[[3]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to separate <code>id<\u002fcode> into two separate columns called <code>name<\u002fcode>, and <code>number<\u002fcode>. ie: the first observation 'McD_1' will have a <code>name<\u002fcode> McD and <code>number<\u002fcode> 1.")
   q4[[4]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to count the number of letters in each <code>item<\u002fcode>.")
 }
@@ -862,19 +857,18 @@ output$`tutorial-exercise-Q4-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "Q4", global_setup = structure(c("library(skimr)", 
 "library(learnr)", "library(tidyverse)", "library(tutorialExtras)", 
-"library(gradethis)", "library(countdown)", "", "#data needed", 
-"library(palmerpenguins)", "library(dcldata)", "library(nycflights13)", 
-"library(openintro)", "", "gradethis_setup(pass = \"submitted\",", 
+"library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
 "                )", "", "tutorialExtras_setup(is_exam = TRUE,", 
-"                     max_retry = Inf,", "                     retry_cooldown = 0)", 
+"                     max_retry = 3,", "                     retry_cooldown = 24)", 
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "sample_data <- ceiling((rand_int*3/10))", 
 "", "rand_q <- c(sample(1:3, 1), sample(1:3, 1), sample(1:4, 1), sample(1:4, 1), sample(1:3, 1))", 
-"", "", "airport <- read_rds(\"data/airport.rds\")", "pizza <- read_rds(\"data/pizza.rds\")", 
-"fastfood <- read_rds(\"data/fastfood.rds\")", "", "data <- c(\"airport\", \"pizza\", \"fastfood\")"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "Q4", code = "", opts = list(label = "\"Q4\"", 
+"", "", "mod_airport <- read_rds(\"data/mod_airport.rds\")", 
+"pizza <- read_rds(\"data/pizza.rds\")", "fastfood <- read_rds(\"data/fastfood.rds\")", 
+"", "data <- c(\"mod_airport\", \"pizza\", \"fastfood\")"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q4", code = "", opts = list(label = "\"Q4\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"submitted\",", "  incorrect = \"submitted\"", 
@@ -908,9 +902,9 @@ learnr:::store_exercise_cache(structure(list(label = "Q4", global_setup = struct
 q5 <- list()
 
 if(sample_data == 1){
-   q5[[1]] <- HTML("Using the <code>airport<\u002fcode> dataset, the variable <code>tz<\u002fcode> is a factor with levels '-10', '-9', '-8' '-7', '-6', '-5', '8'. Re-order the levels to be '8', '-5', '-6', '-7', '-8', '-9', '-10. Prove this is successful by making a simple bar graph.")
-  q5[[2]] <- HTML("Using the <code>airport<\u002fcode> dataset, the variable <code>dst<\u002fcode> is a factor with levels 'A', 'N', 'U'. Name the labels to be read 'DST', 'No DST', 'Unknown'. Prove this is successful by making a simple bar graph.")
-  q5[[3]] <- HTML("Using the <code>airport<\u002fcode> dataset, the variable <code>tz<\u002fcode> is a factor with levels  '-10', '-9', '-8' '-7', '-6', '-5', '8'. Collapse `tz` into a smaller set of categories with new levels: '-10 to -8', '-7 to -5', '0+'. Prove this is successful by making a simple bar graph.")
+   q5[[1]] <- HTML("Using the <code>mod_airport<\u002fcode> dataset, the variable <code>tz<\u002fcode> is a factor with levels '-10', '-9', '-8' '-7', '-6', '-5', '8'. Re-order the levels to be '8', '-5', '-6', '-7', '-8', '-9', '-10. Prove this is successful by making a simple bar graph.")
+  q5[[2]] <- HTML("Using the <code>mod_airport<\u002fcode> dataset, the variable <code>dst<\u002fcode> is a factor with levels 'A', 'N', 'U'. Name the labels to be read 'DST', 'No DST', 'Unknown'. Prove this is successful by making a simple bar graph.")
+  q5[[3]] <- HTML("Using the <code>mod_airport<\u002fcode> dataset, the variable <code>tz<\u002fcode> is a factor with levels  '-10', '-9', '-8' '-7', '-6', '-5', '8'. Collapse `tz` into a smaller set of categories with new levels: '-10 to -8', '-7 to -5', '0+'. Prove this is successful by making a simple bar graph.")
   
 } else if(sample_data == 2){
   q5[[1]] <- HTML("Using the <code>pizza<\u002fcode> dataset, the variable <code>size<\u002fcode> is a factor with levels 'L', 'M', 'S', 'XL', 'XXL'. Re-order the levels to be 'S', 'M', 'L', 'XL', 'XXL'. Prove this is successful by making a simple bar graph.")
@@ -936,19 +930,18 @@ output$`tutorial-exercise-Q5-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "Q5", global_setup = structure(c("library(skimr)", 
 "library(learnr)", "library(tidyverse)", "library(tutorialExtras)", 
-"library(gradethis)", "library(countdown)", "", "#data needed", 
-"library(palmerpenguins)", "library(dcldata)", "library(nycflights13)", 
-"library(openintro)", "", "gradethis_setup(pass = \"submitted\",", 
+"library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
 "                )", "", "tutorialExtras_setup(is_exam = TRUE,", 
-"                     max_retry = Inf,", "                     retry_cooldown = 0)", 
+"                     max_retry = 3,", "                     retry_cooldown = 24)", 
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "sample_data <- ceiling((rand_int*3/10))", 
 "", "rand_q <- c(sample(1:3, 1), sample(1:3, 1), sample(1:4, 1), sample(1:4, 1), sample(1:3, 1))", 
-"", "", "airport <- read_rds(\"data/airport.rds\")", "pizza <- read_rds(\"data/pizza.rds\")", 
-"fastfood <- read_rds(\"data/fastfood.rds\")", "", "data <- c(\"airport\", \"pizza\", \"fastfood\")"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "Q5", code = "", opts = list(label = "\"Q5\"", 
+"", "", "mod_airport <- read_rds(\"data/mod_airport.rds\")", 
+"pizza <- read_rds(\"data/pizza.rds\")", "fastfood <- read_rds(\"data/fastfood.rds\")", 
+"", "data <- c(\"mod_airport\", \"pizza\", \"fastfood\")"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q5", code = "", opts = list(label = "\"Q5\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"submitted\",", "  incorrect = \"submitted\"", 
@@ -985,7 +978,7 @@ learnr:::store_exercise_cache(structure(list(label = "Q5", global_setup = struct
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89]}},"value":[{"type":"character","attributes":{},"value":["airports","backports","base","base64enc","bslib","cachem","checkmate","cherryblossom","cli","colorspace","commonmark","compiler","countdown","datasets","dcldata","digest","dplyr","ellipsis","evaluate","fansi","farver","fastmap","fontawesome","forcats","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","hms","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","lubridate","magrittr","markdown","methods","mime","munsell","nycflights13","openintro","palmerpenguins","pillar","pkgconfig","prismatic","promises","purrr","R6","Rcpp","readr","repr","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","skimr","stats","stringi","stringr","TeachingDemos","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tutorialExtras","tzdb","usdata","utf8","utils","vctrs","whisker","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.1.0","1.4.1","4.2.2","0.1-3","0.5.1","1.0.8","2.2.0","0.1.0","3.6.1","2.1-0","1.9.0","4.2.2","0.4.0","4.2.2","0.1.2.9000","0.6.33","1.1.3","0.3.2","0.22","1.0.4","2.1.1","1.1.1","0.5.2","1.0.0","0.1.3","3.4.3","1.6.2","0.2.14","4.2.2","4.2.2","4.2.2","0.3.4","1.1.3","0.5.6","1.6.2","1.6.11","0.1.4","1.8.7","1.44","1.3.1","0.11.5.9000","1.0.3","1.9.3","2.0.3","1.10","4.2.2","0.12","0.5.0","1.0.2","2.4.0","0.1.1","1.9.0","2.0.3","1.1.1","1.2.1","1.0.2","2.5.1","1.0.11","2.1.4","1.1.6","1.1.1","2.25","2.0.3","0.15.0","0.4.7","1.2.1","1.7.5.1","2.1.5","4.2.2","1.7.12","1.5.0","2.12","3.2.1","1.3.0","1.2.0","2.0.0","0.2.0","4.2.2","0.0.0.9000","0.4.0","0.2.0","1.2.3","4.2.2","0.6.3","0.4.1","2.5.1","0.40","1.8-4","2.3.7"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82]}},"value":[{"type":"character","attributes":{},"value":["backports","base","base64enc","bslib","cachem","checkmate","cli","colorspace","commonmark","compiler","countdown","datasets","digest","dplyr","ellipsis","evaluate","fansi","farver","fastmap","fontawesome","forcats","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","hms","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","lubridate","magrittr","markdown","methods","mime","munsell","pillar","pkgconfig","prismatic","promises","purrr","R6","Rcpp","readr","repr","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","skimr","stats","stringi","stringr","TeachingDemos","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tutorialExtras","tzdb","utf8","utils","vctrs","whisker","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.2.2","0.1-3","0.5.1","1.0.8","2.2.0","3.6.1","2.1-0","1.9.0","4.2.2","0.4.0","4.2.2","0.6.33","1.1.3","0.3.2","0.22","1.0.4","2.1.1","1.1.1","0.5.2","1.0.0","0.1.3","3.4.3","1.6.2","0.2.14","4.2.2","4.2.2","4.2.2","0.3.4","1.1.3","0.5.6","1.6.2","1.6.11","0.1.4","1.8.7","1.44","1.3.1","0.11.5.9000","1.0.3","1.9.3","2.0.3","1.10","4.2.2","0.12","0.5.0","1.9.0","2.0.3","1.1.1","1.2.1","1.0.2","2.5.1","1.0.11","2.1.4","1.1.6","1.1.1","2.25","2.0.3","0.15.0","0.4.7","1.2.1","1.7.5.1","2.1.5","4.2.2","1.7.12","1.5.0","2.12","3.2.1","1.3.0","1.2.0","2.0.0","0.2.0","4.2.2","0.0.0.9000","0.4.0","1.2.3","4.2.2","0.6.3","0.4.1","2.5.1","0.40","1.8-4","2.3.7"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>

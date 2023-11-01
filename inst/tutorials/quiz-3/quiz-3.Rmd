@@ -22,12 +22,6 @@ library(tutorialExtras)
 library(gradethis)
 library(countdown)
 
-#data needed
-library(palmerpenguins)
-library(dcldata)
-library(nycflights13)
-library(openintro)
-
 gradethis_setup(pass = "submitted",
                 fail = "submitted",
                 # exercise.completion = FALSE,
@@ -36,8 +30,8 @@ gradethis_setup(pass = "submitted",
                 )
 
 tutorialExtras_setup(is_exam = TRUE,
-                     max_retry = Inf,
-                     retry_cooldown = 0)
+                     max_retry = 3,
+                     retry_cooldown = 24)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -46,11 +40,11 @@ sample_data <- ceiling((rand_int*3/10))
 rand_q <- c(sample(1:3, 1), sample(1:3, 1), sample(1:4, 1), sample(1:4, 1), sample(1:3, 1))
 
 
-airport <- read_rds("data/airport.rds")
+mod_airport <- read_rds("data/mod_airport.rds")
 pizza <- read_rds("data/pizza.rds")
 fastfood <- read_rds("data/fastfood.rds")
 
-data <- c("airport", "pizza", "fastfood")
+data <- c("mod_airport", "pizza", "fastfood")
 ```
 
 ```{r, context = "server"}
@@ -102,7 +96,7 @@ A skim and glimpse of the variables are provided below.
 
 ```{r}
 if(sample_data == 1){
-  skim(airport)
+  skim(mod_airport)
 } else if(sample_data == 2){
   skim(pizza)
 } else{
@@ -113,7 +107,7 @@ if(sample_data == 1){
 
 ```{r}
 if(sample_data == 1){
-  glimpse(airport)
+  glimpse(mod_airport)
 } else if(sample_data == 2){
   glimpse(pizza)
 } else{
@@ -127,7 +121,7 @@ The following set of questions are based on the ` `r data[sample_data]` ` data s
 An explanation of the variables are provided below.
 
 ```{r}
-airport_codebook <- tibble(variable = c("faa", "name", "lat", "lon", "alt", "tz", "dst", "tzone", "coord"),
+mod_airport_codebook <- tibble(variable = c("faa", "name", "lat", "lon", "alt", "tz", "dst", "tzone", "coord"),
                           meaning = c("FAA airport code", 
                                       "Usual name of the airport", 
                                       "Location of airport (latitude)",
@@ -154,7 +148,7 @@ fastfood_codebook <- tibble(variable = c("id","restaurant", "item", "type" ,"cal
                             meaning = c("Unique ID for menu item","Name of restaurant where 1 = McDonalds; 2 = Burger King; 3 = Taco Bell; 4 = Other", "Name of food item", "Type of food with levels: beef, chicken, fish, other, salad, steak", "Number of calories", "total fat",  "cholesterol", "sodium", "total carbohydrates", "fiber", "sugar", "protein"))
 
 if(sample_data == 1){
-  airport_codebook |> 
+  mod_airport_codebook |> 
     knitr::kable()
 }else if(sample_data == 2){
   pizza_codebook |> 
@@ -179,7 +173,7 @@ if(sample_data == 1){
 } else if(sample_data == 2){
   q1[[1]] <- HTML("Round the variable <code>price</code> <b>UP</b> to the nearest whole number ie: 13.2 rounds to 14.")
   q1[[2]] <- HTML("Use the <code>cut</code> function to break the variable <code>price</code> into bins of increment 10. ie: (0,10], (10,20], (20,30], (30,40].")
-  q1[[3]] <- HTML("Use modular arithmetic (ie: <code>%/%</code> or <code>%%</code>) to create a variable called <code>cents</code> which is derived from <code>price</code> ie: For a <code>price</code> of 13.2 the <code>cents</code> would be 2.")
+  q1[[3]] <- HTML("Create a variable called <code>cents</code> which is derived from the variable <code>price</code> ie: For a <code>price</code> of 13.20 the <code>cents</code> would be 20.")
 } else{
   q1[[1]] <- HTML("Round the variable <code>calories</code> <b>UP</b> to the nearest tens place. ie: 372 would become 380.")
   q1[[2]] <- HTML("Use the <code>cut</code> function to break the variable <code>calories</code> into bins of increment 500. ie: (0,500], (500,1000], (1000,1500], (1500,2000], (2000,2500].")
@@ -195,7 +189,7 @@ text_ui(id = "Q1")
 
 <br>
 
-*Print your output to prove you were successful.*
+*Print your output so that your reformatted variable is easy to see.*
 
 ```{r Q1, exercise=TRUE}
 
@@ -218,22 +212,18 @@ grade_this_code(
 ```{r, context = "server"}
 q2 <- list()
 
-# q2[[1]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create a new variable that has the value <code>casual</code> if there are more casual bikers than <code>registered</code> bikers and the value <code>registered</code> otherwise.")
-#   q2[[2]] <- HTML("The variable <code>season</code> has a values of 1, 2, 3, or 4. Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to change these values to winter, spring, summer, and fall, respectively (can either create a new variable or overwrite <code>season</code>).")
-#   q2[[3]] <- HTML("Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to create a variable with the value `cold` if <code>temp</code> is less than xx; `afternoon` if <code>hr</code> is xxx; and `hot` if <code>hr</code> is 17 to 23.")
-
 if(sample_data == 1){
-  q2[[1]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create a new variable that has the value <code>west</code> if <code>lat</code> is less than 0 and the value <code>east</code> otherwise.")
-  q2[[2]] <- HTML("Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to create a variable with the value `high alt` if <code>alt</code> is greater than 1500; `low alt` if <code>alt</code> is less than 500; and `avg alt` otherwise.")
-  q2[[3]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create a new variable called <code>high_alt</code> that is TRUE if the <code>alt</code> is greater than 1500 and has a value of FALSE, otherwise.")
+  q2[[1]] <- HTML("We want to identify airports that are east and west of Chicago. Use <code>mutate()</code> in conjunction with <code>if_else()</code> to create a new variable that has the value <code>west</code> if <code>lon</code> is less than -87.6 and the value <code>east</code> otherwise.")
+  q2[[2]] <- HTML("Use <code>mutate()</code> in conjunction with <code>case_when()</code> to create a variable with the value `high alt` if <code>alt</code> is greater than 1500; `low alt` if <code>alt</code> is less than 500; and `avg alt` otherwise.")
+  q2[[3]] <- HTML("Use <code>mutate()</code> in conjunction with <code>if_else()</code> to create a new variable called <code>high_alt</code> that is TRUE if the <code>alt</code> is greater than 1500 and has a value of FALSE, otherwise.")
 } else if(sample_data == 2){
-   q2[[1]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create a new variable that has the value <code>veggie</code> if the <code>type</code> is either 'veggie' or 'classic' and a value of <code>meat</code> otherwise.")
-  q2[[2]] <- HTML("Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to create a variable with the value 'Under 20' if the <code>price</code> is less than 20, '20 to 30', if the <code>price</code> is between 20 and 30, inclusive, or 'Over 30' if the <code>price</code> is over 30.")
-  q2[[3]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create an indicator variable that is TRUE if the <code>type</code> is classic and has a value of FALSE, otherwise.")
+   q2[[1]] <- HTML("Use <code>mutate()</code> in conjunction with <code>if_else()</code> to create a new variable that has the value <code>veggie</code> if the <code>type</code> is either 'veggie' or 'classic' and a value of <code>meat</code> otherwise.")
+  q2[[2]] <- HTML("Use <code>mutate()</code> in conjunction with <code>case_when()</code> to create a variable with the value 'Under 20' if the <code>price</code> is less than 20, '20 to 30', if the <code>price</code> is between 20 and 30, inclusive, or 'Over 30' if the <code>price</code> is over 30.")
+  q2[[3]] <- HTML("Use <code>mutate()</code> in conjunction with <code>if_else()</code> to create an indicator variable that is TRUE if the <code>type</code> is classic and has a value of FALSE, otherwise.")
 } else{
-  q2[[1]] <- HTML("Use a <code>mutate</code> function in conjunction with an <code>if_else</code> statement to create a new variable that has the value <code>High in fiber</code> if there are more than 5 grams of fiber and a value of <code>Low in fiber</code>, otherwise.")
-  q2[[2]] <- HTML("Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to change the values in restaurant c(1, 2, 3, 4) to c('McD', 'BK', 'Taco', 'Other'), respectively (can either create a new variable or overwrite <code>restaurant</code>).")
-  q2[[3]] <- HTML("Use a <code>mutate</code> function in conjunction with a <code>case_when</code> statement to create a variable with the value `low cal` if <code>calories</code> is less than 500; `avg cal` if <code>calories</code> is less than 1000 (and greater than or equal to 500); and `high cal`, otherwise.")
+  q2[[1]] <- HTML("Use <code>mutate()</code> in conjunction with <code>if_else()</code> to create a new variable that has the value <code>High in fiber</code> if there are more than 5 grams of fiber and a value of <code>Low in fiber</code>, otherwise.")
+  q2[[2]] <- HTML("Use <code>mutate()</code> in conjunction with <code>case_when()</code> to change the values in restaurant c(1, 2, 3, 4) to c('McD', 'BK', 'Taco', 'Other'), respectively (can either create a new variable or overwrite <code>restaurant</code>).")
+  q2[[3]] <- HTML("Use <code>mutate()</code> in conjunction with <code>case_when()</code> to create a variable with the value `low cal` if <code>calories</code> is less than 500; `avg cal` if <code>calories</code> is less than 1000 (and greater than or equal to 500); and `high cal`, otherwise.")
 }
 
 text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
@@ -243,10 +233,9 @@ text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
 text_ui(id = "Q2")
 ```
 
-
 <br>
 
-*Print your output to prove you were successful.*
+*Print your output so that your created variable is easy to see.*
 
 ```{r Q2, exercise=TRUE}
 
@@ -272,6 +261,8 @@ if(sample_data == 1){
   q3[[1]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>tzones</code>s  that contain the word 'America'.")
   q3[[2]] <- HTML("Use a function from the <code>stringr</code> package to find all international flights. The <code>name</code> of international flights contain the word 'Int'.")
   q3[[3]] <- HTML("Use a function from the <code>stringr</code> package to convert all  <code>name</code>s to lowercase letters.")
+  q3[[4]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>name</code>s that contain the word 'Regional'.")
+  # q4
 } else if(sample_data == 2){
   q3[[1]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>first_name</code>s that have six letters or more.")
   q3[[2]] <- HTML("Use a function from the <code>stringr</code> package to find all <code>last_name</code>s that start with a vowel.")
@@ -294,7 +285,7 @@ text_ui(id = "Q3")
 
 <br>
 
-*Print your output to prove you were successful.*
+*Print your output so that your created variable is easy to see.*
 
 ```{r Q3, exercise=TRUE}
 
@@ -319,20 +310,20 @@ q4 <- list()
 
 if(sample_data == 1){
   q4[[1]] <- HTML("Use a function from the <code>stringr</code> package to create a new variable called <code>location</code> that reads as 'Lat: {lat} Lon: {lon}'. ie: the first observation of <code>location</code> would read 'Lat: 41.13047 Lon: -80.61958' and the second observation would read as 'Lat: 32.46057 Lon: -85.68003'")
-  q4[[2]] <- HTML("Use a function from the <code>stringr</code> package to separate <code>tzone</code> into a column called <code>country</code> and <code>city</code>. ie: the first observation 'America/New_York' will have a <code>country</code> America and <code>city</code> New_York.")
-  q4[[3]] <- HTML("Use a function from the <code>stringr</code> package to subset each <code>name</code> to only contain the first 7 letters. ie: the first observation 'Lansdowne Airport' would be 'Lansdow'.")
-  q4[[4]] <- HTML("Use a function from the <code>stringr</code> package to separate <code>coord</code> into a column called <code>latitude</code> and <code>longitude</code>. ie: the first observation '41.13, -80.62' will have a <code>latitude</code> 41.13 and <code>longitude</code> -80.62.")
+  q4[[2]] <- HTML("Use a function from the <code>tidyr</code> (preferred) or <code>stringr</code> package to separate <code>tzone</code> into a column called <code>country</code> and <code>city</code>. ie: the first observation 'America/New_York' will have a <code>country</code> America and <code>city</code> New_York.")
+  q4[[3]] <- HTML("Use a function from the <code>stringr</code> package to subset each <code>name</code> to only contain UP TO the first 7 characters. ie: 'Lansdowne Airport' would be 'Lansdow'; 'Moton Field Municipal Airport' would be 'Moton F'; 'Arcata` would be 'Arcata'.")
+  q4[[4]] <- HTML("Use a function from the <code>tidyr</code> (preferred) or <code>stringr</code> package to separate <code>coord</code> into a column called <code>latitude</code> and <code>longitude</code>. ie: the first observation '41.13, -80.62' will have a <code>latitude</code> 41.13 and <code>longitude</code> -80.62.")
   
 } else if(sample_data == 2){
   q4[[1]] <- HTML("Use a function from the <code>stringr</code> package to create a new variable called <code>full_name</code> that combines <code>first_name</code> and <code>last_name</code>. ie: the first observation of your new variable should read <code>Jorge Patel</code>.")
-  q4[[2]] <- HTML("Use a function from the <code>stringr</code> package to separate <code>id</code> into a column called <code>year</code> and <code>order</code>. ie: the first observation '2015-000001' will have a <code>year</code> 2015 and <code>order</code> 000001 (or 1).")
-  q4[[3]] <- HTML("Use a function from the <code>stringr</code> package to separate <code>time</code> into three separate columns called <code>hour</code>, <code>minute</code>, and <code>second</code>. ie: the first observation '11:38:36' will have an <code>hour</code> 11, <code>minute</code> 38, and <code>second</code> 36.")
+  q4[[2]] <- HTML("Use a function from the <code>tidyr</code> (preferred) or <code>stringr</code> package to separate <code>id</code> into a column called <code>year</code> and <code>order</code>. ie: the first observation '2015-000001' will have a <code>year</code> 2015 and <code>order</code> 000001 (or 1).")
+  q4[[3]] <- HTML("Use a function from the <code>tidyr</code> (preferred) or <code>stringr</code> package to separate <code>time</code> into three separate columns called <code>hour</code>, <code>minute</code>, and <code>second</code>. ie: the first observation '11:38:36' will have an <code>hour</code> 11, <code>minute</code> 38, and <code>second</code> 36.")
   q4[[4]] <- HTML("Use a function from the <code>stringr</code> package to replace the variable <code>last_name</code> with just the first letter of the last name. ie: the first observation `Patel` will now be <code>P</code>.")
 } else{
   q4[[1]] <- HTML("Use a function from the <code>stringr</code> package to create a new variable called <code>phrase</code> that reads as '{item} contains {calories} calories'. ie: the first observation of <code>phrase</code> would read 'Artisan Grilled Chicken Sandwich contains 378 calories.'")
-  q4[[2]] <- HTML("Use a function from the <code>stringr</code> package to subset each <code>item</code> to only contain the first 5 letters. ie: the first observation 'Artisan Grilled Chicken Sandwich' would be 'Artis'.")
-  q4[[3]] <- HTML("Use a function from the <code>stringr</code> package to separate <code>id</code> into two separate columns called <code>name</code>, and <code>number</code>. ie: the first observation 'McD_1' will have a <code>name</code> McD and <code>number</code> 1.")
-  q4[[4]] <- HTML("Use a function from the <code>stringr</code> package to count the number of letters in each <code>item</code>.")
+  q4[[2]] <- HTML("Use a function from the <code>stringr</code> package to subset each <code>item</code> to only contain UP TO the first 5 characters. ie: 'Artisan Grilled Chicken Sandwich' would be 'Artis'; 'Big Mac' would be 'Big M'")
+  q4[[3]] <- HTML("Use a function from the <code>tidyr</code> (preferred) or <code>stringr</code> package to separate <code>id</code> into two separate columns called <code>name</code>, and <code>number</code>. ie: the first observation 'McD_1' will have a <code>name</code> McD and <code>number</code> 1.")
+  q4[[4]] <- HTML("Use a function from the <code>stringr</code> package to count the number of characters in each <code>item</code>.")
 }
 
 text_server(id = "Q4", text = q4[[ rand_q[[4]] ]])
@@ -345,7 +336,7 @@ text_ui(id = "Q4")
 
 <br>
 
-*Print your output to prove you were successful.*
+*Print your output so that your created variable is easy to see.*
 
 ```{r Q4, exercise=TRUE}
 
@@ -368,9 +359,9 @@ grade_this_code(
 q5 <- list()
 
 if(sample_data == 1){
-   q5[[1]] <- HTML("Using the <code>airport</code> dataset, the variable <code>tz</code> is a factor with levels '-10', '-9', '-8' '-7', '-6', '-5', '8'. Re-order the levels to be '8', '-5', '-6', '-7', '-8', '-9', '-10. Prove this is successful by making a simple bar graph.")
-  q5[[2]] <- HTML("Using the <code>airport</code> dataset, the variable <code>dst</code> is a factor with levels 'A', 'N', 'U'. Name the labels to be read 'DST', 'No DST', 'Unknown'. Prove this is successful by making a simple bar graph.")
-  q5[[3]] <- HTML("Using the <code>airport</code> dataset, the variable <code>tz</code> is a factor with levels  '-10', '-9', '-8' '-7', '-6', '-5', '8'. Collapse `tz` into a smaller set of categories with new levels: '-10 to -8', '-7 to -5', '0+'. Prove this is successful by making a simple bar graph.")
+   q5[[1]] <- HTML("Using the <code>mod_airport</code> dataset, the variable <code>tz</code> is a factor with levels '-10', '-9', '-8' '-7', '-6', '-5', '8'. Re-order the levels to be '8', '-5', '-6', '-7', '-8', '-9', '-10. Prove this is successful by making a simple bar graph.")
+  q5[[2]] <- HTML("Using the <code>mod_airport</code> dataset, the variable <code>dst</code> is a factor with levels 'A', 'N', 'U'. Name the labels to be read 'DST', 'No DST', 'Unknown'. Prove this is successful by making a simple bar graph.")
+  q5[[3]] <- HTML("Using the <code>mod_airport</code> dataset, the variable <code>tz</code> is a factor with levels  '-10', '-9', '-8' '-7', '-6', '-5', '8'. Collapse `tz` into a smaller set of categories with new levels: '-10 to -8', '-7 to -5', '0+'. Prove this is successful by making a simple bar graph.")
   
 } else if(sample_data == 2){
   q5[[1]] <- HTML("Using the <code>pizza</code> dataset, the variable <code>size</code> is a factor with levels 'L', 'M', 'S', 'XL', 'XXL'. Re-order the levels to be 'S', 'M', 'L', 'XL', 'XXL'. Prove this is successful by making a simple bar graph.")
