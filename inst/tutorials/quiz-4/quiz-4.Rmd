@@ -1,0 +1,387 @@
+---
+title: "Date, Time, Joins, Functions, and Iterations"
+tutorial:
+  id: "301_q4"
+  version: 0.1
+  
+output:
+  learnr::tutorial:
+    progressive: false
+    allow_skip: true
+    css: ["css/nu-theme.css"]
+runtime: shiny_prerendered
+description: >
+  Data Science in R proficiency quiz on date/time, joins, functions, and iterations.
+---
+
+```{r setup, include=FALSE}
+library(skimr)
+library(learnr)
+library(tidyverse)
+library(tutorialExtras)
+library(gradethis)
+library(countdown)
+
+gradethis_setup(pass = "submitted",
+                fail = "submitted",
+                # exercise.completion = FALSE,
+                error_checker.message = "submitted",
+                fail.hint = FALSE
+                )
+
+tutorialExtras_setup(is_exam = TRUE,
+                     #max_retry = 3,
+                     retry_cooldown = 0)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+sample_data <- ceiling((rand_int*4/10))
+
+rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))
+
+
+medical_record <- read_csv("data/medical_record.csv")
+patient_profile <- read_csv("data/patient_profile.csv")
+pizza_delivery <- read_csv("data/pizza_delivery.csv")
+pizza_order <- read_csv("data/pizza_order.csv")
+# mod_penguin <- read_csv("data/mod_penguin.csv")
+# raw_penguin <- read_csv("data/raw_penguin.csv")
+
+mod_penguin_07 <- read_csv("data/mod_penguin_07.csv")
+mod_penguin_08 <- read_csv("data/mod_penguin_08.csv")
+# mod_penguin_09 <- read_csv("data/mod_penguin_09.csv")
+
+football <- read_csv("data/football.csv")
+chi_weather <- read_csv("data/chi_weather.csv")
+
+holidays <- read_csv("data/holidays.csv")
+schedule <- read_csv("data/schedule.csv")
+
+data <- c("pizza", "medical", "penguins", "football")
+```
+
+```{r, context = "server"}
+lock_server("lock", exclude = c("Name"), show_correct = FALSE)
+reset_server("reset", file_name = "quiz-4", package_name = "r4dsQuizzes")
+```
+
+```{r Name}
+# student name
+question_text("Name:",
+              answer_fn(function(value){
+                              if(length(value) >= 1 ) {
+                                return(mark_as(TRUE))
+                                }
+                              return(mark_as(FALSE) )
+                              }),
+              correct = "submitted",
+              incorrect = "submitted",
+              allow_retry = FALSE )
+```
+
+
+```{r}
+countdown(minutes = 30L, seconds = 0L, top = 0, right = 0, start_immediately = TRUE,
+          color_background = "gray80", color_running_background = "#E4E0EE")
+```
+
+
+## Instructions
+
+You have 30 minutes to complete this quiz.
+
+The quiz covers date/time, joins, functions, and iterations. The quiz is open notes, book, and documentation. Cannot use generative AI.
+
+As always make sure your code is well organized in proper formatting and using tidyverse functions.
+
+Once you are finished:
+
+-   Check Submissions to make sure every question/exercise has been **submitted**.
+-   Click the 'Lock Exam' button. You will not be able to make any changes once this is clicked.
+-   Once the exam is locked you will be able to click on the 'Download Exam' button.
+-   Submit the completed html to Canvas.
+
+## Data
+
+For the following set of problems there are two potential datasets:
+
+```{r}
+if(sample_data == 1){
+  print("Dataset: pizza_order")
+  glimpse(pizza_order)
+} else if(sample_data == 2){
+  print("Dataset: patient_profile")
+  glimpse(patient_profile)
+} else if(sample_data == 3){
+  print("Dataset: mod_penguin_07")
+  glimpse(mod_penguin_07)
+} else{
+  print("Dataset: football")
+  glimpse(football)
+}
+```
+
+<br>
+
+```{r}
+if(sample_data == 1){
+  print("Dataset: pizza_delivery")
+  glimpse(pizza_delivery)
+} else if(sample_data == 2){
+  print("Dataset: medical_record")
+  glimpse(medical_record)
+} else if(sample_data == 3){
+  print("Dataset: mod_penguin_08")
+  glimpse(mod_penguin_08)
+} else{
+  print("Dataset: chi_weather")
+  glimpse(chi_weather)
+}
+```
+
+
+
+## Question 1
+
+```{r, context = "server"}
+q1 <- list()
+
+if(sample_data == 1){
+  q1[[1]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>order_date</code> in the dataset <code>pizza_order</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>order_date</code> is now a date object.")
+  q1[[2]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>due_date</code> in the dataset <code>schedule</code>. <br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>due_date</code> is now a date object.")
+} else if(sample_data == 2){
+  q1[[1]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>dob</code> in the dataset <code>patient_profile</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>dob</code> is now a date object.")
+  q1[[2]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>apt_date</code> in the dataset <code>medical_record</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>apt_date</code> is now a date object.")
+} else if(sample_data == 3){
+  q1[[1]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>date_egg</code> in the dataset <code>mod_penguin_07</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>date_egg</code> is now a date object.")
+  q1[[2]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>date_2024</code> in the dataset <code>holidays</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>date_2024</code> is now a date object.")
+} else{
+  q1[[1]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>game_date</code> in the dataset <code>football</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>game_date</code> is now a date object.")
+  q1[[2]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>date</code> in the dataset <code>weather</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>date</code> is now a date object.")
+}
+
+
+text_server(id = "Q1", text = q1[[ rand_q[[1]] ]])
+```
+
+```{r Question1}
+text_ui(id = "Q1")
+```
+
+<br>
+
+The variable of interest is shown below.
+
+```{r}
+if(sample_data == 1 && rand_q[1] == 1){
+  pizza_order |> select(order_date) |> glimpse()
+}else if(sample_data == 1 && rand_q[1] == 2){
+  schedule |>  select(due_date) |>  glimpse()
+} else if(sample_data == 2 && rand_q[1] == 1){
+  patient_profile |> select(dob) |> glimpse()
+} else if(sample_data == 2 && rand_q[1] == 2){
+  medical_record |> select(apt_date) |> glimpse()
+} else if(sample_data == 3 && rand_q[1] == 1){
+  mod_penguin_07|> select(date_egg) |> glimpse()
+} else if(sample_data == 3 && rand_q[1] == 2){
+  holidays |> select(date_2024) |> glimpse()
+} else if(sample_data == 4 && rand_q[1] == 1){
+  football |> select(game_date) |> glimpse()
+} else{
+  weather |> select(date) |> glimpse()
+}
+
+```
+
+<br>
+
+```{r Q1, exercise=TRUE}
+
+```
+
+```{r Q1-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q1-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+
+## Question 2
+
+```{r, context = "server"}
+q2 <- list()
+
+if(sample_data == 1){
+  q2[[1]] <- HTML("Combine <code>pizza_order</code> and <code>pizza_delivery</code> to find out who's <code>price</code> was the most expensive. <br> <br> <b>Print only</b> the observation(s) with the most expensive order.")
+  q2[[2]] <- HTML("Combine <code>pizza_order</code> and <code>pizza_delivery</code> to find out who's <code>price</code> was the least expensive. <br> <br> <b>Print only</b> the observation(s) with the least expensive order.")
+} else if(sample_data == 2){
+  q2[[1]] <- HTML("Combine <code>medical_record</code> and <code>patient_profile</code>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are interested in keeping ALL records in both datasets. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>bp</code> by <code>sex</code> to prove you were successful.")
+  q2[[2]] <- HTML("Combine <code>medical_record</code> and <code>patient_profile</code>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are ONLY interested in keeping records that are in both datasets. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>max_hr</code> by <code>sex</code> to prove you were successful.")
+}else if(sample_data == 3){
+  q2[[1]] <- HTML("Combine <code>mod_penguin_07</code> and <code>mod_penguin_08</code> such that the final dataset is in tidy format. <br> <br> <b>Print only</b> a barplot of <code>island</code> faceted by <code>year</code> to prove you were successful.")
+  #row binds
+  q2[[2]] <- HTML("Combine <code>mod_penguin_07</code> and <code>mod_penguin_08</code> such that the final dataset is in tidy format. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>body_mass_g</code> by <code>year</code> to prove you were successful.")
+}else{
+  q2[[1]] <- HTML("Use an appropriate <code>join</code> to combine the <code>football</code> and <code>chi_weather</code> dataset so that you can determine if there is a relationship between <code>passing_yds</code> and <code>windspeed</code>. <br> <br> <b>Print only</b> a scatterplot of the relationship to prove you were successful.")
+  q2[[2]] <- HTML("Use an appropriate <code>join</code> to combine the <code>football</code> and <code>chi_weather</code> dataset so that you can determine if there is a relationship between <code>avg_passing_yds</code> and <code>icon</code>. <br> <br> <b>Print only</b> a side-by-side boxplot of the relationship between <code>avg_passing_yds</code> and <code>icon</code> to prove you were successful.")
+}
+
+text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
+```
+
+```{r Question2}
+text_ui(id = "Q2")
+```
+
+
+```{r Q2, exercise=TRUE}
+
+```
+
+```{r Q2-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q2-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+## Question 3
+
+```{r, context = "server"}
+q3 <- list()
+
+if(sample_data == 1){
+  q3[[1]] <-  HTML("Write a function that creates a boxplot given a dataset, numeric variable, and color. The <code>color</code> argument should be a fixed color not a variable, for example 'red'. <br> <br> 
+Test your function using the <code>pizza_delivery</code> dataset, <code>price</code> variable, and color of your choice.")
+  q3[[2]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and number of bins. <br> <br> 
+Test your function using the <code>pizza_delivery</code> dataset, <code>price</code> variable, and <code>bins</code> value of your choice.")
+} else if(sample_data == 2){
+  q3[[1]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and fill. The <code>fill</code> argument should be a fixed value not a variable, for example 'red'. <br> <br> 
+Test your function using the <code>medical_record</code> dataset, <code>max_hr</code> variable, and <code>fill</code> of your choice.")
+  q3[[2]] <-  HTML("Write a function that creates a barplot given a dataset and categorical variable. Add a title to the plot. The title should be something similar to: 'Distribution of {variable}'. <br> <br> 
+Test your function using the <code>patient_profile</code> dataset and <code>education</code> variable.")
+} else if(sample_data == 3){
+  q3[[1]] <-  HTML("Write a function that takes a dataset and then computes the median of a numeric variable by a categorical variable. <br> <br> 
+Test your function using the <code>mod_penguin_08</code> dataset, <code>species</code> variable, and <code>flipper_length_mm</code> variable.")
+  q3[[2]] <-  HTML("Write a function that takes a dataset and a numeric variable and returns exactly 2 observations: the largest observation and the smallest observation based on that variable. <br> <br> 
+Test your function using the <code>mod_penguins_08</code> dataset and <code>body_mass_g</code> variable.")
+}else{
+  q3[[1]] <-  HTML("Write a function that takes a dataset and a numeric variable and standardizes the variable. For a variable <code>x</code>, standardization is done as follows: ( x - mean(x)) / sd(x). <br> <br> 
+Test your function using the <code>chi_weather</code> dataset and <code>temp</code> variable.")
+  q3[[2]] <-  HTML("Write a function that takes a dataset, and a numeric variable and returns exactly 2 observations: the largest observation and the smallest observation based on that variable. <br> <br> 
+Test your function using the <code>football</code> dataset and <code>tm_score</code> variable.")
+}
+
+text_server(id = "Q3", text = q3[[ rand_q[[3]] ]])
+```
+
+
+```{r Question3}
+text_ui(id = "Q3")
+```
+
+
+```{r Q3, exercise=TRUE}
+
+```
+
+```{r Q3-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q3-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+
+## Question 4
+
+```{r, context = "server"}
+q4 <- list()
+
+if(sample_data == 1){
+  q4[[1]] <- HTML("Consider the <code>pizza_order</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to convert the variables <code>size_1</code>, <code>pizza_1</code>, <code>size_2</code>, <code>pizza_2</code>, <code>size_3</code>, <code>pizza_3</code>, <code>size_4</code>, <code>pizza_4</code>, <code>size_5</code>, <code>pizza_5</code> to factor variables. <br> <br> Print a <code>glimpse()</code> of the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>pizza_order</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to calculate the count and proportion of the categorical variables <code>size_1</code>, <code>size_2</code>, <code>size_3</code>, <code>size_4</code>, <code>size_5</code>. Recall proportion can be calculated as 'n/sum(n)'. <br> <br> Print the output to prove you are successful.")
+} else if(sample_data == 2){
+  q4[[1]] <- HTML("Consider the <code>medical_record</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to standardize the variables <code>bp</code>, <code>cholesterol</code>, <code>ekg_results</code>, and <code>max_hr</code>. For a variable <code>x</code>, standardization is done as follows: (x - mean(x)) / sd(x). <br> <br> Print the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>medical_record</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to calculate the min, max, and range of the variables <code>bp</code>, <code>cholesterol</code>, and <code>max_hr</code>. <br> <br> Print the output to prove you are successful.")
+}else if(sample_data == 3){
+  q4[[1]] <- HTML("Consider the <code>mod_penguin</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to create a scatterplot of each numeric variable's relationship with <code>body_mass_g</code>. ie: There will be 3 scatterplots with <code>y = body_mass_g</code> and x changing between <code>flipper_length_mm</code>, <code>bill_depth_mm</code>, and <code>bill_length_mm</code>. <br> <br> Print the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>mod_penguin</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> loop to round the variables <code>bill_length_mm</code>, <code>bill_depth_mm</code>, <code>flipper_length_mm</code>, <code>body_mass_g</code> to 0 decimal places. <br> <br> Print the output to prove you are successful.")
+} else{
+  q4[[1]] <- HTML("Consider the <code>football</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to create a scatterplot of each numeric variable's relationship with <code>tm_score</code>. ie: There will be 3 scatterplots with <code>y = tm_score</code> and x changing between <code>opp_score</code>, <code>passing_yds</code>, and <code>rushing_yds</code>. <br> <br> Print the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>chi_weather</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to summarize the average code>temp</code>, <code>humidity</code>, <code>precip</code>, and <code>windspeed</code> by <code>icon</code>. <br> <br> Print the output to prove you are successful.")
+}
+
+text_server(id = "Q4", text = q4[[ rand_q[[4]] ]])
+```
+
+
+```{r Question4}
+text_ui(id = "Q4")
+```
+
+<br>
+
+*Print your output so that your created variable is easy to see.*
+
+```{r Q4, exercise=TRUE}
+
+```
+
+```{r Q4-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q4-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+
+## Submit
+
+Once you are finished:
+
+-   Click "Check Submissions" to make sure all questions and exercises are submitted -- **Un-submitted questions will receive a 0.**
+-   Once all questions/exercises are submitted click the 'Lock Exam' button. Once you click this you will not be able to make any changes to your exam!
+-   Once the lock is pressed a `Download Exam` option will become available,
+-   Download and **Check your HTML!**
+
+-  You have 3 attempts on this proficiency quiz. Submit the quiz you want to be graded to Canvas. The grader will only be grading one quiz per student.
+
+```{r}
+lock_check_ui(id = "lock")
+```
+<br>
+```{r}
+lock_button_ui(id = "lock")
+```
+
+
+## Retry
+
+The retry button is available 24 hours after you lock the quiz. 
+
+You have 3 attempts on this quiz. 
+
+Once you click retry your quiz will be erased and a new set of questions will be generated. Make sure you downloaded your quiz and check that everything is correct prior to clicking the retry button. Once you click retry there will be no way to retrieve your prior attempt.
+
+
+```{r}
+reset_button_ui(id = "reset")
+```

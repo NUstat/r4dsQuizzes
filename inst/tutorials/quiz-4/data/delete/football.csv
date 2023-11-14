@@ -1,0 +1,28 @@
+week,season,game_date,win,home,opp,tm_score,opp_score,passing_yds,rushing_yds,avg_punt_yds,pos_time
+1,2022,9/11/22,W,Home,San Francisco 49ers,19,10,105,99,46.166666666666664,26:32:00
+2,2022,9/18/22,L,Away,Green Bay Packers,10,27,48,180,49.5,22:45:00
+3,2022,9/25/22,W,Home,Houston Texans,23,20,82,281,45.5,31:22:00
+4,2022,10/2/22,L,Away,New York Giants,12,20,155,149,52.8,28:43:00
+5,2022,10/9/22,L,Away,Minnesota Vikings,22,29,193,78,56,23:16:00
+6,2022,10/13/22,L,Home,Washington Commanders,7,12,154,237,46.25,32:12:00
+7,2022,10/24/22,W,Away,New England Patriots,33,14,147,243,40.5,37:14:00
+8,2022,10/30/22,L,Away,Dallas Cowboys,29,49,131,240,50.75,36:04:00
+9,2022,11/6/22,L,Home,Miami Dolphins,32,35,116,252,27.666666666666668,34:46:00
+10,2022,11/13/22,L,Home,Detroit Lions,30,31,150,258,43,29:12:00
+11,2022,11/20/22,L,Away,Atlanta Falcons,24,27,128,160,40,35:10:00
+12,2022,11/27/22,L,Away,New York Jets,10,31,165,127,48.8,27:55:00
+13,2022,12/4/22,L,Home,Green Bay Packers,19,28,254,155,39,27:32:00
+15,2022,12/18/22,L,Home,Philadelphia Eagles,20,25,91,157,42,30:07:00
+16,2022,12/24/22,L,Home,Buffalo Bills,13,35,129,80,49.25,31:12:00
+17,2022,1/1/23,L,Away,Detroit Lions,10,41,30,200,45.857142857142854,24:17:00
+18,2022,1/8/23,L,Home,Minnesota Vikings,13,29,141,118,37,23:24:00
+1,2023,9/10/23,L,Home,Green Bay Packers,20,38,189,122,53,30:43:00
+2,2023,9/17/23,L,Away,Tampa Bay Buccaneers,17,27,169,67,46.4,24:04:00
+3,2023,9/24/23,L,Away,Kansas City Chiefs,10,41,87,116,45.8,23:47:00
+4,2023,10/1/23,L,Home,Denver Broncos,28,31,300,171,45,33:49:00
+5,2023,10/5/23,W,Away,Washington Commanders,40,20,273,178,43.666666666666664,30:04:00
+6,2023,10/15/23,L,Home,Minnesota Vikings,13,19,113,162,44,35:11:00
+7,2023,10/22/23,W,Home,Las Vegas Raiders,30,12,150,173,40,34:06:00
+8,2023,10/29/23,L,Away,Los Angeles Chargers,13,30,222,73,42,28:32:00
+9,2023,11/5/23,L,Away,New Orleans Saints,17,24,212,156,47.5,30:40:00
+10,2023,11/9/23,W,Home,Carolina Panthers,16,13,162,133,46.666666666666664,33:31:00
