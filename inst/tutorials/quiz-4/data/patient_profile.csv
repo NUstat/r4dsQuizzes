@@ -1,108 +1,108 @@
 patient_id,dob,sex,marital_status,race,education
-x3462,"June 13, 1953",male,single,asian,Associates
-x3510,"April 6, 1956",female,single,other,Associates
-x3985,"February 8, 1959",male,single,white,BA/BS
-x2841,"February 1, 1949",female,divorced,other,BA/BS
-x4370,"August 16, 1958",male,single,other,BA/BS
-x5760,"August 22, 1967",male,divorced,black,HS
-x7745,"November 2, 1964",male,married,other,BA/BS
-x3756,"May 8, 1963",male,married,other,Associates
-x6106,"September 14, 1960",female,single,black,BA/BS
-x3887,"July 12, 1964",male,married,asian,BA/BS
-x7169,"March 26, 1970",male,single,other,Associates
-x3566,"July 8, 1979",male,married,white,BA/BS
-x3979,"August 9, 1962",male,single,white,HS
-x2613,"November 8, 1966",female,widowed,asian,BA/BS
-x1554,"October 25, 1952",female,widowed,white,BA/BS
-x5468,"May 9, 1977",male,married,asian,BA/BS
-x8788,"January 20, 1970",male,single,other,BA/BS
-x2046,"July 1, 1959",male,single,white,Associates
-x8066,"June 3, 1983",male,married,hispanic,Associates
-x4003,"August 8, 1956",male,single,asian,HS
-x4206,"April 2, 1975",male,married,asian,BA/BS
-x8988,"June 1, 1980",male,married,other,Masters
-x4994,"December 9, 1976",male,single,black,BA/BS
-x9357,"January 23, 1969",female,single,white,HS
-x1216,"March 7, 1975",female,single,other,Associates
-x9156,"December 13, 1977",female,divorced,asian,BA/BS
-x7215,"April 29, 1972",female,divorced,other,HS
-x9779,"January 20, 1965",male,divorced,asian,BA/BS
-x2598,"May 14, 1952",female,married,asian,Associates
-x5236,"November 28, 1966",male,widowed,black,BA/BS
-x4936,"April 16, 1957",male,married,hispanic,HS
-x5088,"February 7, 1986",female,married,black,Associates
-x3906,"July 4, 1964",male,single,hispanic,BA/BS
-x1293,"March 13, 1973",male,single,hispanic,HS
-x9468,"October 12, 1975",male,single,hispanic,BA/BS
-x1040,"March 25, 1962",male,married,other,HS
-x9507,"November 27, 1964",male,divorced,hispanic,BA/BS
-x8390,"January 13, 1981",male,single,asian,Associates
-x7671,"July 20, 1975",male,single,hispanic,Masters
-x8283,"June 10, 1983",male,single,white,BA/BS
-x3503,"December 9, 1961",female,married,other,HS
-x7741,"April 12, 1979",male,married,white,HS
-x9943,"May 8, 1977",male,widowed,black,BA/BS
-x9565,"July 7, 1964",male,single,asian,BA/BS
-x7128,"March 25, 1965",male,single,asian,BA/BS
-x5611,"February 15, 1974",male,married,black,Associates
-x3116,"August 19, 1979",male,married,white,HS
-x7133,"April 17, 1957",male,single,black,Associates
-x7552,"October 7, 1981",male,single,other,Associates
-x6427,"July 19, 1971",male,single,hispanic,Associates
-x8126,"November 23, 1958",female,single,other,Associates
-x4357,"November 26, 1960",female,single,other,BA/BS
-x4979,"June 3, 1978",female,single,hispanic,BA/BS
-x4229,"January 6, 1982",female,single,white,HS
-x6602,"June 7, 1962",male,married,hispanic,Associates
-x5575,"August 4, 1963",female,single,black,BA/BS
-x4782,"March 10, 1964",female,single,asian,Associates
-x8830,"February 17, 1961",male,single,other,Associates
-x6966,"November 16, 1966",male,divorced,white,BA/BS
-x8815,"March 8, 1972",female,married,black,HS
-x2385,"January 21, 1979",male,divorced,hispanic,Associates
-x5705,"February 3, 1963",female,widowed,white,HS
-x3377,"February 12, 1960",male,single,asian,Associates
-x5043,"August 21, 1966",male,single,hispanic,HS
-x1685,"October 14, 1972",male,married,hispanic,Associates
-x7077,"April 5, 1965",female,married,white,BA/BS
-x6026,"September 14, 1979",female,single,asian,Masters
-x7386,"July 28, 1976",male,married,white,Associates
-x8280,"August 6, 1962",male,married,asian,BA/BS
-x5714,"March 9, 1966",female,married,asian,BA/BS
-x1150,"June 1, 1953",male,single,asian,Associates
-x7809,"November 20, 1947",female,single,other,BA/BS
-x9173,"June 14, 1956",female,single,black,HS
-x7910,"August 19, 1978",male,single,black,HS
-x3207,"January 5, 1978",male,single,other,HS
-x2028,"December 2, 1984",female,single,black,BA/BS
-x9517,"February 1, 1981",female,single,white,HS
-x8447,"May 28, 1967",male,married,asian,BA/BS
-x8734,"August 20, 1965",male,single,white,BA/BS
-x9010,"August 4, 1988",male,single,asian,Associates
-x2955,"December 27, 1965",male,divorced,hispanic,Masters
-x9171,"July 26, 1982",male,divorced,asian,Associates
-x6357,"May 26, 1966",male,single,hispanic,Associates
-x6883,"January 11, 1981",male,single,white,BA/BS
-x5092,"October 5, 1961",male,divorced,black,Masters
-x1984,"November 22, 1964",male,divorced,asian,BA/BS
-x7182,"September 4, 1982",female,single,hispanic,BA/BS
-x1985,"September 19, 1973",male,single,other,HS
-x5232,"November 3, 1964",male,married,other,Associates
-x2583,"July 1, 1962",female,single,hispanic,BA/BS
-x5684,"October 7, 1969",male,single,asian,HS
-x8863,"April 5, 1969",male,widowed,other,BA/BS
-x5775,"August 29, 1971",male,single,black,BA/BS
-x7643,"November 23, 1976",male,single,asian,Associates
-x9912,"April 9, 1957",male,divorced,white,BA/BS
-x9535,"March 25, 1965",male,married,black,BA/BS
-x8477,"July 24, 1959",female,single,white,BA/BS
-x3506,"January 17, 1973",female,married,black,HS
-x1194,"June 21, 1979",female,divorced,other,BA/BS
-x4123,"October 5, 1956",male,single,black,HS
-x7677,"December 24, 1974",female,single,asian,BA/BS
-x5649,"October 12, 1966",male,married,asian,BA/BS
-x3131,"January 2, 1960",male,married,black,Associates
-x4463,"July 22, 1975",male,married,hispanic,BA/BS
-x4948,"May 18, 1972",male,widowed,other,BA/BS
-x8756,"June 4, 1963",female,single,asian,Doctorate
-x3757,"October 10, 1964",male,single,hispanic,Associates
+x1048,25-Mar-62,male,married,other,HS
+x1150,1-Jun-53,male,single,asian,Associates
+x1194,21-Jun-79,female,divorced,other,BA/BS
+x1216,7-Mar-75,female,single,other,Associates
+x1293,13-Mar-73,male,single,hispanic,HS
+x1554,25-Oct-52,female,widowed,white,BA/BS
+x1685,14-Oct-72,male,married,hispanic,Associates
+x1984,22-Nov-64,male,divorced,asian,BA/BS
+x1985,19-Sep-73,male,single,other,HS
+x2028,2-Dec-84,female,single,black,BA/BS
+x2046,1-Jul-59,male,single,white,Associates
+x2385,21-Jan-79,male,divorced,hispanic,Associates
+x2583,1-Jul-62,female,single,hispanic,BA/BS
+x2598,14-May-52,female,married,asian,Associates
+x2613,8-Nov-66,female,widowed,asian,BA/BS
+x2841,1-Feb-49,female,divorced,other,BA/BS
+x2955,27-Dec-65,male,divorced,hispanic,Masters
+x3116,19-Aug-79,male,married,white,HS
+x3131,2-Jan-60,male,married,black,Associates
+x3207,5-Jan-78,male,single,other,HS
+x3377,12-Feb-60,male,single,asian,Associates
+x3465,13-Jun-53,male,single,asian,Associates
+x3503,9-Dec-61,female,married,other,HS
+x3506,17-Jan-73,female,married,black,HS
+x3510,6-Apr-56,female,single,other,Associates
+x3566,8-Jul-79,male,married,white,BA/BS
+x3756,8-May-63,male,married,other,Associates
+x3757,10-Oct-64,male,single,hispanic,Associates
+x3887,12-Jul-64,male,married,asian,BA/BS
+x3906,4-Jul-64,male,single,hispanic,BA/BS
+x3979,9-Aug-62,male,single,white,HS
+x3985,8-Feb-59,male,single,white,BA/BS
+x4003,8-Aug-56,male,single,asian,HS
+x4123,5-Oct-56,male,single,black,HS
+x4206,2-Apr-75,male,married,asian,BA/BS
+x4229,6-Jan-82,female,single,white,HS
+x4357,26-Nov-60,female,single,other,BA/BS
+x4372,16-Aug-58,male,single,other,BA/BS
+x4463,22-Jul-75,male,married,hispanic,BA/BS
+x4782,10-Mar-64,female,single,asian,Associates
+x4936,16-Apr-57,male,married,hispanic,HS
+x4948,18-May-72,male,widowed,other,BA/BS
+x4979,3-Jun-78,female,single,hispanic,BA/BS
+x4994,9-Dec-76,male,single,black,BA/BS
+x5043,21-Aug-66,male,single,hispanic,HS
+x5088,7-Feb-86,female,married,black,Associates
+x5092,5-Oct-61,male,divorced,black,Masters
+x5232,3-Nov-64,male,married,other,Associates
+x5236,28-Nov-66,male,widowed,black,BA/BS
+x5468,9-May-77,male,married,asian,BA/BS
+x5575,4-Aug-63,female,single,black,BA/BS
+x5611,15-Feb-74,male,married,black,Associates
+x5649,12-Oct-66,male,married,asian,BA/BS
+x5684,7-Oct-69,male,single,asian,HS
+x5705,3-Feb-63,female,widowed,white,HS
+x5714,9-Mar-66,female,married,asian,BA/BS
+x5760,22-Aug-67,male,divorced,black,HS
+x5775,29-Aug-71,male,single,black,BA/BS
+x6026,14-Sep-79,female,single,asian,Masters
+x6106,14-Sep-60,female,single,black,BA/BS
+x6357,26-May-66,male,single,hispanic,Associates
+x6427,19-Jul-71,male,single,hispanic,Associates
+x6602,7-Jun-62,male,married,hispanic,Associates
+x6883,11-Jan-81,male,single,white,BA/BS
+x6966,16-Nov-66,male,divorced,white,BA/BS
+x7077,5-Apr-65,female,married,white,BA/BS
+x7128,25-Mar-65,male,single,asian,BA/BS
+x7133,17-Apr-57,male,single,black,Associates
+x7169,26-Mar-70,male,single,other,Associates
+x7182,4-Sep-82,female,single,hispanic,BA/BS
+x7215,29-Apr-72,female,divorced,other,HS
+x7386,28-Jul-76,male,married,white,Associates
+x7552,7-Oct-81,male,single,other,Associates
+x7643,23-Nov-76,male,single,asian,Associates
+x7671,20-Jul-75,male,single,hispanic,Masters
+x7677,24-Dec-74,female,single,asian,BA/BS
+x7741,12-Apr-79,male,married,white,HS
+x7745,2-Nov-64,male,married,other,BA/BS
+x7809,20-Nov-47,female,single,other,BA/BS
+x7910,19-Aug-78,male,single,black,HS
+x8066,3-Jun-83,male,married,hispanic,Associates
+x8126,23-Nov-58,female,single,other,Associates
+x8280,6-Aug-62,male,married,asian,BA/BS
+x8283,10-Jun-83,male,single,white,BA/BS
+x8390,13-Jan-81,male,single,asian,Associates
+x8447,28-May-67,male,married,asian,BA/BS
+x8477,24-Jul-59,female,single,white,BA/BS
+x8734,20-Aug-65,male,single,white,BA/BS
+x8756,4-Jun-63,female,single,asian,Doctorate
+x8788,20-Jan-70,male,single,other,BA/BS
+x8815,8-Mar-72,female,married,black,HS
+x8830,17-Feb-61,male,single,other,Associates
+x8863,5-Apr-69,male,widowed,other,BA/BS
+x8988,1-Jun-80,male,married,other,Masters
+x9010,4-Aug-88,male,single,asian,Associates
+x9156,13-Dec-77,female,divorced,asian,BA/BS
+x9171,26-Jul-82,male,divorced,asian,Associates
+x9173,14-Jun-56,female,single,black,HS
+x9357,23-Jan-69,female,single,white,HS
+x9468,12-Oct-75,male,single,hispanic,BA/BS
+x9507,27-Nov-64,male,divorced,hispanic,BA/BS
+x9517,1-Feb-81,female,single,white,HS
+x9535,25-Mar-65,male,married,black,BA/BS
+x9565,7-Jul-64,male,single,asian,BA/BS
+x9779,20-Jan-65,male,divorced,asian,BA/BS
+x9912,9-Apr-57,male,divorced,white,BA/BS
+x9943,8-May-77,male,widowed,black,BA/BS

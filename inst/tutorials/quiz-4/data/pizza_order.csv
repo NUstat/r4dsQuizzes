@@ -1,4 +1,4 @@
-id,order_date,order_time,total,num_pizza,size_1,pizza_1,size_2,pizza_2,size_3,pizza_3,size_4,pizza_4,size_5,pizza_5
+id,order_date,order_time,price,num_pizza,size_1,pizza_1,size_2,pizza_2,size_3,pizza_3,size_4,pizza_4,size_5,pizza_5
 2015-000001,1-Jan-15,11:38:36,13.25,1,medium,hawaiian,NA,NA,NA,NA,NA,NA,NA,NA
 2015-000002,1-Jan-15,11:57:40,92,5,medium,classic_dlx,medium,mexicana,large,thai_ckn,large,five_cheese,large,ital_supr
 2015-000003,1-Jan-15,12:12:28,37.25,2,large,prsc_argla,medium,ital_supr,NA,NA,NA,NA,NA,NA

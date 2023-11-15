@@ -33,7 +33,7 @@ options(tutorial.storage = "local")
 
 tutorialExtras_setup(is_exam = TRUE,
                      max_retry = 3,
-                     retry_cooldown = 18)
+                     retry_cooldown = 12)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -217,8 +217,8 @@ grade_this_code(
 q2 <- list()
 
 if(sample_data == 1){
-  q2[[1]] <- HTML("Combine <code>pizza_order</code> and <code>pizza_delivery</code> to find out who's <code>price</code> was the most expensive. <br> <br> <b>Print only</b> the observation(s) with the most expensive order.")
-  q2[[2]] <- HTML("Combine <code>pizza_order</code> and <code>pizza_delivery</code> to find out who's <code>price</code> was the least expensive. <br> <br> <b>Print only</b> the observation(s) with the least expensive order.")
+  q2[[1]] <- HTML("Combine <code>pizza_order</code> and <code>pizza_delivery</code> to find out which customer(s) <code>price</code> was the most expensive. <br> <br> <b>Print only</b> the observation(s) with the most expensive order.")
+  q2[[2]] <- HTML("Combine <code>pizza_order</code> and <code>pizza_delivery</code> to find out which customer(s) <code>price</code> was the least expensive. <br> <br> <b>Print only</b> the observation(s) with the least expensive order.")
 } else if(sample_data == 2){
   q2[[1]] <- HTML("Combine <code>medical_record</code> and <code>patient_profile</code>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are interested in keeping ALL records in both datasets. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>bp</code> by <code>sex</code> to prove you were successful.")
   q2[[2]] <- HTML("Combine <code>medical_record</code> and <code>patient_profile</code>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are ONLY interested in keeping records that are in both datasets. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>max_hr</code> by <code>sex</code> to prove you were successful.")
@@ -227,8 +227,8 @@ if(sample_data == 1){
   #row binds
   q2[[2]] <- HTML("Combine <code>mod_penguin_07</code> and <code>mod_penguin_08</code> such that the final dataset is in tidy format. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>body_mass_g</code> by <code>year</code> to prove you were successful.")
 }else{
-  q2[[1]] <- HTML("Use an appropriate <code>join</code> to combine the <code>football</code> and <code>chi_weather</code> dataset so that you can determine if there is a relationship between <code>passing_yds</code> and <code>windspeed</code>. <br> <br> <b>Print only</b> a scatterplot of the relationship to prove you were successful.")
-  q2[[2]] <- HTML("Use an appropriate <code>join</code> to combine the <code>football</code> and <code>chi_weather</code> dataset so that you can determine if there is a relationship between <code>avg_passing_yds</code> and <code>icon</code>. <br> <br> <b>Print only</b> a side-by-side boxplot of the relationship between <code>avg_passing_yds</code> and <code>icon</code> to prove you were successful.")
+  q2[[1]] <- HTML("Use an appropriate <code>join</code> to combine the <code>football</code> and <code>chi_weather</code> dataset so that you can determine if there is a relationship between <code>passing_yds</code> and <code>windspeed</code>. <br> <br> <b>Print only</b> a scatterplot of the relationship with a <code>geom_smooth</code> to prove you were successful.")
+  q2[[2]] <- HTML("Use an appropriate <code>join</code> to combine the <code>football</code> and <code>chi_weather</code> dataset so that you can determine if there is a relationship between <code>passing_yds</code> and weather condition (<code>icon</code>). <br> <br> <b>Print only</b> a summary table of the average <code>passing_yds</code> by weather condition (<code>icon</code>) and arrange appropriately to detect a possible trend to prove you were successful.")
 }
 
 text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
@@ -265,8 +265,8 @@ Test your function using the <code>pizza_delivery</code> dataset, <code>price</c
   q3[[2]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and number of bins. <br> <br> 
 Test your function using the <code>pizza_delivery</code> dataset, <code>price</code> variable, and <code>bins</code> value of your choice.")
 } else if(sample_data == 2){
-  q3[[1]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and fill. The <code>fill</code> argument should be a fixed value not a variable, for example 'red'. <br> <br> 
-Test your function using the <code>medical_record</code> dataset, <code>max_hr</code> variable, and <code>fill</code> of your choice.")
+  q3[[1]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and bins. <br> <br> 
+Test your function using the <code>medical_record</code> dataset, <code>max_hr</code> variable, and <code>bin</code> value of your choice.")
   q3[[2]] <-  HTML("Write a function that creates a barplot given a dataset and categorical variable. Add a title to the plot. The title should be something similar to: 'Distribution of {variable}'. <br> <br> 
 Test your function using the <code>patient_profile</code> dataset and <code>education</code> variable.")
 } else if(sample_data == 3){
@@ -333,9 +333,6 @@ text_server(id = "Q4", text = q4[[ rand_q[[4]] ]])
 text_ui(id = "Q4")
 ```
 
-<br>
-
-*Print your output so that your created variable is easy to see.*
 
 ```{r Q4, exercise=TRUE}
 
@@ -375,7 +372,7 @@ lock_button_ui(id = "lock")
 
 ## Retry
 
-The retry button is available 24 hours after you lock the quiz. 
+The retry button is available **12 hours** after you lock the quiz. 
 
 You have 3 attempts on this quiz. 
 

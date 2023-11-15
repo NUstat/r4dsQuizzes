@@ -118,7 +118,7 @@ if (window.hljs) {
 <script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
 </div>
 </div>
-<div class="countdown" id="timer_8f10d5d4" data-update-every="1" data-start-immediately="true" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_64547e30" data-update-every="1" data-start-immediately="true" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -147,17 +147,17 @@ datasets:</p>
 <pre><code>## [1] &quot;Dataset: patient_profile&quot;
 ## Rows: 107
 ## Columns: 6
-## $ patient_id     &lt;chr&gt; &quot;x3462&quot;, &quot;x3510&quot;, &quot;x3985&quot;, &quot;x2841&quot;, &quot;x4370&quot;, &quot;x5760&quot;, &quot;…
-## $ dob            &lt;chr&gt; &quot;June 13, 1953&quot;, &quot;April 6, 1956&quot;, &quot;February 8, 1959&quot;, &quot;…
-## $ sex            &lt;chr&gt; &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;ma…
-## $ marital_status &lt;chr&gt; &quot;single&quot;, &quot;single&quot;, &quot;single&quot;, &quot;divorced&quot;, &quot;single&quot;, &quot;di…
-## $ race           &lt;chr&gt; &quot;asian&quot;, &quot;other&quot;, &quot;white&quot;, &quot;other&quot;, &quot;other&quot;, &quot;black&quot;, &quot;…
-## $ education      &lt;chr&gt; &quot;Associates&quot;, &quot;Associates&quot;, &quot;BA/BS&quot;, &quot;BA/BS&quot;, &quot;BA/BS&quot;, …</code></pre>
+## $ patient_id     &lt;chr&gt; &quot;x1048&quot;, &quot;x1150&quot;, &quot;x1194&quot;, &quot;x1216&quot;, &quot;x1293&quot;, &quot;x1554&quot;, &quot;…
+## $ dob            &lt;chr&gt; &quot;25-Mar-62&quot;, &quot;1-Jun-53&quot;, &quot;21-Jun-79&quot;, &quot;7-Mar-75&quot;, &quot;13-M…
+## $ sex            &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;…
+## $ marital_status &lt;chr&gt; &quot;married&quot;, &quot;single&quot;, &quot;divorced&quot;, &quot;single&quot;, &quot;single&quot;, &quot;w…
+## $ race           &lt;chr&gt; &quot;other&quot;, &quot;asian&quot;, &quot;other&quot;, &quot;other&quot;, &quot;hispanic&quot;, &quot;white&quot;…
+## $ education      &lt;chr&gt; &quot;HS&quot;, &quot;Associates&quot;, &quot;BA/BS&quot;, &quot;Associates&quot;, &quot;HS&quot;, &quot;BA/BS…</code></pre>
 <p><br></p>
 <pre><code>## [1] &quot;Dataset: medical_record&quot;
 ## Rows: 105
 ## Columns: 7
-## $ id              &lt;chr&gt; &quot;x6662&quot;, &quot;x9425&quot;, &quot;x4689&quot;, &quot;x5467&quot;, &quot;x5477&quot;, &quot;x2477&quot;, …
+## $ id              &lt;chr&gt; &quot;x3462&quot;, &quot;x3510&quot;, &quot;x3985&quot;, &quot;x2841&quot;, &quot;x4370&quot;, &quot;x5760&quot;, …
 ## $ apt_date        &lt;chr&gt; &quot;2012-6-5&quot;, &quot;2015-3-23&quot;, &quot;2012-8-14&quot;, &quot;2011-3-14&quot;, &quot;20…
 ## $ chest_pain_type &lt;dbl&gt; 4, 3, 2, 4, 2, 4, 3, 4, 4, 4, 4, 4, 3, 1, 4, 4, 4, 4, …
 ## $ bp              &lt;dbl&gt; 130, 115, 124, 128, 120, 120, 130, 110, 140, 150, 135,…
@@ -172,7 +172,7 @@ datasets:</p>
 <p>The variable of interest is shown below.</p>
 <pre><code>## Rows: 107
 ## Columns: 1
-## $ dob &lt;chr&gt; &quot;June 13, 1953&quot;, &quot;April 6, 1956&quot;, &quot;February 8, 1959&quot;, &quot;February 1,…</code></pre>
+## $ dob &lt;chr&gt; &quot;25-Mar-62&quot;, &quot;1-Jun-53&quot;, &quot;21-Jun-79&quot;, &quot;7-Mar-75&quot;, &quot;13-Mar-73&quot;, &quot;25…</code></pre>
 <p><br></p>
 <div class="tutorial-exercise" data-label="Q1" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
@@ -198,9 +198,6 @@ data-diagnostics="1" data-startover="1" data-lines="0">
 <div id="section-question-4" class="section level2">
 <h2>Question 4</h2>
 <div id="Q4-text" class="shiny-html-output"></div>
-<p><br></p>
-<p><em>Print your output so that your created variable is easy to
-see.</em></p>
 <div class="tutorial-exercise" data-label="Q4" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
@@ -231,7 +228,8 @@ per student.</p></li>
 </div>
 <div id="section-retry" class="section level2">
 <h2>Retry</h2>
-<p>The retry button is available 24 hours after you lock the quiz.</p>
+<p>The retry button is available <strong>12 hours</strong> after you
+lock the quiz.</p>
 <p>You have 3 attempts on this quiz.</p>
 <p>Once you click retry your quiz will be erased and a new set of
 questions will be generated. Make sure you downloaded your quiz and
@@ -256,9 +254,11 @@ gradethis_setup(pass = "submitted",
                 fail.hint = FALSE
                 )
 
+options(tutorial.storage = "local") 
+
 tutorialExtras_setup(is_exam = TRUE,
-                     #max_retry = 3,
-                     retry_cooldown = 0)
+                     max_retry = 3,
+                     retry_cooldown = 12)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -267,16 +267,14 @@ sample_data <- ceiling((rand_int*4/10))
 rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))
 
 
-medical_record <- read_csv("data/medical_record.csv")
-patient_profile <- read_csv("data/patient_profile.csv")
 pizza_delivery <- read_csv("data/pizza_delivery.csv")
 pizza_order <- read_csv("data/pizza_order.csv")
-# mod_penguin <- read_csv("data/mod_penguin.csv")
-# raw_penguin <- read_csv("data/raw_penguin.csv")
+
+medical_record <- read_csv("data/medical_record.csv")
+patient_profile <- read_csv("data/patient_profile.csv")
 
 mod_penguin_07 <- read_csv("data/mod_penguin_07.csv")
 mod_penguin_08 <- read_csv("data/mod_penguin_08.csv")
-mod_penguin_09 <- read_csv("data/mod_penguin_09.csv")
 
 football <- read_csv("data/football.csv")
 chi_weather <- read_csv("data/chi_weather.csv")
@@ -366,17 +364,16 @@ learnr:::store_exercise_cache(structure(list(label = "Q1", global_setup = struct
 "library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
-"                )", "", "tutorialExtras_setup(is_exam = TRUE,", 
-"                     #max_retry = 3,", "                     retry_cooldown = 0)", 
-"", "knitr::opts_chunk$set(echo = FALSE)", "", "sample_data <- ceiling((rand_int*4/10))", 
-"", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
-"", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
+"                )", "", "options(tutorial.storage = \"local\") ", 
+"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
+"                     retry_cooldown = 12)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"", "sample_data <- ceiling((rand_int*4/10))", "", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
+"", "", "pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", 
+"pizza_order <- read_csv(\"data/pizza_order.csv\")", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
 "patient_profile <- read_csv(\"data/patient_profile.csv\")", 
-"pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", "pizza_order <- read_csv(\"data/pizza_order.csv\")", 
-"# mod_penguin <- read_csv(\"data/mod_penguin.csv\")", "# raw_penguin <- read_csv(\"data/raw_penguin.csv\")", 
 "", "mod_penguin_07 <- read_csv(\"data/mod_penguin_07.csv\")", 
-"mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "mod_penguin_09 <- read_csv(\"data/mod_penguin_09.csv\")", 
-"", "football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
+"mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "", 
+"football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
 "", "holidays <- read_csv(\"data/holidays.csv\")", "schedule <- read_csv(\"data/schedule.csv\")", 
 "", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
@@ -415,18 +412,18 @@ learnr:::store_exercise_cache(structure(list(label = "Q1", global_setup = struct
 q2 <- list()
 
 if(sample_data == 1){
-  q2[[1]] <- HTML("Combine <code>pizza_order<\u002fcode> and <code>pizza_delivery<\u002fcode> to find out who's <code>price<\u002fcode> was the most expensive. <br> <br> <b>Print only<\u002fb> the observation(s) with the most expensive order.")
-  q2[[2]] <- HTML("Combine <code>pizza_order<\u002fcode> and <code>pizza_delivery<\u002fcode> to find out who's <code>price<\u002fcode> was the least expensive. <br> <br> <b>Print only<\u002fb> the observation(s) with the least expensive order.")
+  q2[[1]] <- HTML("Combine <code>pizza_order<\u002fcode> and <code>pizza_delivery<\u002fcode> to find out which customer(s) <code>price<\u002fcode> was the most expensive. <br> <br> <b>Print only<\u002fb> the observation(s) with the most expensive order.")
+  q2[[2]] <- HTML("Combine <code>pizza_order<\u002fcode> and <code>pizza_delivery<\u002fcode> to find out which customer(s) <code>price<\u002fcode> was the least expensive. <br> <br> <b>Print only<\u002fb> the observation(s) with the least expensive order.")
 } else if(sample_data == 2){
   q2[[1]] <- HTML("Combine <code>medical_record<\u002fcode> and <code>patient_profile<\u002fcode>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are interested in keeping ALL records in both datasets. <br> <br> <b>Print only<\u002fb> a side-by-side boxplot of <code>bp<\u002fcode> by <code>sex<\u002fcode> to prove you were successful.")
   q2[[2]] <- HTML("Combine <code>medical_record<\u002fcode> and <code>patient_profile<\u002fcode>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are ONLY interested in keeping records that are in both datasets. <br> <br> <b>Print only<\u002fb> a side-by-side boxplot of <code>max_hr<\u002fcode> by <code>sex<\u002fcode> to prove you were successful.")
 }else if(sample_data == 3){
   q2[[1]] <- HTML("Combine <code>mod_penguin_07<\u002fcode> and <code>mod_penguin_08<\u002fcode> such that the final dataset is in tidy format. <br> <br> <b>Print only<\u002fb> a barplot of <code>island<\u002fcode> faceted by <code>year<\u002fcode> to prove you were successful.")
   #row binds
-  q2[[2]] <- HTML("Combine <code>mod_penguin_08<\u002fcode> and <code>mod_penguin_09<\u002fcode> such that the final dataset is in tidy format. <br> <br> <b>Print only<\u002fb> a side-by-side boxplot of <code>body_mass_g<\u002fcode> by <code>year<\u002fcode> to prove you were successful.")
+  q2[[2]] <- HTML("Combine <code>mod_penguin_07<\u002fcode> and <code>mod_penguin_08<\u002fcode> such that the final dataset is in tidy format. <br> <br> <b>Print only<\u002fb> a side-by-side boxplot of <code>body_mass_g<\u002fcode> by <code>year<\u002fcode> to prove you were successful.")
 }else{
-  q2[[1]] <- HTML("Use an appropriate <code>join<\u002fcode> to combine the <code>football<\u002fcode> and <code>chi_weather<\u002fcode> dataset so that you can determine if there is a relationship between <code>passing_yds<\u002fcode> and <code>windspeed<\u002fcode>. <br> <br> <b>Print only<\u002fb> a scatterplot of the relationship to prove you were successful.")
-  q2[[2]] <- HTML("Use an appropriate <code>join<\u002fcode> to combine the <code>football<\u002fcode> and <code>chi_weather<\u002fcode> dataset so that you can determine if there is a relationship between <code>avg_passing_yds<\u002fcode> and <code>icon<\u002fcode>. <br> <br> <b>Print only<\u002fb> a side-by-side boxplot of the relationship between <code>avg_passing_yds<\u002fcode> and <code>icon<\u002fcode> to prove you were successful.")
+  q2[[1]] <- HTML("Use an appropriate <code>join<\u002fcode> to combine the <code>football<\u002fcode> and <code>chi_weather<\u002fcode> dataset so that you can determine if there is a relationship between <code>passing_yds<\u002fcode> and <code>windspeed<\u002fcode>. <br> <br> <b>Print only<\u002fb> a scatterplot of the relationship with a <code>geom_smooth<\u002fcode> to prove you were successful.")
+  q2[[2]] <- HTML("Use an appropriate <code>join<\u002fcode> to combine the <code>football<\u002fcode> and <code>chi_weather<\u002fcode> dataset so that you can determine if there is a relationship between <code>passing_yds<\u002fcode> and weather condition (<code>icon<\u002fcode>). <br> <br> <b>Print only<\u002fb> a summary table of the average <code>passing_yds<\u002fcode> by weather condition (<code>icon<\u002fcode>) and arrange appropriately to detect a possible trend to prove you were successful.")
 }
 
 text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
@@ -446,17 +443,16 @@ learnr:::store_exercise_cache(structure(list(label = "Q2", global_setup = struct
 "library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
-"                )", "", "tutorialExtras_setup(is_exam = TRUE,", 
-"                     #max_retry = 3,", "                     retry_cooldown = 0)", 
-"", "knitr::opts_chunk$set(echo = FALSE)", "", "sample_data <- ceiling((rand_int*4/10))", 
-"", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
-"", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
+"                )", "", "options(tutorial.storage = \"local\") ", 
+"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
+"                     retry_cooldown = 12)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"", "sample_data <- ceiling((rand_int*4/10))", "", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
+"", "", "pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", 
+"pizza_order <- read_csv(\"data/pizza_order.csv\")", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
 "patient_profile <- read_csv(\"data/patient_profile.csv\")", 
-"pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", "pizza_order <- read_csv(\"data/pizza_order.csv\")", 
-"# mod_penguin <- read_csv(\"data/mod_penguin.csv\")", "# raw_penguin <- read_csv(\"data/raw_penguin.csv\")", 
 "", "mod_penguin_07 <- read_csv(\"data/mod_penguin_07.csv\")", 
-"mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "mod_penguin_09 <- read_csv(\"data/mod_penguin_09.csv\")", 
-"", "football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
+"mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "", 
+"football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
 "", "holidays <- read_csv(\"data/holidays.csv\")", "schedule <- read_csv(\"data/schedule.csv\")", 
 "", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
@@ -499,9 +495,9 @@ Test your function using the <code>pizza_delivery<\u002fcode> dataset, <code>pri
   q3[[2]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and number of bins. <br> <br> 
 Test your function using the <code>pizza_delivery<\u002fcode> dataset, <code>price<\u002fcode> variable, and <code>bins<\u002fcode> value of your choice.")
 } else if(sample_data == 2){
-  q3[[1]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and fill. The <code>fill<\u002fcode> argument should be a fixed value not a variable, for example 'red'. <br> <br> 
-Test your function using the <code>medical_record<\u002fcode> dataset, <code>max_hr<\u002fcode> variable, and <code>fill<\u002fcode> of your choice.")
-  q3[[2]] <-  HTML("Write a function that creates a barplot given a dataset, categorical variable, and title. The title should be something similar to: 'Distribution of {variable}'. <br> <br> 
+  q3[[1]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and bins. <br> <br> 
+Test your function using the <code>medical_record<\u002fcode> dataset, <code>max_hr<\u002fcode> variable, and <code>bin<\u002fcode> value of your choice.")
+  q3[[2]] <-  HTML("Write a function that creates a barplot given a dataset and categorical variable. Add a title to the plot. The title should be something similar to: 'Distribution of {variable}'. <br> <br> 
 Test your function using the <code>patient_profile<\u002fcode> dataset and <code>education<\u002fcode> variable.")
 } else if(sample_data == 3){
   q3[[1]] <-  HTML("Write a function that takes a dataset and then computes the median of a numeric variable by a categorical variable. <br> <br> 
@@ -532,17 +528,16 @@ learnr:::store_exercise_cache(structure(list(label = "Q3", global_setup = struct
 "library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
-"                )", "", "tutorialExtras_setup(is_exam = TRUE,", 
-"                     #max_retry = 3,", "                     retry_cooldown = 0)", 
-"", "knitr::opts_chunk$set(echo = FALSE)", "", "sample_data <- ceiling((rand_int*4/10))", 
-"", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
-"", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
+"                )", "", "options(tutorial.storage = \"local\") ", 
+"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
+"                     retry_cooldown = 12)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"", "sample_data <- ceiling((rand_int*4/10))", "", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
+"", "", "pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", 
+"pizza_order <- read_csv(\"data/pizza_order.csv\")", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
 "patient_profile <- read_csv(\"data/patient_profile.csv\")", 
-"pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", "pizza_order <- read_csv(\"data/pizza_order.csv\")", 
-"# mod_penguin <- read_csv(\"data/mod_penguin.csv\")", "# raw_penguin <- read_csv(\"data/raw_penguin.csv\")", 
 "", "mod_penguin_07 <- read_csv(\"data/mod_penguin_07.csv\")", 
-"mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "mod_penguin_09 <- read_csv(\"data/mod_penguin_09.csv\")", 
-"", "football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
+"mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "", 
+"football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
 "", "holidays <- read_csv(\"data/holidays.csv\")", "schedule <- read_csv(\"data/schedule.csv\")", 
 "", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
@@ -611,17 +606,16 @@ learnr:::store_exercise_cache(structure(list(label = "Q4", global_setup = struct
 "library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
-"                )", "", "tutorialExtras_setup(is_exam = TRUE,", 
-"                     #max_retry = 3,", "                     retry_cooldown = 0)", 
-"", "knitr::opts_chunk$set(echo = FALSE)", "", "sample_data <- ceiling((rand_int*4/10))", 
-"", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
-"", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
+"                )", "", "options(tutorial.storage = \"local\") ", 
+"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
+"                     retry_cooldown = 12)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"", "sample_data <- ceiling((rand_int*4/10))", "", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
+"", "", "pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", 
+"pizza_order <- read_csv(\"data/pizza_order.csv\")", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
 "patient_profile <- read_csv(\"data/patient_profile.csv\")", 
-"pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", "pizza_order <- read_csv(\"data/pizza_order.csv\")", 
-"# mod_penguin <- read_csv(\"data/mod_penguin.csv\")", "# raw_penguin <- read_csv(\"data/raw_penguin.csv\")", 
 "", "mod_penguin_07 <- read_csv(\"data/mod_penguin_07.csv\")", 
-"mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "mod_penguin_09 <- read_csv(\"data/mod_penguin_09.csv\")", 
-"", "football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
+"mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "", 
+"football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
 "", "holidays <- read_csv(\"data/holidays.csv\")", "schedule <- read_csv(\"data/schedule.csv\")", 
 "", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
