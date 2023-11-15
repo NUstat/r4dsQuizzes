@@ -29,9 +29,11 @@ gradethis_setup(pass = "submitted",
                 fail.hint = FALSE
                 )
 
+options(tutorial.storage = "local") 
+
 tutorialExtras_setup(is_exam = TRUE,
-                     #max_retry = 3,
-                     retry_cooldown = 0)
+                     max_retry = 3,
+                     retry_cooldown = 18)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -40,16 +42,14 @@ sample_data <- ceiling((rand_int*4/10))
 rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))
 
 
-medical_record <- read_csv("data/medical_record.csv")
-patient_profile <- read_csv("data/patient_profile.csv")
 pizza_delivery <- read_csv("data/pizza_delivery.csv")
 pizza_order <- read_csv("data/pizza_order.csv")
-# mod_penguin <- read_csv("data/mod_penguin.csv")
-# raw_penguin <- read_csv("data/raw_penguin.csv")
+
+medical_record <- read_csv("data/medical_record.csv")
+patient_profile <- read_csv("data/patient_profile.csv")
 
 mod_penguin_07 <- read_csv("data/mod_penguin_07.csv")
 mod_penguin_08 <- read_csv("data/mod_penguin_08.csv")
-# mod_penguin_09 <- read_csv("data/mod_penguin_09.csv")
 
 football <- read_csv("data/football.csv")
 chi_weather <- read_csv("data/chi_weather.csv")
