@@ -261,9 +261,9 @@ q3 <- list()
 
 if(sample_data == 1){
   q3[[1]] <-  HTML("Write a function that creates a boxplot given a dataset, numeric variable, and color. The <code>color</code> argument should be a fixed color not a variable, for example 'red'. <br> <br> 
-Test your function using the <code>pizza_delivery</code> dataset, <code>price</code> variable, and color of your choice.")
+Test your function using the <code>pizza_order</code> dataset, <code>price</code> variable, and color of your choice.")
   q3[[2]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and number of bins. <br> <br> 
-Test your function using the <code>pizza_delivery</code> dataset, <code>price</code> variable, and <code>bins</code> value of your choice.")
+Test your function using the <code>pizza_order</code> dataset, <code>price</code> variable, and <code>bins</code> value of your choice.")
 } else if(sample_data == 2){
   q3[[1]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and bins. <br> <br> 
 Test your function using the <code>medical_record</code> dataset, <code>max_hr</code> variable, and <code>bin</code> value of your choice.")
