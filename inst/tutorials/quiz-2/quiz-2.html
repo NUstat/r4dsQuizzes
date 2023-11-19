@@ -159,7 +159,7 @@ Exam’ button.</li>
 <p>The first few rows of the dataset are shown below:</p>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cases"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"1999","3":"745","4":"19987071"},{"1":"Afghanistan","2":"2000","3":"2666","4":"20595360"},{"1":"Brazil","2":"1999","3":"37737","4":"172006362"},{"1":"Brazil","2":"2000","3":"80488","4":"174504898"},{"1":"China","2":"1999","3":"212258","4":"1272915272"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["state_abbr"],"name":[2],"type":["chr"],"align":["left"]},{"label":["1997"],"name":[3],"type":["int"],"align":["right"]},{"label":["1998"],"name":[4],"type":["int"],"align":["right"]},{"label":["1999"],"name":[5],"type":["int"],"align":["right"]},{"label":["2000"],"name":[6],"type":["int"],"align":["right"]},{"label":["2001"],"name":[7],"type":["int"],"align":["right"]},{"label":["2002"],"name":[8],"type":["int"],"align":["right"]},{"label":["2003"],"name":[9],"type":["int"],"align":["right"]},{"label":["2004"],"name":[10],"type":["int"],"align":["right"]},{"label":["2005"],"name":[11],"type":["int"],"align":["right"]},{"label":["2006"],"name":[12],"type":["int"],"align":["right"]}],"data":[{"1":"Alabama","2":"AL","3":"22","4":"23","5":"26","6":"27","7":"NA","8":"NA","9":"47","10":"NA","11":"NA","12":"77"},{"1":"Arizona","2":"AZ","3":"34","4":"36","5":"38","6":"37","7":"37","8":"43","9":"43","10":"NA","11":"NA","12":"43"},{"1":"Arkansas","2":"AR","3":"24","4":"29","5":"34","6":"36","7":"NA","8":"NA","9":"36","10":"42","11":"NA","12":"NA"},{"1":"California","2":"CA","3":"142","4":"148","5":"151","6":"NA","7":"NA","8":"NA","9":"160","10":"NA","11":"200","12":"NA"},{"1":"Colorado","2":"CO","3":"29","4":"27","5":"29","6":"42","7":"45","8":"NA","9":"NA","10":"NA","11":"42","12":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <div class="tutorial-exercise" data-label="Q2" data-completion="1"
@@ -178,7 +178,8 @@ data-diagnostics="1" data-startover="1" data-lines="0">
 <div id="section-question-4" class="section level2">
 <h2>Question 4</h2>
 <div id="Q4-text" class="shiny-html-output"></div>
-<img src="images/table3.png" width="500" height="150"/>
+<p><br></p>
+<img src="images/table1.png" width="500" height="150"/>
 <div class="tutorial-exercise" data-label="Q4" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
@@ -190,8 +191,8 @@ data-diagnostics="1" data-startover="1" data-lines="0">
 <p><strong>Codebook:</strong></p>
 <table>
 <colgroup>
-<col width="9%" />
-<col width="90%" />
+<col width="15%" />
+<col width="84%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -201,38 +202,48 @@ data-diagnostics="1" data-startover="1" data-lines="0">
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">case</td>
-<td align="left">id number</td>
-</tr>
-<tr class="even">
-<td align="left">bwt</td>
-<td align="left">birthweight, in ounces</td>
-</tr>
-<tr class="odd">
-<td align="left">gestation</td>
-<td align="left">length of gestation (pregnancy), in days</td>
-</tr>
-<tr class="even">
-<td align="left">parity</td>
-<td align="left">binary indicator for a first pregnancy (0 = first
-pregnancy; 1 = has had previous pregnancy)</td>
-</tr>
-<tr class="odd">
 <td align="left">age</td>
-<td align="left">mother’s age in years</td>
+<td align="left">Mother’s age in years</td>
 </tr>
 <tr class="even">
-<td align="left">height</td>
-<td align="left">mother’s height in inches</td>
+<td align="left">weeks</td>
+<td align="left">Length of pregnancy in weeks</td>
+</tr>
+<tr class="odd">
+<td align="left">premie</td>
+<td align="left">Whether the birth was classified as premature (levels:
+premie; full term)</td>
+</tr>
+<tr class="even">
+<td align="left">visits</td>
+<td align="left">Number of hospital visits during pregnancy</td>
+</tr>
+<tr class="odd">
+<td align="left">marital</td>
+<td align="left">Whether mother is married or not married at birth
+(levels: not married; married)</td>
+</tr>
+<tr class="even">
+<td align="left">gained</td>
+<td align="left">Weight gained by mother during pregnancy in pounds</td>
 </tr>
 <tr class="odd">
 <td align="left">weight</td>
-<td align="left">mother’s weight in pounds</td>
+<td align="left">Weight of the baby at birth in pounds</td>
 </tr>
 <tr class="even">
-<td align="left">smoke</td>
-<td align="left">binary indicator for whether the mother smokes (0 =
-does not smoke; 1 = smokes)</td>
+<td align="left">lowbirthweight</td>
+<td align="left">Whether baby was classified as low birthweight (levels:
+low; not low)</td>
+</tr>
+<tr class="odd">
+<td align="left">gender</td>
+<td align="left">Gender of the baby, (levels: female; male)</td>
+</tr>
+<tr class="even">
+<td align="left">habit</td>
+<td align="left">Status of the mother as a nonsmoker or a smoker
+(levels: smoker; nonsmoker)</td>
 </tr>
 </tbody>
 </table>
@@ -321,11 +332,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 rand_q <- c(0, sample(1:7, 1), sample(1:6, 1), sample(1:9, 1), sample(1:6, 1))
 
-messy <- tibble(
-  `2022` = sample(20:40, 10),
-  `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)
-)
+# messy <- tibble(
+#   `2022` = sample(20:40, 10),
+#   `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)
+# )
 
+messy <- read_csv("data/messy.csv")
 # babies <- babies
 # 
 # write_rds(babies, "data/babies.rds")
@@ -375,7 +387,7 @@ reset_server("reset", file_name = "quiz-2", package_name = "r4dsQuizzes")
 
 <script type="application/shiny-prerendered" data-context="server">
 tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text", label = "Name", question = structure("Name:", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_a60ab37", 
+"character")), answers = list(structure(list(id = "lnr_ans_1602d6b", 
     option = "function (value) \n{\n    if (length(value) >= 1) {\n        return(mark_as(TRUE))\n    }\n    return(mark_as(FALSE))\n}", 
     value = "function (value) \n{\n    if (length(value) >= 1) {\n        return(mark_as(TRUE))\n    }\n    return(mark_as(FALSE))\n}", 
     label = NULL, correct = NULL, message = NULL, type = "function"), class = c("tutorial_question_answer", 
@@ -386,24 +398,24 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text",
 "character")), incorrect = structure("submitted", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "Name-answer", question = "Name"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 1528138718.2884, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 1699927333.20841, 
     options = list(placeholder = "Enter answer here...", trim = TRUE)), class = c("learnr_text", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 tutorialExtras:::question_prerendered_chunk(structure(list(type = "wordbank", label = "Concept1-1", question = structure("Which function/verb…", html = TRUE, class = c("html", 
-"character")), choices = c("readr function to save out rds file type", 
-"transforms data by increasing the number of columns and decreasing the number of rows", 
-"layer added to zoom the plot while not changing the underlying data"
+"character")), choices = c("layer added to zoom the plot and any data outside limits will be replaced with NA", 
+"tendency of the values of a variable to change from measurement to measurement", 
+"transforms data by increasing the number of columns and decreasing the number of rows"
 ), wordbank = c("pivot_longer()", "pivot_wider()", "read.csv()", 
 "read_csv()", "writeRDS()", "write_rds()", "clean_names()", "janitor()", 
 "clean_vars()", "coord_cartesian()", "zoom()", "xlim()/ylim()", 
 "variation", "covariation", "tibble()", "tribble()", "reprex()"
 ), box = 6, arrange = "ordered", answers = list(structure(list(
-    id = "lnr_ans_a4a9e7c", option = c("write_rds()", "pivot_wider()", 
-    "coord_cartesian()"), value = c("write_rds()", "pivot_wider()", 
-    "coord_cartesian()"), label = structure("write_rds()\npivot_wider()\ncoord_cartesian()", html = TRUE, class = c("html", 
+    id = "lnr_ans_f92b8bc", option = c("xlim()/ylim()", "variation", 
+    "pivot_wider()"), value = c("xlim()/ylim()", "variation", 
+    "pivot_wider()"), label = structure("xlim()/ylim()\nvariation\npivot_wider()", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", 
 "character")), try_again = structure("Try Again", html = TRUE, class = c("html", 
@@ -413,7 +425,7 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "wordbank", la
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "Concept1-1-answer", question = "Concept1-1"), loading = structure("<strong>Loading:<\u002fstrong>\nWhich function/verb…\n<br/><br/><br/>", html = TRUE, class = c("html", 
 "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1950595568.09168, options = list(group = "definition")), class = c("wordbank", 
+    seed = 305928126.857541, options = list(group = "definition")), class = c("wordbank", 
 "tutorial_question")), session = session)
 </script>
 
@@ -458,11 +470,13 @@ learnr:::store_exercise_cache(structure(list(label = "Q2", global_setup = struct
 "                     max_retry = 3,", "                     retry_cooldown = 24)", 
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "#sample_data <- ceiling((rand_int*4/10))", 
 "", "rand_q <- c(0, sample(1:7, 1), sample(1:6, 1), sample(1:9, 1), sample(1:6, 1))", 
-"", "messy <- tibble(", "  `2022` = sample(20:40, 10),", "  `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
-")", "", "# babies <- babies", "# ", "# write_rds(babies, \"data/babies.rds\")", 
-"# ", "# ncbirths <- ncbirths |>", "#   select(-fage, -whitemom, -mature) |>", 
-"#   rename(age = mage)", "# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", 
-"# ", "# fastfood <- fastfood |>", "#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
+"", "# messy <- tibble(", "#   `2022` = sample(20:40, 10),", 
+"#   `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
+"# )", "", "messy <- read_csv(\"data/messy.csv\")", "# babies <- babies", 
+"# ", "# write_rds(babies, \"data/babies.rds\")", "# ", "# ncbirths <- ncbirths |>", 
+"#   select(-fage, -whitemom, -mature) |>", "#   rename(age = mage)", 
+"# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", "# ", "# fastfood <- fastfood |>", 
+"#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
 "# write_rds(fastfood, \"inst/tutorials/quiz-2/data/fastfood.rds\")", 
 "", "fastfood <- read_rds(\"data/fastfood.rds\")", "ncbirths <- read_rds(\"data/ncbirths.rds\")", 
 "babies <- read_rds(\"data/babies.rds\")", ""), chunk_opts = list(
@@ -535,11 +549,13 @@ learnr:::store_exercise_cache(structure(list(label = "Q3", global_setup = struct
 "                     max_retry = 3,", "                     retry_cooldown = 24)", 
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "#sample_data <- ceiling((rand_int*4/10))", 
 "", "rand_q <- c(0, sample(1:7, 1), sample(1:6, 1), sample(1:9, 1), sample(1:6, 1))", 
-"", "messy <- tibble(", "  `2022` = sample(20:40, 10),", "  `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
-")", "", "# babies <- babies", "# ", "# write_rds(babies, \"data/babies.rds\")", 
-"# ", "# ncbirths <- ncbirths |>", "#   select(-fage, -whitemom, -mature) |>", 
-"#   rename(age = mage)", "# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", 
-"# ", "# fastfood <- fastfood |>", "#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
+"", "# messy <- tibble(", "#   `2022` = sample(20:40, 10),", 
+"#   `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
+"# )", "", "messy <- read_csv(\"data/messy.csv\")", "# babies <- babies", 
+"# ", "# write_rds(babies, \"data/babies.rds\")", "# ", "# ncbirths <- ncbirths |>", 
+"#   select(-fage, -whitemom, -mature) |>", "#   rename(age = mage)", 
+"# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", "# ", "# fastfood <- fastfood |>", 
+"#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
 "# write_rds(fastfood, \"inst/tutorials/quiz-2/data/fastfood.rds\")", 
 "", "fastfood <- read_rds(\"data/fastfood.rds\")", "ncbirths <- read_rds(\"data/ncbirths.rds\")", 
 "babies <- read_rds(\"data/babies.rds\")", ""), chunk_opts = list(
@@ -578,22 +594,22 @@ learnr:::store_exercise_cache(structure(list(label = "Q3", global_setup = struct
 <script type="application/shiny-prerendered" data-context="server">
 q4 <- list()
 
-q4[[1]] <- HTML("Manually input the data table below using the <code>tibble()<\u002fcode> function. Store this data frame as <code>report_card<\u002fcode> and print the output.")
+q4[[1]] <- HTML("Manually input the data table below using the <code>tibble()<\u002fcode> function. <br> <br> <b>Store<\u002fb> this data frame as <code>report_card<\u002fcode> and <b>print<\u002fb> the output.")
 
-q4[[2]] <- HTML("Manually input the data table below using the <code>tribble()<\u002fcode> function. Store this data frame as <code>report_card<\u002fcode> and print the output.")
+q4[[2]] <- HTML("Manually input the data table below using the <code>tribble()<\u002fcode> function. <br> <br> <b>Store<\u002fb> this data frame as <code>report_card<\u002fcode> and <b>print<\u002fb> the output.")
 
-q4[[3]] <- HTML("Manually input the data table below using the <code>tibble()<\u002fcode> function. Store this data frame as <code>coffee<\u002fcode> and print the output. The printed output should convery the exact same information as the data table provided.")
+q4[[3]] <- HTML("Manually input the data table below using the <code>tibble()<\u002fcode> function. <br> <br> <b>Store<\u002fb> this data frame as <code>coffee<\u002fcode> and <b>print<\u002fb> the output. <br> <br> The printed output should convery the exact same information as the data table provided.")
 
-q4[[4]] <- HTML("Manually input the data table below using the <code>tribble()<\u002fcode> function. Store this data frame as <code>coffee<\u002fcode> and print the output. The printed output should convery the exact same information as the data table provided.")
+q4[[4]] <- HTML("Manually input the data table below using the <code>tribble()<\u002fcode> function. <br> <br> <b>Store<\u002fb> this data frame as <code>coffee<\u002fcode> and <b>print<\u002fb> the output. <br> <br> The printed output should convery the exact same information as the data table provided.")
 
-q4[[5]] <- HTML("Manually input the data table below using the <code>tibble()<\u002fcode> function. Store this data frame as <code>my_table<\u002fcode> and print the output.")
+q4[[5]] <- HTML("Manually input the data table below using the <code>tibble()<\u002fcode> function. <br> <br> <b>Store<\u002fb> this data frame as <code>my_table<\u002fcode> and <b>print<\u002fb> the output.")
 
-q4[[6]] <- HTML("Manually input the data table below using the <code>tribble()<\u002fcode> function. Store this data frame as <code>my_table<\u002fcode> and print the output.")
+q4[[6]] <- HTML("Manually input the data table below using the <code>tribble()<\u002fcode> function. <br> <br> <b>Store<\u002fb> this data frame as <code>my_table<\u002fcode> and <b>print<\u002fb> the output.")
 
 
-q4[[7]] <- HTML("Consider the dataset named <code>messy<\u002fcode>. It has already been pre-loaded for you. Create a new column called <code>diff<\u002fcode> which is <code>2023<\u002fcode> minus <code>2022<\u002fcode>.")
+q4[[7]] <- HTML("Consider the dataset named <code>messy<\u002fcode>. It has already been pre-loaded for you. Create a new column called <code>diff<\u002fcode> which is <code>2023<\u002fcode> minus <code>2022<\u002fcode>. <br> <br> Print the output.")
 
-q4[[8]] <- HTML("Consider the dataset named <code>messy<\u002fcode>. It has already been pre-loaded for you. Create a new column called <code>2024<\u002fcode> which is <code>2022<\u002fcode> times <code>2023<\u002fcode>.")
+q4[[8]] <- HTML("Consider the dataset named <code>messy<\u002fcode>. It has already been pre-loaded for you. Create a new column called <code>2024<\u002fcode> which is <code>2022<\u002fcode> times <code>2023<\u002fcode>. <br> <br> Print the output.")
 
 q4[[9]] <- HTML("Consider the dataset named <code>messy<\u002fcode>. It has already been pre-loaded for you. Make a scatterplot of <code>2023<\u002fcode> by <code>2022<\u002fcode>.")
 
@@ -621,11 +637,13 @@ learnr:::store_exercise_cache(structure(list(label = "Q4", global_setup = struct
 "                     max_retry = 3,", "                     retry_cooldown = 24)", 
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "#sample_data <- ceiling((rand_int*4/10))", 
 "", "rand_q <- c(0, sample(1:7, 1), sample(1:6, 1), sample(1:9, 1), sample(1:6, 1))", 
-"", "messy <- tibble(", "  `2022` = sample(20:40, 10),", "  `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
-")", "", "# babies <- babies", "# ", "# write_rds(babies, \"data/babies.rds\")", 
-"# ", "# ncbirths <- ncbirths |>", "#   select(-fage, -whitemom, -mature) |>", 
-"#   rename(age = mage)", "# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", 
-"# ", "# fastfood <- fastfood |>", "#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
+"", "# messy <- tibble(", "#   `2022` = sample(20:40, 10),", 
+"#   `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
+"# )", "", "messy <- read_csv(\"data/messy.csv\")", "# babies <- babies", 
+"# ", "# write_rds(babies, \"data/babies.rds\")", "# ", "# ncbirths <- ncbirths |>", 
+"#   select(-fage, -whitemom, -mature) |>", "#   rename(age = mage)", 
+"# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", "# ", "# fastfood <- fastfood |>", 
+"#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
 "# write_rds(fastfood, \"inst/tutorials/quiz-2/data/fastfood.rds\")", 
 "", "fastfood <- read_rds(\"data/fastfood.rds\")", "ncbirths <- read_rds(\"data/ncbirths.rds\")", 
 "babies <- read_rds(\"data/babies.rds\")", ""), chunk_opts = list(
@@ -663,11 +681,11 @@ learnr:::store_exercise_cache(structure(list(label = "Q4", global_setup = struct
 <script type="application/shiny-prerendered" data-context="server">
 q5 <- list()
 
-q5[[1]] <- HTML("Use functions from the <code>naniar<\u002fcode> package to check for missingness issues in the dataset called <code>babies<\u002fcode>. Explore the dataset and check for any weird values. Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
+q5[[1]] <- HTML("Use functions from the <code>naniar<\u002fcode> package to check for missingness issues in the dataset called <code>babies<\u002fcode>. <br> <br> Then explore the dataset and check for any weird values. <br> <br> Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
 
-q5[[2]] <- HTML("Use functions from the <code>naniar<\u002fcode> package to check for missingness issues in the dataset called <code>ncbirths<\u002fcode>. Explore the dataset and check for any weird values. Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
+q5[[2]] <- HTML("Use functions from the <code>naniar<\u002fcode> package to check for missingness issues in the dataset called <code>ncbirths<\u002fcode>. <br> <br> Then explore the dataset and check for any weird values. <br> <br> Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
 
-q5[[3]] <- HTML("Use functions from the <code>naniar<\u002fcode> package to check for missingness issues in the dataset called <code>fastfood<\u002fcode>. Explore the dataset and check for any weird values. Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
+q5[[3]] <- HTML("Use functions from the <code>naniar<\u002fcode> package to check for missingness issues in the dataset called <code>fastfood<\u002fcode>. <br> <br> Then explore the dataset and check for any weird values. <br> <br> Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
 
 q5[[4]] <- HTML("What variable(s) in the <code>babies<\u002fcode> dataset appears to be most important for predicting the body weight of the baby (<code>bwt<\u002fcode>)? Submit any relevant work in the code chunk. Explain which variable(s) you selected and why.")
 
@@ -699,11 +717,13 @@ learnr:::store_exercise_cache(structure(list(label = "Q5", global_setup = struct
 "                     max_retry = 3,", "                     retry_cooldown = 24)", 
 "", "knitr::opts_chunk$set(echo = FALSE)", "", "#sample_data <- ceiling((rand_int*4/10))", 
 "", "rand_q <- c(0, sample(1:7, 1), sample(1:6, 1), sample(1:9, 1), sample(1:6, 1))", 
-"", "messy <- tibble(", "  `2022` = sample(20:40, 10),", "  `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
-")", "", "# babies <- babies", "# ", "# write_rds(babies, \"data/babies.rds\")", 
-"# ", "# ncbirths <- ncbirths |>", "#   select(-fage, -whitemom, -mature) |>", 
-"#   rename(age = mage)", "# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", 
-"# ", "# fastfood <- fastfood |>", "#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
+"", "# messy <- tibble(", "#   `2022` = sample(20:40, 10),", 
+"#   `2023` = round(`2022` * 2 + rnorm(length(`2022`)), 0)", 
+"# )", "", "messy <- read_csv(\"data/messy.csv\")", "# babies <- babies", 
+"# ", "# write_rds(babies, \"data/babies.rds\")", "# ", "# ncbirths <- ncbirths |>", 
+"#   select(-fage, -whitemom, -mature) |>", "#   rename(age = mage)", 
+"# ", "# write_rds(ncbirths, \"data/ncbirths.rds\")", "# ", "# fastfood <- fastfood |>", 
+"#   select(-c(vit_a, vit_c, cal_fat, calcium, sat_fat, trans_fat, salad))", 
 "# write_rds(fastfood, \"inst/tutorials/quiz-2/data/fastfood.rds\")", 
 "", "fastfood <- read_rds(\"data/fastfood.rds\")", "ncbirths <- read_rds(\"data/ncbirths.rds\")", 
 "babies <- read_rds(\"data/babies.rds\")", ""), chunk_opts = list(
@@ -741,7 +761,7 @@ learnr:::store_exercise_cache(structure(list(label = "Q5", global_setup = struct
 
 <script type="application/shiny-prerendered" data-context="server">
 tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text", label = "Q5-desc", question = structure("", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_bfad864", 
+"character")), answers = list(structure(list(id = "lnr_ans_17af337", 
     option = "ManuallyGradedEverythingWrong", value = "ManuallyGradedEverythingWrong", 
     label = structure("ManuallyGradedEverythingWrong", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -752,7 +772,7 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text",
 "character")), incorrect = structure("submitted", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "Q5-desc-answer", question = "Q5-desc"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 92462702.9569437, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 439414807.795382, 
     options = list(placeholder = "Enter answer here...", trim = TRUE, 
         rows = 8)), class = c("learnr_text", "tutorial_question"
 )), session = session)
@@ -765,7 +785,7 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text",
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86]}},"value":[{"type":"character","attributes":{},"value":["airports","backports","base","base64enc","bslib","cachem","checkmate","cherryblossom","cli","colorspace","commonmark","compiler","countdown","datasets","dcldata","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fontawesome","forcats","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","hms","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","lubridate","magrittr","markdown","methods","mime","munsell","nycflights13","openintro","palmerpenguins","pillar","pkgconfig","promises","purrr","R6","Rcpp","readr","repr","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","skimr","stats","stringi","stringr","TeachingDemos","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tutorialExtras","tzdb","usdata","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.1.0","1.4.1","4.2.2","0.1-3","0.5.1","1.0.8","2.2.0","0.1.0","3.6.1","2.1-0","1.9.0","4.2.2","0.4.0","4.2.2","0.1.2.9000","0.6.33","1.1.3","0.3.2","0.22","1.0.4","1.1.1","0.5.2","1.0.0","0.1.3","3.4.3","1.6.2","0.2.14","4.2.2","4.2.2","4.2.2","0.3.4","1.1.3","0.5.6","1.6.2","1.6.11","0.1.4","1.8.7","1.44","1.3.1","0.11.5.9000","1.0.3","1.9.3","2.0.3","1.10","4.2.2","0.12","0.5.0","1.0.2","2.4.0","0.1.1","1.9.0","2.0.3","1.2.1","1.0.2","2.5.1","1.0.11","2.1.4","1.1.6","1.1.1","2.25","2.0.3","0.15.0","0.4.7","1.2.1","1.7.5.1","2.1.5","4.2.2","1.7.12","1.5.0","2.12","3.2.1","1.3.0","1.2.0","2.0.0","0.2.0","4.2.2","0.0.0.9000","0.4.0","0.2.0","1.2.3","4.2.2","0.6.3","2.5.1","0.40","1.8-4","2.3.7"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91]}},"value":[{"type":"character","attributes":{},"value":["airports","backports","base","base64enc","bit","bit64","bslib","cachem","checkmate","cherryblossom","cli","colorspace","commonmark","compiler","countdown","crayon","datasets","dcldata","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fontawesome","forcats","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","hms","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","lubridate","magrittr","markdown","methods","mime","munsell","nycflights13","openintro","palmerpenguins","parallel","pillar","pkgconfig","promises","purrr","R6","Rcpp","readr","repr","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","skimr","stats","stringi","stringr","TeachingDemos","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tutorialExtras","tzdb","usdata","utf8","utils","vctrs","vroom","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.1.0","1.4.1","4.2.2","0.1-3","4.0.5","4.0.5","0.5.1","1.0.8","2.2.0","0.1.0","3.6.1","2.1-0","1.9.0","4.2.2","0.4.0","1.5.2","4.2.2","0.1.2.9000","0.6.33","1.1.3","0.3.2","0.22","1.0.4","1.1.1","0.5.2","1.0.0","0.1.3","3.4.3","1.6.2","0.2.14","4.2.2","4.2.2","4.2.2","0.3.4","1.1.3","0.5.6","1.6.2","1.6.11","0.1.4","1.8.7","1.44","1.3.1","0.11.5.9000","1.0.3","1.9.3","2.0.3","1.10","4.2.2","0.12","0.5.0","1.0.2","2.4.0","0.1.1","4.2.2","1.9.0","2.0.3","1.2.1","1.0.2","2.5.1","1.0.11","2.1.4","1.1.6","1.1.1","2.25","2.0.3","0.15.0","0.4.7","1.2.1","1.7.5.1","2.1.5","4.2.2","1.7.12","1.5.0","2.12","3.2.1","1.3.0","1.2.0","2.0.0","0.2.0","4.2.2","0.0.0.9000","0.4.0","0.2.0","1.2.3","4.2.2","0.6.3","1.6.4","2.5.1","0.40","1.8-4","2.3.7"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>

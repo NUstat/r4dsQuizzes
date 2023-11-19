@@ -188,7 +188,7 @@ if(sample_data == 1 && rand_q[1] == 1){
 } else if(sample_data == 4 && rand_q[1] == 1){
   football |> select(game_date) |> glimpse()
 } else{
-  weather |> select(date) |> glimpse()
+  chi_weather |> select(date) |> glimpse()
 }
 
 ```

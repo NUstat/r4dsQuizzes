@@ -308,22 +308,22 @@ grade_this_code(
 #| warning: false
 q4 <- list()
 
-q4[[1]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. Store this data frame as <code>report_card</code> and print the output.")
+q4[[1]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. <br> <br> <b>Store</b> this data frame as <code>report_card</code> and <b>print</b> the output.")
 
-q4[[2]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. Store this data frame as <code>report_card</code> and print the output.")
+q4[[2]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. <br> <br> <b>Store</b> this data frame as <code>report_card</code> and <b>print</b> the output.")
 
-q4[[3]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. Store this data frame as <code>coffee</code> and print the output. The printed output should convery the exact same information as the data table provided.")
+q4[[3]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. <br> <br> <b>Store</b> this data frame as <code>coffee</code> and <b>print</b> the output. <br> <br> The printed output should convery the exact same information as the data table provided.")
 
-q4[[4]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. Store this data frame as <code>coffee</code> and print the output. The printed output should convery the exact same information as the data table provided.")
+q4[[4]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. <br> <br> <b>Store</b> this data frame as <code>coffee</code> and <b>print</b> the output. <br> <br> The printed output should convery the exact same information as the data table provided.")
 
-q4[[5]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. Store this data frame as <code>my_table</code> and print the output.")
+q4[[5]] <- HTML("Manually input the data table below using the <code>tibble()</code> function. <br> <br> <b>Store</b> this data frame as <code>my_table</code> and <b>print</b> the output.")
 
-q4[[6]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. Store this data frame as <code>my_table</code> and print the output.")
+q4[[6]] <- HTML("Manually input the data table below using the <code>tribble()</code> function. <br> <br> <b>Store</b> this data frame as <code>my_table</code> and <b>print</b> the output.")
 
 
-q4[[7]] <- HTML("Consider the dataset named <code>messy</code>. It has already been pre-loaded for you. Create a new column called <code>diff</code> which is <code>2023</code> minus <code>2022</code>.")
+q4[[7]] <- HTML("Consider the dataset named <code>messy</code>. It has already been pre-loaded for you. Create a new column called <code>diff</code> which is <code>2023</code> minus <code>2022</code>. <br> <br> Print the output.")
 
-q4[[8]] <- HTML("Consider the dataset named <code>messy</code>. It has already been pre-loaded for you. Create a new column called <code>2024</code> which is <code>2022</code> times <code>2023</code>.")
+q4[[8]] <- HTML("Consider the dataset named <code>messy</code>. It has already been pre-loaded for you. Create a new column called <code>2024</code> which is <code>2022</code> times <code>2023</code>. <br> <br> Print the output.")
 
 q4[[9]] <- HTML("Consider the dataset named <code>messy</code>. It has already been pre-loaded for you. Make a scatterplot of <code>2023</code> by <code>2022</code>.")
 
@@ -335,6 +335,8 @@ text_server(id = "Q4", text = q4[[rand_q[4]]])
 ```{r Question4}
 text_ui(id = "Q4")
 ```
+
+<br>
 
 ```{r}
 
@@ -421,11 +423,11 @@ if(rand_q[5] %in% c(1, 4)){
 ```{r, context = "server"}
 q5 <- list()
 
-q5[[1]] <- HTML("Use functions from the <code>naniar</code> package to check for missingness issues in the dataset called <code>babies</code>. Explore the dataset and check for any weird values. Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
+q5[[1]] <- HTML("Use functions from the <code>naniar</code> package to check for missingness issues in the dataset called <code>babies</code>. <br> <br> Then explore the dataset and check for any weird values. <br> <br> Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
 
-q5[[2]] <- HTML("Use functions from the <code>naniar</code> package to check for missingness issues in the dataset called <code>ncbirths</code>. Explore the dataset and check for any weird values. Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
+q5[[2]] <- HTML("Use functions from the <code>naniar</code> package to check for missingness issues in the dataset called <code>ncbirths</code>. <br> <br> Then explore the dataset and check for any weird values. <br> <br> Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
 
-q5[[3]] <- HTML("Use functions from the <code>naniar</code> package to check for missingness issues in the dataset called <code>fastfood</code>. Explore the dataset and check for any weird values. Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
+q5[[3]] <- HTML("Use functions from the <code>naniar</code> package to check for missingness issues in the dataset called <code>fastfood</code>. <br> <br> Then explore the dataset and check for any weird values. <br> <br> Submit any relevant work in the code chunk. Describe the dataset and any issues in the provided text block below.")
 
 q5[[4]] <- HTML("What variable(s) in the <code>babies</code> dataset appears to be most important for predicting the body weight of the baby (<code>bwt</code>)? Submit any relevant work in the code chunk. Explain which variable(s) you selected and why.")
 
