@@ -271,7 +271,7 @@ Test your function using the <code>medical_record</code> dataset, <code>max_hr</
 Test your function using the <code>patient_profile</code> dataset and <code>education</code> variable.")
 } else if(sample_data == 3){
   q3[[1]] <-  HTML("Write a function that takes a dataset and then computes the median of a numeric variable by a categorical variable. <br> <br> 
-Test your function using the <code>mod_penguin_08</code> dataset, <code>species</code> variable, and <code>flipper_length_mm</code> variable.")
+Test your function using the <code>mod_penguin_08</code> dataset, <code>island</code> variable, and <code>flipper_length_mm</code> variable.")
   q3[[2]] <-  HTML("Write a function that takes a dataset and a numeric variable and returns exactly 2 observations: the largest observation and the smallest observation based on that variable. <br> <br> 
 Test your function using the <code>mod_penguins_08</code> dataset and <code>body_mass_g</code> variable.")
 }else{
