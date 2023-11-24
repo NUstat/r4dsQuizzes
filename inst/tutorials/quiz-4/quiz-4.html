@@ -118,7 +118,7 @@ if (window.hljs) {
 <script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
 </div>
 </div>
-<div class="countdown" id="timer_64547e30" data-update-every="1" data-start-immediately="true" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_9c029d3f" data-update-every="1" data-start-immediately="true" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -491,9 +491,9 @@ q3 <- list()
 
 if(sample_data == 1){
   q3[[1]] <-  HTML("Write a function that creates a boxplot given a dataset, numeric variable, and color. The <code>color<\u002fcode> argument should be a fixed color not a variable, for example 'red'. <br> <br> 
-Test your function using the <code>pizza_delivery<\u002fcode> dataset, <code>price<\u002fcode> variable, and color of your choice.")
+Test your function using the <code>pizza_order<\u002fcode> dataset, <code>price<\u002fcode> variable, and color of your choice.")
   q3[[2]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and number of bins. <br> <br> 
-Test your function using the <code>pizza_delivery<\u002fcode> dataset, <code>price<\u002fcode> variable, and <code>bins<\u002fcode> value of your choice.")
+Test your function using the <code>pizza_order<\u002fcode> dataset, <code>price<\u002fcode> variable, and <code>bins<\u002fcode> value of your choice.")
 } else if(sample_data == 2){
   q3[[1]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and bins. <br> <br> 
 Test your function using the <code>medical_record<\u002fcode> dataset, <code>max_hr<\u002fcode> variable, and <code>bin<\u002fcode> value of your choice.")
@@ -501,9 +501,9 @@ Test your function using the <code>medical_record<\u002fcode> dataset, <code>max
 Test your function using the <code>patient_profile<\u002fcode> dataset and <code>education<\u002fcode> variable.")
 } else if(sample_data == 3){
   q3[[1]] <-  HTML("Write a function that takes a dataset and then computes the median of a numeric variable by a categorical variable. <br> <br> 
-Test your function using the <code>mod_penguin_08<\u002fcode> dataset, <code>species<\u002fcode> variable, and <code>flipper_length_mm<\u002fcode> variable.")
+Test your function using the <code>mod_penguin_08<\u002fcode> dataset, <code>island<\u002fcode> variable, and <code>flipper_length_mm<\u002fcode> variable.")
   q3[[2]] <-  HTML("Write a function that takes a dataset and a numeric variable and returns exactly 2 observations: the largest observation and the smallest observation based on that variable. <br> <br> 
-Test your function using the <code>mod_penguins_08<\u002fcode> dataset and <code>body_mass_g<\u002fcode> variable.")
+Test your function using the <code>mod_penguin_08<\u002fcode> dataset and <code>body_mass_g<\u002fcode> variable.")
 }else{
   q3[[1]] <-  HTML("Write a function that takes a dataset and a numeric variable and standardizes the variable. For a variable <code>x<\u002fcode>, standardization is done as follows: ( x - mean(x)) / sd(x). <br> <br> 
 Test your function using the <code>chi_weather<\u002fcode> dataset and <code>temp<\u002fcode> variable.")
@@ -582,8 +582,8 @@ if(sample_data == 1){
   q4[[1]] <- HTML("Consider the <code>medical_record<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to standardize the variables <code>bp<\u002fcode>, <code>cholesterol<\u002fcode>, <code>ekg_results<\u002fcode>, and <code>max_hr<\u002fcode>. For a variable <code>x<\u002fcode>, standardization is done as follows: (x - mean(x)) / sd(x). <br> <br> Print the output to prove you are successful.")
   q4[[2]] <- HTML("Consider the <code>medical_record<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to calculate the min, max, and range of the variables <code>bp<\u002fcode>, <code>cholesterol<\u002fcode>, and <code>max_hr<\u002fcode>. <br> <br> Print the output to prove you are successful.")
 }else if(sample_data == 3){
-  q4[[1]] <- HTML("Consider the <code>mod_penguin<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to create a scatterplot of each numeric variable's relationship with <code>body_mass_g<\u002fcode>. ie: There will be 3 scatterplots with <code>y = body_mass_g<\u002fcode> and x changing between <code>flipper_length_mm<\u002fcode>, <code>bill_depth_mm<\u002fcode>, and <code>bill_length_mm<\u002fcode>. <br> <br> Print the output to prove you are successful.")
-  q4[[2]] <- HTML("Consider the <code>mod_penguin<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> loop to round the variables <code>bill_length_mm<\u002fcode>, <code>bill_depth_mm<\u002fcode>, <code>flipper_length_mm<\u002fcode>, <code>body_mass_g<\u002fcode> to 0 decimal places. <br> <br> Print the output to prove you are successful.")
+  q4[[1]] <- HTML("Consider the <code>mod_penguin_08<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to create a scatterplot of each numeric variable's relationship with <code>body_mass_g<\u002fcode>. ie: There will be 3 scatterplots with <code>y = body_mass_g<\u002fcode> and x changing between <code>flipper_length_mm<\u002fcode>, <code>bill_depth_mm<\u002fcode>, and <code>bill_length_mm<\u002fcode>. <br> <br> Print the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>mod_penguin_08<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> loop to round the variables <code>bill_length_mm<\u002fcode>, <code>bill_depth_mm<\u002fcode>, <code>flipper_length_mm<\u002fcode>, <code>body_mass_g<\u002fcode> to 0 decimal places. <br> <br> Print the output to prove you are successful.")
 } else{
   q4[[1]] <- HTML("Consider the <code>football<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to create a scatterplot of each numeric variable's relationship with <code>tm_score<\u002fcode>. ie: There will be 3 scatterplots with <code>y = tm_score<\u002fcode> and x changing between <code>opp_score<\u002fcode>, <code>passing_yds<\u002fcode>, and <code>rushing_yds<\u002fcode>. <br> <br> Print the output to prove you are successful.")
   q4[[2]] <- HTML("Consider the <code>chi_weather<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to summarize the average code>temp<\u002fcode>, <code>humidity<\u002fcode>, <code>precip<\u002fcode>, and <code>windspeed<\u002fcode> by <code>icon<\u002fcode>. <br> <br> Print the output to prove you are successful.")

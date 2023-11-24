@@ -118,7 +118,7 @@ if (window.hljs) {
 <script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
 </div>
 </div>
-<div class="countdown" id="timer_a0ec23c8" data-update-every="1" data-start-immediately="true" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_b9caf4a6" data-update-every="1" data-start-immediately="true" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -142,19 +142,18 @@ Exam’ button.</li>
 </div>
 <div id="section-the-data" class="section level2">
 <h2>The Data</h2>
-<p>The following set of questions are based on the
-<code>mod_airport</code> data set. A skim and glimpse of the variables
-are provided below.</p>
+<p>The following set of questions are based on the <code>pizza</code>
+data set. A skim and glimpse of the variables are provided below.</p>
 <table>
 <caption>Data summary</caption>
 <tbody>
 <tr class="odd">
 <td align="left">Name</td>
-<td align="left">mod_airport</td>
+<td align="left">pizza</td>
 </tr>
 <tr class="even">
 <td align="left">Number of rows</td>
-<td align="left">1455</td>
+<td align="left">4232</td>
 </tr>
 <tr class="odd">
 <td align="left">Number of columns</td>
@@ -170,15 +169,15 @@ are provided below.</p>
 </tr>
 <tr class="even">
 <td align="left">character</td>
-<td align="left">3</td>
+<td align="left">6</td>
 </tr>
 <tr class="odd">
 <td align="left">factor</td>
-<td align="left">3</td>
+<td align="left">2</td>
 </tr>
 <tr class="even">
 <td align="left">numeric</td>
-<td align="left">3</td>
+<td align="left">1</td>
 </tr>
 <tr class="odd">
 <td align="left">________________________</td>
@@ -216,33 +215,63 @@ are provided below.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">faa</td>
+<td align="left">id</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">3</td>
-<td align="right">3</td>
+<td align="right">11</td>
+<td align="right">11</td>
 <td align="right">0</td>
-<td align="right">1455</td>
+<td align="right">1845</td>
 <td align="right">0</td>
 </tr>
 <tr class="even">
-<td align="left">name</td>
+<td align="left">date</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">4</td>
-<td align="right">51</td>
+<td align="right">10</td>
+<td align="right">10</td>
 <td align="right">0</td>
-<td align="right">1437</td>
+<td align="right">31</td>
 <td align="right">0</td>
 </tr>
 <tr class="odd">
-<td align="left">coord</td>
+<td align="left">time</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">9</td>
-<td align="right">14</td>
+<td align="right">8</td>
+<td align="right">8</td>
 <td align="right">0</td>
-<td align="right">1449</td>
+<td align="right">1799</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">order</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">12</td>
+<td align="right">0</td>
+<td align="right">32</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">first_name</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">821</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">last_name</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">776</td>
 <td align="right">0</td>
 </tr>
 </tbody>
@@ -255,7 +284,7 @@ are provided below.</p>
 <col width="14%" />
 <col width="8%" />
 <col width="9%" />
-<col width="41%" />
+<col width="43%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -269,45 +298,37 @@ are provided below.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">tz</td>
+<td align="left">size</td>
 <td align="right">0</td>
 <td align="right">1</td>
 <td align="left">FALSE</td>
-<td align="right">7</td>
-<td align="left">-5: 519, -6: 342, -9: 239, -8: 178</td>
+<td align="right">5</td>
+<td align="left">L: 1640, M: 1311, S: 1229, XL: 50</td>
 </tr>
 <tr class="even">
-<td align="left">dst</td>
+<td align="left">type</td>
 <td align="right">0</td>
 <td align="right">1</td>
 <td align="left">FALSE</td>
-<td align="right">3</td>
-<td align="left">A: 1385, U: 47, N: 23</td>
-</tr>
-<tr class="odd">
-<td align="left">tzone</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="left">FALSE</td>
-<td align="right">9</td>
-<td align="left">Ame: 519, Ame: 342, Ame: 239, Ame: 176</td>
+<td align="right">4</td>
+<td align="left">cla: 1257, sup: 1044, veg: 1018, chi: 913</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="14%" />
-<col width="10%" />
-<col width="14%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
+<col width="16%" />
+<col width="12%" />
+<col width="16%" />
 <col width="7%" />
-<col width="8%" />
-<col width="8%" />
 <col width="6%" />
+<col width="6%" />
+<col width="7%" />
+<col width="6%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -326,67 +347,40 @@ are provided below.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">lat</td>
+<td align="left">price</td>
 <td align="right">0</td>
 <td align="right">1</td>
-<td align="right">41.62</td>
-<td align="right">10.42</td>
-<td align="right">19.72</td>
-<td align="right">34.26</td>
-<td align="right">40.08</td>
-<td align="right">44.99</td>
-<td align="right">71.29</td>
-<td align="left">▂▇▆▂▂</td>
-</tr>
-<tr class="even">
-<td align="left">lon</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">-103.48</td>
-<td align="right">29.60</td>
-<td align="right">-176.65</td>
-<td align="right">-119.16</td>
-<td align="right">-94.71</td>
-<td align="right">-82.52</td>
-<td align="right">174.11</td>
-<td align="left">▅▇▁▁▁</td>
-</tr>
-<tr class="odd">
-<td align="left">alt</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">1003.35</td>
-<td align="right">1524.60</td>
-<td align="right">-54.00</td>
-<td align="right">71.50</td>
-<td align="right">477.00</td>
-<td align="right">1063.00</td>
-<td align="right">9078.00</td>
-<td align="left">▇▁▁▁▁</td>
+<td align="right">16.49</td>
+<td align="right">3.62</td>
+<td align="right">9.75</td>
+<td align="right">12.75</td>
+<td align="right">16.5</td>
+<td align="right">20.25</td>
+<td align="right">35.95</td>
+<td align="left">▇▇▆▁▁</td>
 </tr>
 </tbody>
 </table>
-<pre><code>## Rows: 1,455
+<pre><code>## Rows: 4,232
 ## Columns: 9
-## $ faa   &lt;chr&gt; &quot;04G&quot;, &quot;06A&quot;, &quot;06C&quot;, &quot;06N&quot;, &quot;09J&quot;, &quot;0A9&quot;, &quot;0G6&quot;, &quot;0G7&quot;, &quot;0P2&quot;, &quot;…
-## $ name  &lt;chr&gt; &quot;Lansdowne Airport&quot;, &quot;Moton Field Municipal Airport&quot;, &quot;Schaumbur…
-## $ lat   &lt;dbl&gt; 41.13047, 32.46057, 41.98934, 41.43191, 31.07447, 36.37122, 41.4…
-## $ lon   &lt;dbl&gt; -80.61958, -85.68003, -88.10124, -74.39156, -81.42778, -82.17342…
-## $ alt   &lt;dbl&gt; 1044, 264, 801, 523, 11, 1593, 730, 492, 1000, 108, 409, 875, 10…
-## $ tz    &lt;fct&gt; -5, -6, -6, -5, -5, -5, -5, -5, -5, -8, -5, -6, -5, -5, -5, -5, …
-## $ dst   &lt;fct&gt; A, A, A, A, A, A, A, A, U, A, A, U, A, U, A, A, A, U, A, A, A, U…
-## $ tzone &lt;fct&gt; America/New_York, America/Chicago, America/Chicago, America/New_…
-## $ coord &lt;chr&gt; &quot;41.13, -80.62&quot;, &quot;32.46, -85.68&quot;, &quot;41.99, -88.1&quot;, &quot;41.43, -74.39…</code></pre>
+## $ id         &lt;chr&gt; &quot;2015-000001&quot;, &quot;2015-000002&quot;, &quot;2015-000002&quot;, &quot;2015-000002&quot;,…
+## $ date       &lt;chr&gt; &quot;2015-01-01&quot;, &quot;2015-01-01&quot;, &quot;2015-01-01&quot;, &quot;2015-01-01&quot;, &quot;20…
+## $ time       &lt;chr&gt; &quot;11:38:36&quot;, &quot;11:57:40&quot;, &quot;11:57:40&quot;, &quot;11:57:40&quot;, &quot;11:57:40&quot;,…
+## $ order      &lt;chr&gt; &quot;hawaiian&quot;, &quot;classic_dlx&quot;, &quot;mexicana&quot;, &quot;thai_ckn&quot;, &quot;five_ch…
+## $ size       &lt;fct&gt; M, M, M, L, L, L, L, M, M, M, S, S, S, S, L, S, L, L, L, S,…
+## $ type       &lt;fct&gt; classic, classic, veggie, chicken, veggie, supreme, supreme…
+## $ price      &lt;dbl&gt; 13.25, 16.00, 16.00, 20.75, 18.50, 20.75, 20.75, 16.50, 16.…
+## $ first_name &lt;chr&gt; &quot;Jorge&quot;, &quot;Brooklynn&quot;, &quot;Brooklynn&quot;, &quot;Brooklynn&quot;, &quot;Brooklynn&quot;…
+## $ last_name  &lt;chr&gt; &quot;Patel&quot;, &quot;Richard&quot;, &quot;Richard&quot;, &quot;Richard&quot;, &quot;Richard&quot;, &quot;Richa…</code></pre>
 </div>
 <div id="section-codebook" class="section level2">
 <h2>Codebook</h2>
-<p>The following set of questions are based on the
-<code>mod_airport</code> data set. An explanation of the variables are
-provided below.</p>
+<p>The following set of questions are based on the <code>pizza</code>
+data set. An explanation of the variables are provided below.</p>
 <table>
 <colgroup>
-<col width="10%" />
-<col width="89%" />
+<col width="14%" />
+<col width="85%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -396,42 +390,44 @@ provided below.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">faa</td>
-<td align="left">FAA airport code</td>
+<td align="left">id</td>
+<td align="left">ID for the order</td>
 </tr>
 <tr class="even">
-<td align="left">name</td>
-<td align="left">Usual name of the airport</td>
+<td align="left">date</td>
+<td align="left">A character representatio of the order date
+‘YYYY-MM-DD’</td>
 </tr>
 <tr class="odd">
-<td align="left">lat</td>
-<td align="left">Location of airport (latitude)</td>
+<td align="left">time</td>
+<td align="left">A character representation of the time of order:
+HH:MM:SS</td>
 </tr>
 <tr class="even">
-<td align="left">lon</td>
-<td align="left">Location of airport (longitude)</td>
+<td align="left">order</td>
+<td align="left">The short name for the pizza</td>
 </tr>
 <tr class="odd">
-<td align="left">alt</td>
-<td align="left">Altitude, in feet</td>
+<td align="left">size</td>
+<td align="left">size of the pizza which can either be ‘S’, ‘M’, ‘L’,
+‘XL’, ‘XXL’</td>
 </tr>
 <tr class="even">
-<td align="left">tz</td>
-<td align="left">Timezone offset from GMT</td>
+<td align="left">type</td>
+<td align="left">type of pizza: ‘classic’, ‘chicken’, ‘supreme’, or
+‘veggie’</td>
 </tr>
 <tr class="odd">
-<td align="left">dst</td>
-<td align="left">Daylight savings time zone factor: A = Standard US DST;
-U = unknown; N = No dst</td>
+<td align="left">price</td>
+<td align="left">price of pizza in (in USD)</td>
 </tr>
 <tr class="even">
-<td align="left">tzone</td>
-<td align="left">IANA time zone, as determined by GeoNames
-webservice</td>
+<td align="left">first_name</td>
+<td align="left">first name of customer</td>
 </tr>
 <tr class="odd">
-<td align="left">coord</td>
-<td align="left">Location of airport: lat, lon</td>
+<td align="left">last_name</td>
+<td align="left">last name of customer</td>
 </tr>
 </tbody>
 </table>
@@ -584,7 +580,7 @@ reset_server("reset", file_name = "quiz-3", package_name = "r4dsQuizzes")
 
 <script type="application/shiny-prerendered" data-context="server">
 tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text", label = "Name", question = structure("Name:", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_c67146", 
+"character")), answers = list(structure(list(id = "lnr_ans_7ef0831", 
     option = "function (value) \n{\n    if (length(value) >= 1) {\n        return(mark_as(TRUE))\n    }\n    return(mark_as(FALSE))\n}", 
     value = "function (value) \n{\n    if (length(value) >= 1) {\n        return(mark_as(TRUE))\n    }\n    return(mark_as(FALSE))\n}", 
     label = NULL, correct = NULL, message = NULL, type = "function"), class = c("tutorial_question_answer", 
@@ -595,7 +591,7 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text",
 "character")), incorrect = structure("submitted", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "Name-answer", question = "Name"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 17820266.4917018, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 1699927333.20841, 
     options = list(placeholder = "Enter answer here...", trim = TRUE)), class = c("learnr_text", 
 "tutorial_question")), session = session)
 </script>
@@ -604,7 +600,7 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text",
 q1 <- list()
 
 if(sample_data == 1){
-  q1[[1]] <- HTML("Round the variable <code>lat<\u002fcode> to two decimal places ie: 41.13047 rounds to 41.13.")
+  q1[[1]] <- HTML("Round the variable <code>lat<\u002fcode> to one decimal place ie: 41.13047 rounds to 41.1.")
   q1[[2]] <- HTML("Use the <code>cut<\u002fcode> function to break the variable <code>lat<\u002fcode> into bins of increment 15. ie: (15,30], (30,45], (45,60], (60,75].")
   q1[[3]] <- HTML("Round the variable <code>alt<\u002fcode> <b>DOWN<\u002fb> to the nearest tens place. ie: 9078 would become 9070.")
 } else if(sample_data == 2){
@@ -838,9 +834,9 @@ if(sample_data == 1){
   q4[[4]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to replace the variable <code>last_name<\u002fcode> with just the first letter of the last name. ie: the first observation `Patel` will now be <code>P<\u002fcode>.")
 } else{
   q4[[1]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to create a new variable called <code>phrase<\u002fcode> that reads as '{item} contains {calories} calories'. ie: the first observation of <code>phrase<\u002fcode> would read 'Artisan Grilled Chicken Sandwich contains 378 calories.'")
-  q4[[2]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to subset each <code>item<\u002fcode> to only contain UP TO the first 5 characters. ie: the first observation 'Artisan Grilled Chicken Sandwich' would be 'Artis'.")
-  q4[[3]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to separate <code>id<\u002fcode> into two separate columns called <code>name<\u002fcode>, and <code>number<\u002fcode>. ie: the first observation 'McD_1' will have a <code>name<\u002fcode> McD and <code>number<\u002fcode> 1.")
-  q4[[4]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to count the number of letters in each <code>item<\u002fcode>.")
+  q4[[2]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to subset each <code>item<\u002fcode> to only contain UP TO the first 5 characters. ie: 'Artisan Grilled Chicken Sandwich' would be 'Artis'; 'Big Mac' would be 'Big M'")
+  q4[[3]] <- HTML("Use a function from the <code>tidyr<\u002fcode> (preferred) or <code>stringr<\u002fcode> package to separate <code>id<\u002fcode> into two separate columns called <code>name<\u002fcode>, and <code>number<\u002fcode>. ie: the first observation 'McD_1' will have a <code>name<\u002fcode> McD and <code>number<\u002fcode> 1.")
+  q4[[4]] <- HTML("Use a function from the <code>stringr<\u002fcode> package to count the number of characters in each <code>item<\u002fcode>.")
 }
 
 text_server(id = "Q4", text = q4[[ rand_q[[4]] ]])

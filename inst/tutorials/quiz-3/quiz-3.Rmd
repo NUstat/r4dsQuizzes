@@ -167,7 +167,7 @@ if(sample_data == 1){
 q1 <- list()
 
 if(sample_data == 1){
-  q1[[1]] <- HTML("Round the variable <code>lat</code> to two decimal places ie: 41.13047 rounds to 41.13.")
+  q1[[1]] <- HTML("Round the variable <code>lat</code> to one decimal place ie: 41.13047 rounds to 41.1.")
   q1[[2]] <- HTML("Use the <code>cut</code> function to break the variable <code>lat</code> into bins of increment 15. ie: (15,30], (30,45], (45,60], (60,75].")
   q1[[3]] <- HTML("Round the variable <code>alt</code> <b>DOWN</b> to the nearest tens place. ie: 9078 would become 9070.")
 } else if(sample_data == 2){
