@@ -29,9 +29,11 @@ gradethis_setup(pass = "submitted",
                 fail.hint = FALSE
                 )
 
+options(tutorial.storage = "local") 
+
 tutorialExtras_setup(is_exam = TRUE,
-                     max_retry = 3,
-                     retry_cooldown = 24)
+                     max_retry = 5,
+                     retry_cooldown = 0)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -215,7 +217,7 @@ q2 <- list()
 if(sample_data == 1){
   q2[[1]] <- HTML("We want to identify airports that are east and west of Chicago. Use <code>mutate()</code> in conjunction with <code>if_else()</code> to create a new variable that has the value <code>west</code> if <code>lon</code> is less than -87.6 and the value <code>east</code> otherwise.")
   q2[[2]] <- HTML("Use <code>mutate()</code> in conjunction with <code>case_when()</code> to create a variable with the value `high alt` if <code>alt</code> is greater than 1500; `low alt` if <code>alt</code> is less than 500; and `avg alt` otherwise.")
-  q2[[3]] <- HTML("Use <code>mutate()</code> in conjunction with <code>if_else()</code> to create a new variable called <code>high_alt</code> that is TRUE if the <code>alt</code> is greater than 1500 and has a value of FALSE, otherwise.")
+  q2[[3]] <- HTML("Use <code>mutate()</code> in conjunction with <code>if_else()</code> to create a new indicator variable called <code>high_alt</code> that is TRUE if the <code>alt</code> is greater than 1500 and has a value of FALSE, otherwise.")
 } else if(sample_data == 2){
    q2[[1]] <- HTML("Use <code>mutate()</code> in conjunction with <code>if_else()</code> to create a new variable that has the value <code>veggie</code> if the <code>type</code> is either 'veggie' or 'classic' and a value of <code>meat</code> otherwise.")
   q2[[2]] <- HTML("Use <code>mutate()</code> in conjunction with <code>case_when()</code> to create a variable with the value 'Under 20' if the <code>price</code> is less than 20, '20 to 30', if the <code>price</code> is between 20 and 30, inclusive, or 'Over 30' if the <code>price</code> is over 30.")

@@ -322,7 +322,7 @@ if(sample_data == 1){
   q4[[2]] <- HTML("Consider the <code>mod_penguin_08</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> loop to round the variables <code>bill_length_mm</code>, <code>bill_depth_mm</code>, <code>flipper_length_mm</code>, <code>body_mass_g</code> to 0 decimal places. <br> <br> Print the output to prove you are successful.")
 } else{
   q4[[1]] <- HTML("Consider the <code>football</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to create a scatterplot of each numeric variable's relationship with <code>tm_score</code>. ie: There will be 3 scatterplots with <code>y = tm_score</code> and x changing between <code>opp_score</code>, <code>passing_yds</code>, and <code>rushing_yds</code>. <br> <br> Print the output to prove you are successful.")
-  q4[[2]] <- HTML("Consider the <code>chi_weather</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to summarize the average code>temp</code>, <code>humidity</code>, <code>precip</code>, and <code>windspeed</code> by <code>icon</code>. <br> <br> Print the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>chi_weather</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to summarize the average <code>temp</code>, <code>humidity</code>, <code>precip</code>, and <code>windspeed</code> by <code>icon</code>. <br> <br> Print the output to prove you are successful.")
 }
 
 text_server(id = "Q4", text = q4[[ rand_q[[4]] ]])
