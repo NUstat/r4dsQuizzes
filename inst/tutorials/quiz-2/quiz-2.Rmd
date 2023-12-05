@@ -30,7 +30,7 @@ library(openintro)
 
 gradethis_setup(pass = "submitted",
                 fail = "submitted",
-                # exercise.completion = FALSE,
+                exercise.completion = FALSE,
                 error_checker.message = "submitted",
                 fail.hint = FALSE
                 )
@@ -93,10 +93,11 @@ question_text("Name:",
               allow_retry = FALSE )
 ```
 
-<!-- ```{r} -->
-<!-- countdown(minutes = 30L, seconds = 0L, top = 0, right = 0, start_immediately = TRUE, -->
-<!--           color_background = "gray80", color_running_background = "#E4E0EE") -->
-<!-- ``` -->
+
+```{r}
+countdown(minutes = 30L, seconds = 0L, top = 0, right = 0, start_immediately = TRUE,
+          color_background = "gray80", color_running_background = "#E4E0EE")
+```
 
 
 ## Instructions

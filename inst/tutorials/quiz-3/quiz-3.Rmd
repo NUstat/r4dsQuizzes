@@ -24,7 +24,7 @@ library(countdown)
 
 gradethis_setup(pass = "submitted",
                 fail = "submitted",
-                # exercise.completion = FALSE,
+                exercise.completion = FALSE,
                 error_checker.message = "submitted",
                 fail.hint = FALSE
                 )
