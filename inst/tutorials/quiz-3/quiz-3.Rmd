@@ -32,8 +32,8 @@ gradethis_setup(pass = "submitted",
 options(tutorial.storage = "local") 
 
 tutorialExtras_setup(is_exam = TRUE,
-                     max_retry = 5,
-                     retry_cooldown = 0)
+                     max_retry = 3,
+                     retry_cooldown = 24)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -169,17 +169,17 @@ if(sample_data == 1){
 q1 <- list()
 
 if(sample_data == 1){
-  q1[[1]] <- HTML("Round the variable <code>lat</code> to one decimal place ie: 41.13047 rounds to 41.1.")
-  q1[[2]] <- HTML("Use the <code>cut</code> function to break the variable <code>lat</code> into bins of increment 15. ie: (15,30], (30,45], (45,60], (60,75].")
-  q1[[3]] <- HTML("Round the variable <code>alt</code> <b>DOWN</b> to the nearest tens place. ie: 9078 would become 9070.")
+  q1[[1]] <- HTML("Using the <code>mod_airport</code> dataset, round the variable <code>lat</code> to one decimal place ie: 41.13047 rounds to 41.1.")
+  q1[[2]] <- HTML("Using the <code>mod_airport</code> dataset, use the <code>cut</code> function to break the variable <code>lat</code> into bins of increment 15. ie: (15,30], (30,45], (45,60], (60,75].")
+  q1[[3]] <- HTML("Using the <code>mod_airport</code> dataset, round the variable <code>alt</code> <b>DOWN</b> to the nearest tens place. ie: 9078 would become 9070.")
 } else if(sample_data == 2){
-  q1[[1]] <- HTML("Round the variable <code>price</code> <b>UP</b> to the nearest whole number ie: 13.2 rounds to 14.")
-  q1[[2]] <- HTML("Use the <code>cut</code> function to break the variable <code>price</code> into bins of increment 10. ie: (0,10], (10,20], (20,30], (30,40].")
-  q1[[3]] <- HTML("Create a variable called <code>cents</code> which is derived from the variable <code>price</code> ie: For a <code>price</code> of 13.20 the <code>cents</code> would be 20.")
+  q1[[1]] <- HTML("Using the <code>pizza</code> dataset, round the variable <code>price</code> <b>UP</b> to the nearest whole number ie: 13.2 rounds to 14.")
+  q1[[2]] <- HTML("Using the <code>pizza</code> dataset, use the <code>cut</code> function to break the variable <code>price</code> into bins of increment 10. ie: (0,10], (10,20], (20,30], (30,40].")
+  q1[[3]] <- HTML("Using the <code>pizza</code> dataset, create a variable called <code>cents</code> which is derived from the variable <code>price</code> ie: For a <code>price</code> of 13.20 the <code>cents</code> would be 20.")
 } else{
-  q1[[1]] <- HTML("Round the variable <code>calories</code> <b>UP</b> to the nearest tens place. ie: 372 would become 380.")
-  q1[[2]] <- HTML("Use the <code>cut</code> function to break the variable <code>calories</code> into bins of increment 500. ie: (0,500], (500,1000], (1000,1500], (1500,2000], (2000,2500].")
-  q1[[3]] <- HTML("Round the variable <code>calories</code> <b>UP</b> to the nearest hundreds place. ie: 372 would become 400.")
+  q1[[1]] <- HTML("Using the <code>fastfood</code> dataset, round the variable <code>calories</code> <b>UP</b> to the nearest tens place. ie: 372 would become 380.")
+  q1[[2]] <- HTML("Using the <code>fastfood</code> dataset, use the <code>cut</code> function to break the variable <code>calories</code> into bins of increment 500. ie: (0,500], (500,1000], (1000,1500], (1500,2000], (2000,2500].")
+  q1[[3]] <- HTML("Using the <code>fastfood</code> dataset, round the variable <code>calories</code> <b>UP</b> to the nearest hundreds place. ie: 372 would become 400.")
 }
 
 text_server(id = "Q1", text = q1[[ rand_q[[1]] ]])
@@ -318,7 +318,7 @@ if(sample_data == 1){
   
 } else if(sample_data == 2){
   q4[[1]] <- HTML("Use a function from the <code>stringr</code> package to create a new variable called <code>full_name</code> that combines <code>first_name</code> and <code>last_name</code>. ie: the first observation of your new variable should read <code>Jorge Patel</code>.")
-  q4[[2]] <- HTML("Use a function from the <code>tidyr</code> (preferred) or <code>stringr</code> package to separate <code>id</code> into a column called <code>year</code> and <code>order</code>. ie: the first observation '2015-000001' will have a <code>year</code> 2015 and <code>order</code> 000001 (or 1).")
+  q4[[2]] <- HTML("Use a function from the <code>tidyr</code> (preferred) or <code>stringr</code> package to separate <code>id</code> into a column called <code>year</code> and <code>order_num</code>. ie: the first observation '2015-000001' will have a <code>year</code> 2015 and <code>order_num</code> 000001 (or 1).")
   q4[[3]] <- HTML("Use a function from the <code>tidyr</code> (preferred) or <code>stringr</code> package to separate <code>time</code> into three separate columns called <code>hour</code>, <code>minute</code>, and <code>second</code>. ie: the first observation '11:38:36' will have an <code>hour</code> 11, <code>minute</code> 38, and <code>second</code> 36.")
   q4[[4]] <- HTML("Use a function from the <code>stringr</code> package to replace the variable <code>last_name</code> with just the first letter of the last name. ie: the first observation `Patel` will now be <code>P</code>.")
 } else{

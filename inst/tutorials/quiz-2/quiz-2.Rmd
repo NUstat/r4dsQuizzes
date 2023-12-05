@@ -35,6 +35,8 @@ gradethis_setup(pass = "submitted",
                 fail.hint = FALSE
                 )
 
+options(tutorial.storage = "local") 
+
 tutorialExtras_setup(is_exam = TRUE,
                      max_retry = 3,
                      retry_cooldown = 24)

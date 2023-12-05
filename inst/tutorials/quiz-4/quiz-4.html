@@ -118,7 +118,7 @@ if (window.hljs) {
 <script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
 </div>
 </div>
-<div class="countdown" id="timer_9c029d3f" data-update-every="1" data-start-immediately="true" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_83caf4e5" data-update-every="1" data-start-immediately="true" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -144,45 +144,52 @@ Exam’ button.</li>
 <h2>Data</h2>
 <p>For the following set of problems there are two potential
 datasets:</p>
-<pre><code>## [1] &quot;Dataset: patient_profile&quot;
-## Rows: 107
-## Columns: 6
-## $ patient_id     &lt;chr&gt; &quot;x1048&quot;, &quot;x1150&quot;, &quot;x1194&quot;, &quot;x1216&quot;, &quot;x1293&quot;, &quot;x1554&quot;, &quot;…
-## $ dob            &lt;chr&gt; &quot;25-Mar-62&quot;, &quot;1-Jun-53&quot;, &quot;21-Jun-79&quot;, &quot;7-Mar-75&quot;, &quot;13-M…
-## $ sex            &lt;chr&gt; &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;…
-## $ marital_status &lt;chr&gt; &quot;married&quot;, &quot;single&quot;, &quot;divorced&quot;, &quot;single&quot;, &quot;single&quot;, &quot;w…
-## $ race           &lt;chr&gt; &quot;other&quot;, &quot;asian&quot;, &quot;other&quot;, &quot;other&quot;, &quot;hispanic&quot;, &quot;white&quot;…
-## $ education      &lt;chr&gt; &quot;HS&quot;, &quot;Associates&quot;, &quot;BA/BS&quot;, &quot;Associates&quot;, &quot;HS&quot;, &quot;BA/BS…</code></pre>
+<pre><code>## [1] &quot;Dataset: pizza_order&quot;
+## Rows: 1,845
+## Columns: 15
+## $ id         &lt;chr&gt; &quot;2015-000001&quot;, &quot;2015-000002&quot;, &quot;2015-000003&quot;, &quot;2015-000004&quot;,…
+## $ order_date &lt;chr&gt; &quot;1-Jan-2015&quot;, &quot;1-Jan-2015&quot;, &quot;1-Jan-2015&quot;, &quot;1-Jan-2015&quot;, &quot;1-…
+## $ order_time &lt;time&gt; 11:38:36, 11:57:40, 12:12:28, 12:16:31, 12:21:30, 12:29:36…
+## $ price      &lt;dbl&gt; 13.25, 92.00, 37.25, 16.50, 16.50, 24.75, 12.50, 12.50, 143…
+## $ num_pizza  &lt;dbl&gt; 1, 5, 2, 1, 1, 2, 1, 1, 9, 2, 4, 4, 1, 1, 4, 3, 11, 1, 2, 2…
+## $ size_1     &lt;chr&gt; &quot;medium&quot;, &quot;medium&quot;, &quot;large&quot;, &quot;medium&quot;, &quot;medium&quot;, &quot;small&quot;, &quot;…
+## $ pizza_1    &lt;chr&gt; &quot;hawaiian&quot;, &quot;classic_dlx&quot;, &quot;prsc_argla&quot;, &quot;ital_supr&quot;, &quot;ital…
+## $ size_2     &lt;chr&gt; NA, &quot;medium&quot;, &quot;medium&quot;, NA, NA, &quot;small&quot;, NA, NA, &quot;small&quot;, &quot;…
+## $ pizza_2    &lt;chr&gt; NA, &quot;mexicana&quot;, &quot;ital_supr&quot;, NA, NA, &quot;the_greek&quot;, NA, NA, &quot;…
+## $ size_3     &lt;chr&gt; NA, &quot;large&quot;, NA, NA, NA, NA, NA, NA, &quot;large&quot;, NA, &quot;medium&quot;,…
+## $ pizza_3    &lt;chr&gt; NA, &quot;thai_ckn&quot;, NA, NA, NA, NA, NA, NA, &quot;spin_pesto&quot;, NA, &quot;…
+## $ size_4     &lt;chr&gt; NA, &quot;large&quot;, NA, NA, NA, NA, NA, NA, &quot;large&quot;, NA, &quot;large&quot;, …
+## $ pizza_4    &lt;chr&gt; NA, &quot;five_cheese&quot;, NA, NA, NA, NA, NA, NA, &quot;spicy_ital&quot;, NA…
+## $ size_5     &lt;chr&gt; NA, &quot;large&quot;, NA, NA, NA, NA, NA, NA, &quot;large&quot;, NA, NA, NA, N…
+## $ pizza_5    &lt;chr&gt; NA, &quot;ital_supr&quot;, NA, NA, NA, NA, NA, NA, &quot;ital_cpcllo&quot;, NA,…</code></pre>
 <p><br></p>
-<pre><code>## [1] &quot;Dataset: medical_record&quot;
-## Rows: 105
-## Columns: 7
-## $ id              &lt;chr&gt; &quot;x3462&quot;, &quot;x3510&quot;, &quot;x3985&quot;, &quot;x2841&quot;, &quot;x4370&quot;, &quot;x5760&quot;, …
-## $ apt_date        &lt;chr&gt; &quot;2012-6-5&quot;, &quot;2015-3-23&quot;, &quot;2012-8-14&quot;, &quot;2011-3-14&quot;, &quot;20…
-## $ chest_pain_type &lt;dbl&gt; 4, 3, 2, 4, 2, 4, 3, 4, 4, 4, 4, 4, 3, 1, 4, 4, 4, 4, …
-## $ bp              &lt;dbl&gt; 130, 115, 124, 128, 120, 120, 130, 110, 140, 150, 135,…
-## $ cholesterol     &lt;dbl&gt; 322, 564, 261, 263, 269, 177, 256, 239, 293, 407, 234,…
-## $ ekg_results     &lt;dbl&gt; 2, 2, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 2, 0, 2, 0, 0, 2, …
-## $ max_hr          &lt;dbl&gt; 109, 160, 141, 105, 121, 140, 142, 142, 170, 154, 161,…</code></pre>
+<pre><code>## [1] &quot;Dataset: pizza_delivery&quot;
+## Rows: 1,845
+## Columns: 5
+## $ order_id      &lt;chr&gt; &quot;2015-000431&quot;, &quot;2015-001138&quot;, &quot;2015-001321&quot;, &quot;2015-00025…
+## $ delivery_time &lt;time&gt; 11:46:39, 11:48:13, 11:50:56, 11:53:38, 11:55:54, 11:56…
+## $ first_name    &lt;chr&gt; &quot;Camille&quot;, &quot;Gracie&quot;, &quot;Forrest&quot;, &quot;Rosie&quot;, &quot;Titus&quot;, &quot;Arche…
+## $ last_name     &lt;chr&gt; &quot;Rubio&quot;, &quot;Mitchell&quot;, &quot;Curtis&quot;, &quot;Hensley&quot;, &quot;Paul&quot;, &quot;Richa…
+## $ order_details &lt;chr&gt; &quot;small ckn_alfredo;large four_cheese;large hawaiian;smal…</code></pre>
 </div>
 <div id="section-question-1" class="section level2">
 <h2>Question 1</h2>
-<div id="Q1-text" class="shiny-html-output"></div>
-<p><br></p>
-<p>The variable of interest is shown below.</p>
-<pre><code>## Rows: 107
-## Columns: 1
-## $ dob &lt;chr&gt; &quot;25-Mar-62&quot;, &quot;1-Jun-53&quot;, &quot;21-Jun-79&quot;, &quot;7-Mar-75&quot;, &quot;13-Mar-73&quot;, &quot;25…</code></pre>
-<p><br></p>
-<div class="tutorial-exercise" data-label="Q1" data-completion="1"
+<div id="Q2-text" class="shiny-html-output"></div>
+<div class="tutorial-exercise" data-label="Q2" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
 <div id="section-question-2" class="section level2">
 <h2>Question 2</h2>
-<div id="Q2-text" class="shiny-html-output"></div>
-<div class="tutorial-exercise" data-label="Q2" data-completion="1"
+<div id="Q1-text" class="shiny-html-output"></div>
+<p><br></p>
+<p>The variable of interest is shown below.</p>
+<pre><code>## Rows: 10
+## Columns: 1
+## $ due_date &lt;chr&gt; &quot;10/1/23&quot;, &quot;10/8/23&quot;, &quot;10/15/23&quot;, &quot;10/15/23&quot;, &quot;10/22/23&quot;, &quot;10…</code></pre>
+<p><br></p>
+<div class="tutorial-exercise" data-label="Q1" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
@@ -257,8 +264,8 @@ gradethis_setup(pass = "submitted",
 options(tutorial.storage = "local") 
 
 tutorialExtras_setup(is_exam = TRUE,
-                     max_retry = 3,
-                     retry_cooldown = 12)
+                     max_retry = Inf,
+                     retry_cooldown = 0)
 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -283,6 +290,9 @@ holidays <- read_csv("data/holidays.csv")
 schedule <- read_csv("data/schedule.csv")
 
 data <- c("pizza", "medical", "penguins", "football")
+
+rand_q <- c(2, 1, 1, 1)
+sample_data <- 1
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
@@ -313,7 +323,7 @@ reset_server("reset", file_name = "quiz-4", package_name = "r4dsQuizzes")
 
 <script type="application/shiny-prerendered" data-context="server">
 tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text", label = "Name", question = structure("Name:", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_c8440fe", 
+"character")), answers = list(structure(list(id = "lnr_ans_45970ea", 
     option = "function (value) \n{\n    if (length(value) >= 1) {\n        return(mark_as(TRUE))\n    }\n    return(mark_as(FALSE))\n}", 
     value = "function (value) \n{\n    if (length(value) >= 1) {\n        return(mark_as(TRUE))\n    }\n    return(mark_as(FALSE))\n}", 
     label = NULL, correct = NULL, message = NULL, type = "function"), class = c("tutorial_question_answer", 
@@ -324,90 +334,11 @@ tutorialExtras:::question_prerendered_chunk(structure(list(type = "learnr_text",
 "character")), incorrect = structure("submitted", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "Name-answer", question = "Name"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = FALSE, seed = 1352655356.37012, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 764057407.144208, 
     options = list(placeholder = "Enter answer here...", trim = TRUE)), class = c("learnr_text", 
 "tutorial_question")), session = session)
 </script>
  
-<script type="application/shiny-prerendered" data-context="server">
-q1 <- list()
-
-if(sample_data == 1){
-  q1[[1]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>order_date<\u002fcode> in the dataset <code>pizza_order<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>order_date<\u002fcode> is now a date object.")
-  q1[[2]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>due_date<\u002fcode> in the dataset <code>schedule<\u002fcode>. <br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>due_date<\u002fcode> is now a date object.")
-} else if(sample_data == 2){
-  q1[[1]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>dob<\u002fcode> in the dataset <code>patient_profile<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>dob<\u002fcode> is now a date object.")
-  q1[[2]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>apt_date<\u002fcode> in the dataset <code>medical_record<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>apt_date<\u002fcode> is now a date object.")
-} else if(sample_data == 3){
-  q1[[1]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>date_egg<\u002fcode> in the dataset <code>mod_penguin_07<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>date_egg<\u002fcode> is now a date object.")
-  q1[[2]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>date_2024<\u002fcode> in the dataset <code>holidays<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>date_2024<\u002fcode> is now a date object.")
-} else{
-  q1[[1]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>game_date<\u002fcode> in the dataset <code>football<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>game_date<\u002fcode> is now a date object.")
-  q1[[2]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>date<\u002fcode> in the dataset <code>weather<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>date<\u002fcode> is now a date object.")
-}
-
-
-text_server(id = "Q1", text = q1[[ rand_q[[1]] ]])
-</script>
-
-
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-Q1-result` <- tutorialExtras:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-Q1-code-editor`)), session)
-output$`tutorial-exercise-Q1-output` <- renderUI({
-  `tutorial-exercise-Q1-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "Q1", global_setup = structure(c("library(skimr)", 
-"library(learnr)", "library(tidyverse)", "library(tutorialExtras)", 
-"library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
-"                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
-"                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
-"                )", "", "options(tutorial.storage = \"local\") ", 
-"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
-"                     retry_cooldown = 12)", "", "knitr::opts_chunk$set(echo = FALSE)", 
-"", "sample_data <- ceiling((rand_int*4/10))", "", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
-"", "", "pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", 
-"pizza_order <- read_csv(\"data/pizza_order.csv\")", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
-"patient_profile <- read_csv(\"data/patient_profile.csv\")", 
-"", "mod_penguin_07 <- read_csv(\"data/mod_penguin_07.csv\")", 
-"mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "", 
-"football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
-"", "holidays <- read_csv(\"data/holidays.csv\")", "schedule <- read_csv(\"data/schedule.csv\")", 
-"", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "Q1", code = "", opts = list(label = "\"Q1\"", 
-        exercise = "TRUE"), engine = "r")), code_check = NULL, 
-    error_check = NULL, check = structure(c("grade_this_code(", 
-    "  correct = \"submitted\",", "  incorrect = \"submitted\"", 
-    ")"), chunk_opts = list(label = "Q1-check")), solution = structure("ggplot()", chunk_opts = list(
-        label = "Q1-solution", exercise.reveal_solution = FALSE)), 
-    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "quiz-4_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "quiz-4_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "Q1", exercise = TRUE, code = "", out.width.px = 624, 
-        out.height.px = 384, params.src = "Q1, exercise=TRUE", 
-        fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
-    version = "4"), class = c("r", "tutorial_exercise")))
-</script>
-
-
 <script type="application/shiny-prerendered" data-context="server">
 q2 <- list()
 
@@ -419,7 +350,6 @@ if(sample_data == 1){
   q2[[2]] <- HTML("Combine <code>medical_record<\u002fcode> and <code>patient_profile<\u002fcode>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are ONLY interested in keeping records that are in both datasets. <br> <br> <b>Print only<\u002fb> a side-by-side boxplot of <code>max_hr<\u002fcode> by <code>sex<\u002fcode> to prove you were successful.")
 }else if(sample_data == 3){
   q2[[1]] <- HTML("Combine <code>mod_penguin_07<\u002fcode> and <code>mod_penguin_08<\u002fcode> such that the final dataset is in tidy format. <br> <br> <b>Print only<\u002fb> a barplot of <code>island<\u002fcode> faceted by <code>year<\u002fcode> to prove you were successful.")
-  #row binds
   q2[[2]] <- HTML("Combine <code>mod_penguin_07<\u002fcode> and <code>mod_penguin_08<\u002fcode> such that the final dataset is in tidy format. <br> <br> <b>Print only<\u002fb> a side-by-side boxplot of <code>body_mass_g<\u002fcode> by <code>year<\u002fcode> to prove you were successful.")
 }else{
   q2[[1]] <- HTML("Use an appropriate <code>join<\u002fcode> to combine the <code>football<\u002fcode> and <code>chi_weather<\u002fcode> dataset so that you can determine if there is a relationship between <code>passing_yds<\u002fcode> and <code>windspeed<\u002fcode>. <br> <br> <b>Print only<\u002fb> a scatterplot of the relationship with a <code>geom_smooth<\u002fcode> to prove you were successful.")
@@ -428,15 +358,15 @@ if(sample_data == 1){
 
 text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-Q2-result` <- tutorialExtras:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-Q2-code-editor`)), session)
 output$`tutorial-exercise-Q2-output` <- renderUI({
   `tutorial-exercise-Q2-result`()
 })
 </script>
-
-
+ 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "Q2", global_setup = structure(c("library(skimr)", 
 "library(learnr)", "library(tidyverse)", "library(tutorialExtras)", 
@@ -444,8 +374,8 @@ learnr:::store_exercise_cache(structure(list(label = "Q2", global_setup = struct
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
 "                )", "", "options(tutorial.storage = \"local\") ", 
-"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
-"                     retry_cooldown = 12)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = Inf,", 
+"                     retry_cooldown = 0)", "", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "sample_data <- ceiling((rand_int*4/10))", "", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
 "", "", "pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", 
 "pizza_order <- read_csv(\"data/pizza_order.csv\")", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
@@ -454,9 +384,10 @@ learnr:::store_exercise_cache(structure(list(label = "Q2", global_setup = struct
 "mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "", 
 "football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
 "", "holidays <- read_csv(\"data/holidays.csv\")", "schedule <- read_csv(\"data/schedule.csv\")", 
-"", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "Q2", code = "", opts = list(label = "\"Q2\"", 
+"", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")", 
+"", "rand_q <- c(2, 1, 1, 1)", "sample_data <- 1"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q2", code = "", opts = list(label = "\"Q2\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"submitted\",", "  incorrect = \"submitted\"", 
@@ -485,6 +416,86 @@ learnr:::store_exercise_cache(structure(list(label = "Q2", global_setup = struct
         fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+q1 <- list()
+
+if(sample_data == 1){
+  q1[[1]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>order_date<\u002fcode> in the dataset <code>pizza_order<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>order_date<\u002fcode> is now a date object.")
+   q1[[2]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>due_date<\u002fcode> in the dataset <code>schedule<\u002fcode>. <br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>due_date<\u002fcode> is now a date object.")
+} else if(sample_data == 2){
+  q1[[1]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>dob<\u002fcode> in the dataset <code>patient_profile<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>dob<\u002fcode> is now a date object.")
+  q1[[2]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>apt_date<\u002fcode> in the dataset <code>medical_record<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>apt_date<\u002fcode> is now a date object.")
+} else if(sample_data == 3){
+  q1[[1]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>date_egg<\u002fcode> in the dataset <code>mod_penguin_07<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>date_egg<\u002fcode> is now a date object.")
+  q1[[2]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>date_2024<\u002fcode> in the dataset <code>holidays<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>date_2024<\u002fcode> is now a date object.")
+} else{
+  q1[[1]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>game_date<\u002fcode> in the dataset <code>football<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>game_date<\u002fcode> is now a date object.")
+  q1[[2]] <- HTML("Use the appropriate <code>lubridate<\u002fcode> function to parse the variable <code>date<\u002fcode> in the dataset <code>chi_weather<\u002fcode>.<br> <br> Print a <code>glimpse()<\u002fcode> of the dataset to prove <code>date<\u002fcode> is now a date object.")
+}
+
+
+text_server(id = "Q1", text = q1[[ rand_q[[1]] ]])
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-Q1-result` <- tutorialExtras:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-Q1-code-editor`)), session)
+output$`tutorial-exercise-Q1-output` <- renderUI({
+  `tutorial-exercise-Q1-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "Q1", global_setup = structure(c("library(skimr)", 
+"library(learnr)", "library(tidyverse)", "library(tutorialExtras)", 
+"library(gradethis)", "library(countdown)", "", "gradethis_setup(pass = \"submitted\",", 
+"                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
+"                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
+"                )", "", "options(tutorial.storage = \"local\") ", 
+"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = Inf,", 
+"                     retry_cooldown = 0)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"", "sample_data <- ceiling((rand_int*4/10))", "", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
+"", "", "pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", 
+"pizza_order <- read_csv(\"data/pizza_order.csv\")", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
+"patient_profile <- read_csv(\"data/patient_profile.csv\")", 
+"", "mod_penguin_07 <- read_csv(\"data/mod_penguin_07.csv\")", 
+"mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "", 
+"football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
+"", "holidays <- read_csv(\"data/holidays.csv\")", "schedule <- read_csv(\"data/schedule.csv\")", 
+"", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")", 
+"", "rand_q <- c(2, 1, 1, 1)", "sample_data <- 1"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q1", code = "", opts = list(label = "\"Q1\"", 
+        exercise = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = structure(c("grade_this_code(", 
+    "  correct = \"submitted\",", "  incorrect = \"submitted\"", 
+    ")"), chunk_opts = list(label = "Q1-check")), solution = structure("ggplot()", chunk_opts = list(
+        label = "Q1-solution", exercise.reveal_solution = FALSE)), 
+    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "quiz-4_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "quiz-4_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
+        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ..., \n    solution_eval_fn = NULL) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "Q1", exercise = TRUE, code = "", out.width.px = 624, 
+        out.height.px = 384, params.src = "Q1, exercise=TRUE", 
+        fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
+    version = "4"), class = c("r", "tutorial_exercise")))
+</script>
  
 <script type="application/shiny-prerendered" data-context="server">
 q3 <- list()
@@ -496,13 +507,13 @@ Test your function using the <code>pizza_order<\u002fcode> dataset, <code>price<
 Test your function using the <code>pizza_order<\u002fcode> dataset, <code>price<\u002fcode> variable, and <code>bins<\u002fcode> value of your choice.")
 } else if(sample_data == 2){
   q3[[1]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and bins. <br> <br> 
-Test your function using the <code>medical_record<\u002fcode> dataset, <code>max_hr<\u002fcode> variable, and <code>bin<\u002fcode> value of your choice.")
+Test your function using the <code>medical_record<\u002fcode> dataset, <code>max_hr<\u002fcode> variable, and <code>bins<\u002fcode> value of your choice.")
   q3[[2]] <-  HTML("Write a function that creates a barplot given a dataset and categorical variable. Add a title to the plot. The title should be something similar to: 'Distribution of {variable}'. <br> <br> 
 Test your function using the <code>patient_profile<\u002fcode> dataset and <code>education<\u002fcode> variable.")
 } else if(sample_data == 3){
   q3[[1]] <-  HTML("Write a function that takes a dataset and then computes the median of a numeric variable by a categorical variable. <br> <br> 
 Test your function using the <code>mod_penguin_08<\u002fcode> dataset, <code>island<\u002fcode> variable, and <code>flipper_length_mm<\u002fcode> variable.")
-  q3[[2]] <-  HTML("Write a function that takes a dataset and a numeric variable and returns exactly 2 observations: the largest observation and the smallest observation based on that variable. <br> <br> 
+  q3[[2]] <-  HTML("Write a function that takes a dataset and a numeric variable and returns exactly 2 values: the largest value and the smallest value based on that variable. <br> <br> 
 Test your function using the <code>mod_penguin_08<\u002fcode> dataset and <code>body_mass_g<\u002fcode> variable.")
 }else{
   q3[[1]] <-  HTML("Write a function that takes a dataset and a numeric variable and standardizes the variable. For a variable <code>x<\u002fcode>, standardization is done as follows: ( x - mean(x)) / sd(x). <br> <br> 
@@ -529,8 +540,8 @@ learnr:::store_exercise_cache(structure(list(label = "Q3", global_setup = struct
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
 "                )", "", "options(tutorial.storage = \"local\") ", 
-"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
-"                     retry_cooldown = 12)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = Inf,", 
+"                     retry_cooldown = 0)", "", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "sample_data <- ceiling((rand_int*4/10))", "", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
 "", "", "pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", 
 "pizza_order <- read_csv(\"data/pizza_order.csv\")", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
@@ -539,9 +550,10 @@ learnr:::store_exercise_cache(structure(list(label = "Q3", global_setup = struct
 "mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "", 
 "football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
 "", "holidays <- read_csv(\"data/holidays.csv\")", "schedule <- read_csv(\"data/schedule.csv\")", 
-"", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "Q3", code = "", opts = list(label = "\"Q3\"", 
+"", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")", 
+"", "rand_q <- c(2, 1, 1, 1)", "sample_data <- 1"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q3", code = "", opts = list(label = "\"Q3\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"submitted\",", "  incorrect = \"submitted\"", 
@@ -577,16 +589,16 @@ q4 <- list()
 
 if(sample_data == 1){
   q4[[1]] <- HTML("Consider the <code>pizza_order<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to convert the variables <code>size_1<\u002fcode>, <code>pizza_1<\u002fcode>, <code>size_2<\u002fcode>, <code>pizza_2<\u002fcode>, <code>size_3<\u002fcode>, <code>pizza_3<\u002fcode>, <code>size_4<\u002fcode>, <code>pizza_4<\u002fcode>, <code>size_5<\u002fcode>, <code>pizza_5<\u002fcode> to factor variables. <br> <br> Print a <code>glimpse()<\u002fcode> of the output to prove you are successful.")
-  q4[[2]] <- HTML("Consider the <code>pizza_order<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to calculate the count and proportion of the categorical variables <code>size_1<\u002fcode>, <code>size_2<\u002fcode>, <code>size_3<\u002fcode>, <code>size_4<\u002fcode>, <code>size_5<\u002fcode>. Recall proportion can be calculated as 'n/sum(n)'. <br> <br> Print the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>pizza_order<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to calculate the count and proportion of each category within the categorical variables <code>size_1<\u002fcode>, <code>size_2<\u002fcode>, <code>size_3<\u002fcode>, <code>size_4<\u002fcode>, <code>size_5<\u002fcode>. <br> <br> Clarification: For <code>size_1<\u002fcode> we will have the count and proportion of <code>S<\u002fcode>, <code>M<\u002fcode>, <code>L<\u002fcode>, <code>XL<\u002fcode>, <code>XXL<\u002fcode>. Then same for <code>size_2<\u002fcode> and so forth.  <br> <br> Print the output to prove you are successful.")
 } else if(sample_data == 2){
   q4[[1]] <- HTML("Consider the <code>medical_record<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to standardize the variables <code>bp<\u002fcode>, <code>cholesterol<\u002fcode>, <code>ekg_results<\u002fcode>, and <code>max_hr<\u002fcode>. For a variable <code>x<\u002fcode>, standardization is done as follows: (x - mean(x)) / sd(x). <br> <br> Print the output to prove you are successful.")
-  q4[[2]] <- HTML("Consider the <code>medical_record<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to calculate the min, max, and range of the variables <code>bp<\u002fcode>, <code>cholesterol<\u002fcode>, and <code>max_hr<\u002fcode>. <br> <br> Print the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>medical_record<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to calculate the min, max, and range (range = max-min) of the variables <code>bp<\u002fcode>, <code>cholesterol<\u002fcode>, and <code>max_hr<\u002fcode>. <br> <br> Print the output to prove you are successful.")
 }else if(sample_data == 3){
-  q4[[1]] <- HTML("Consider the <code>mod_penguin_08<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to create a scatterplot of each numeric variable's relationship with <code>body_mass_g<\u002fcode>. ie: There will be 3 scatterplots with <code>y = body_mass_g<\u002fcode> and x changing between <code>flipper_length_mm<\u002fcode>, <code>bill_depth_mm<\u002fcode>, and <code>bill_length_mm<\u002fcode>. <br> <br> Print the output to prove you are successful.")
+  q4[[1]] <- HTML("Consider the <code>mod_penguin_08<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to create a scatterplot of certain numeric variable's relationship with <code>body_mass_g<\u002fcode>. ie: There will be 3 scatterplots with <code>y = body_mass_g<\u002fcode> and x changing between <code>flipper_length_mm<\u002fcode>, <code>bill_depth_mm<\u002fcode>, and <code>bill_length_mm<\u002fcode>. <br> <br> Print the output to prove you are successful.")
   q4[[2]] <- HTML("Consider the <code>mod_penguin_08<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> loop to round the variables <code>bill_length_mm<\u002fcode>, <code>bill_depth_mm<\u002fcode>, <code>flipper_length_mm<\u002fcode>, <code>body_mass_g<\u002fcode> to 0 decimal places. <br> <br> Print the output to prove you are successful.")
 } else{
-  q4[[1]] <- HTML("Consider the <code>football<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to create a scatterplot of each numeric variable's relationship with <code>tm_score<\u002fcode>. ie: There will be 3 scatterplots with <code>y = tm_score<\u002fcode> and x changing between <code>opp_score<\u002fcode>, <code>passing_yds<\u002fcode>, and <code>rushing_yds<\u002fcode>. <br> <br> Print the output to prove you are successful.")
-  q4[[2]] <- HTML("Consider the <code>chi_weather<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to summarize the average code>temp<\u002fcode>, <code>humidity<\u002fcode>, <code>precip<\u002fcode>, and <code>windspeed<\u002fcode> by <code>icon<\u002fcode>. <br> <br> Print the output to prove you are successful.")
+  q4[[1]] <- HTML("Consider the <code>football<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to create a scatterplot of certain numeric variable's relationship with <code>tm_score<\u002fcode>. ie: There will be 4 scatterplots with <code>y = tm_score<\u002fcode> and x changing between <code>opp_score<\u002fcode>, <code>passing_yds<\u002fcode>, <code>rushing_yds<\u002fcode> and <code>avg_punt_yds<\u002fcode>. <br> <br> Print the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>chi_weather<\u002fcode> dataset. Use either <code>across()<\u002fcode>, <code>map()<\u002fcode> or <code>for()<\u002fcode> to summarize the average <code>temp<\u002fcode>, <code>humidity<\u002fcode>, <code>precip<\u002fcode>, and <code>windspeed<\u002fcode> by <code>icon<\u002fcode>. <br> <br> Print the output to prove you are successful.")
 }
 
 text_server(id = "Q4", text = q4[[ rand_q[[4]] ]])
@@ -607,8 +619,8 @@ learnr:::store_exercise_cache(structure(list(label = "Q4", global_setup = struct
 "                fail = \"submitted\",", "                # exercise.completion = FALSE,", 
 "                error_checker.message = \"submitted\",", "                fail.hint = FALSE", 
 "                )", "", "options(tutorial.storage = \"local\") ", 
-"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = 3,", 
-"                     retry_cooldown = 12)", "", "knitr::opts_chunk$set(echo = FALSE)", 
+"", "tutorialExtras_setup(is_exam = TRUE,", "                     max_retry = Inf,", 
+"                     retry_cooldown = 0)", "", "knitr::opts_chunk$set(echo = FALSE)", 
 "", "sample_data <- ceiling((rand_int*4/10))", "", "rand_q <- c(sample(1:2, 1), sample(1:2, 1), sample(1:2, 1), sample(1:2, 1))", 
 "", "", "pizza_delivery <- read_csv(\"data/pizza_delivery.csv\")", 
 "pizza_order <- read_csv(\"data/pizza_order.csv\")", "", "medical_record <- read_csv(\"data/medical_record.csv\")", 
@@ -617,9 +629,10 @@ learnr:::store_exercise_cache(structure(list(label = "Q4", global_setup = struct
 "mod_penguin_08 <- read_csv(\"data/mod_penguin_08.csv\")", "", 
 "football <- read_csv(\"data/football.csv\")", "chi_weather <- read_csv(\"data/chi_weather.csv\")", 
 "", "holidays <- read_csv(\"data/holidays.csv\")", "schedule <- read_csv(\"data/schedule.csv\")", 
-"", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "Q4", code = "", opts = list(label = "\"Q4\"", 
+"", "data <- c(\"pizza\", \"medical\", \"penguins\", \"football\")", 
+"", "rand_q <- c(2, 1, 1, 1)", "sample_data <- 1"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "Q4", code = "", opts = list(label = "\"Q4\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_this_code(", 
     "  correct = \"submitted\",", "  incorrect = \"submitted\"", 

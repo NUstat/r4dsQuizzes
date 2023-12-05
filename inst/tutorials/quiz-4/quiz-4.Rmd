@@ -58,6 +58,7 @@ holidays <- read_csv("data/holidays.csv")
 schedule <- read_csv("data/schedule.csv")
 
 data <- c("pizza", "medical", "penguins", "football")
+
 ```
 
 ```{r, context = "server"}
@@ -140,15 +141,56 @@ if(sample_data == 1){
 ```
 
 
-
 ## Question 1
+
+```{r, context = "server"}
+q2 <- list()
+
+if(sample_data == 1){
+  q2[[1]] <- HTML("Combine <code>pizza_order</code> and <code>pizza_delivery</code> to find out which customer(s) <code>price</code> was the most expensive. <br> <br> <b>Print only</b> the observation(s) with the most expensive order.")
+  q2[[2]] <- HTML("Combine <code>pizza_order</code> and <code>pizza_delivery</code> to find out which customer(s) <code>price</code> was the least expensive. <br> <br> <b>Print only</b> the observation(s) with the least expensive order.")
+} else if(sample_data == 2){
+  q2[[1]] <- HTML("Combine <code>medical_record</code> and <code>patient_profile</code>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are interested in keeping ALL records in both datasets. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>bp</code> by <code>sex</code> to prove you were successful.")
+  q2[[2]] <- HTML("Combine <code>medical_record</code> and <code>patient_profile</code>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are ONLY interested in keeping records that are in both datasets. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>max_hr</code> by <code>sex</code> to prove you were successful.")
+}else if(sample_data == 3){
+  q2[[1]] <- HTML("Combine <code>mod_penguin_07</code> and <code>mod_penguin_08</code> such that the final dataset is in tidy format. <br> <br> <b>Print only</b> a barplot of <code>island</code> faceted by <code>year</code> to prove you were successful.")
+  q2[[2]] <- HTML("Combine <code>mod_penguin_07</code> and <code>mod_penguin_08</code> such that the final dataset is in tidy format. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>body_mass_g</code> by <code>year</code> to prove you were successful.")
+}else{
+  q2[[1]] <- HTML("Use an appropriate <code>join</code> to combine the <code>football</code> and <code>chi_weather</code> dataset so that you can determine if there is a relationship between <code>passing_yds</code> and <code>windspeed</code>. <br> <br> <b>Print only</b> a scatterplot of the relationship with a <code>geom_smooth</code> to prove you were successful.")
+  q2[[2]] <- HTML("Use an appropriate <code>join</code> to combine the <code>football</code> and <code>chi_weather</code> dataset so that you can determine if there is a relationship between <code>passing_yds</code> and weather condition (<code>icon</code>). <br> <br> <b>Print only</b> a summary table of the average <code>passing_yds</code> by weather condition (<code>icon</code>) and arrange appropriately to detect a possible trend to prove you were successful.")
+}
+
+text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
+```
+
+```{r Question2}
+text_ui(id = "Q2")
+```
+
+
+```{r Q2, exercise=TRUE}
+
+```
+
+```{r Q2-solution, exercise.reveal_solution = FALSE}
+ggplot()
+```
+
+```{r Q2-check}
+grade_this_code(
+  correct = "submitted",
+  incorrect = "submitted"
+)
+```
+
+## Question 2
 
 ```{r, context = "server"}
 q1 <- list()
 
 if(sample_data == 1){
   q1[[1]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>order_date</code> in the dataset <code>pizza_order</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>order_date</code> is now a date object.")
-  q1[[2]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>due_date</code> in the dataset <code>schedule</code>. <br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>due_date</code> is now a date object.")
+   q1[[2]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>due_date</code> in the dataset <code>schedule</code>. <br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>due_date</code> is now a date object.")
 } else if(sample_data == 2){
   q1[[1]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>dob</code> in the dataset <code>patient_profile</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>dob</code> is now a date object.")
   q1[[2]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>apt_date</code> in the dataset <code>medical_record</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>apt_date</code> is now a date object.")
@@ -157,7 +199,7 @@ if(sample_data == 1){
   q1[[2]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>date_2024</code> in the dataset <code>holidays</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>date_2024</code> is now a date object.")
 } else{
   q1[[1]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>game_date</code> in the dataset <code>football</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>game_date</code> is now a date object.")
-  q1[[2]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>date</code> in the dataset <code>weather</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>date</code> is now a date object.")
+  q1[[2]] <- HTML("Use the appropriate <code>lubridate</code> function to parse the variable <code>date</code> in the dataset <code>chi_weather</code>.<br> <br> Print a <code>glimpse()</code> of the dataset to prove <code>date</code> is now a date object.")
 }
 
 
@@ -211,49 +253,6 @@ grade_this_code(
 ```
 
 
-## Question 2
-
-```{r, context = "server"}
-q2 <- list()
-
-if(sample_data == 1){
-  q2[[1]] <- HTML("Combine <code>pizza_order</code> and <code>pizza_delivery</code> to find out which customer(s) <code>price</code> was the most expensive. <br> <br> <b>Print only</b> the observation(s) with the most expensive order.")
-  q2[[2]] <- HTML("Combine <code>pizza_order</code> and <code>pizza_delivery</code> to find out which customer(s) <code>price</code> was the least expensive. <br> <br> <b>Print only</b> the observation(s) with the least expensive order.")
-} else if(sample_data == 2){
-  q2[[1]] <- HTML("Combine <code>medical_record</code> and <code>patient_profile</code>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are interested in keeping ALL records in both datasets. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>bp</code> by <code>sex</code> to prove you were successful.")
-  q2[[2]] <- HTML("Combine <code>medical_record</code> and <code>patient_profile</code>. Some people filled out their profile but never went to their appointment. Some people went to their appointment but never filled out their profile. We are ONLY interested in keeping records that are in both datasets. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>max_hr</code> by <code>sex</code> to prove you were successful.")
-}else if(sample_data == 3){
-  q2[[1]] <- HTML("Combine <code>mod_penguin_07</code> and <code>mod_penguin_08</code> such that the final dataset is in tidy format. <br> <br> <b>Print only</b> a barplot of <code>island</code> faceted by <code>year</code> to prove you were successful.")
-  #row binds
-  q2[[2]] <- HTML("Combine <code>mod_penguin_07</code> and <code>mod_penguin_08</code> such that the final dataset is in tidy format. <br> <br> <b>Print only</b> a side-by-side boxplot of <code>body_mass_g</code> by <code>year</code> to prove you were successful.")
-}else{
-  q2[[1]] <- HTML("Use an appropriate <code>join</code> to combine the <code>football</code> and <code>chi_weather</code> dataset so that you can determine if there is a relationship between <code>passing_yds</code> and <code>windspeed</code>. <br> <br> <b>Print only</b> a scatterplot of the relationship with a <code>geom_smooth</code> to prove you were successful.")
-  q2[[2]] <- HTML("Use an appropriate <code>join</code> to combine the <code>football</code> and <code>chi_weather</code> dataset so that you can determine if there is a relationship between <code>passing_yds</code> and weather condition (<code>icon</code>). <br> <br> <b>Print only</b> a summary table of the average <code>passing_yds</code> by weather condition (<code>icon</code>) and arrange appropriately to detect a possible trend to prove you were successful.")
-}
-
-text_server(id = "Q2", text = q2[[ rand_q[[2]] ]])
-```
-
-```{r Question2}
-text_ui(id = "Q2")
-```
-
-
-```{r Q2, exercise=TRUE}
-
-```
-
-```{r Q2-solution, exercise.reveal_solution = FALSE}
-ggplot()
-```
-
-```{r Q2-check}
-grade_this_code(
-  correct = "submitted",
-  incorrect = "submitted"
-)
-```
-
 ## Question 3
 
 ```{r, context = "server"}
@@ -266,13 +265,13 @@ Test your function using the <code>pizza_order</code> dataset, <code>price</code
 Test your function using the <code>pizza_order</code> dataset, <code>price</code> variable, and <code>bins</code> value of your choice.")
 } else if(sample_data == 2){
   q3[[1]] <-  HTML("Write a function that creates a histogram given a dataset, numeric variable, and bins. <br> <br> 
-Test your function using the <code>medical_record</code> dataset, <code>max_hr</code> variable, and <code>bin</code> value of your choice.")
+Test your function using the <code>medical_record</code> dataset, <code>max_hr</code> variable, and <code>bins</code> value of your choice.")
   q3[[2]] <-  HTML("Write a function that creates a barplot given a dataset and categorical variable. Add a title to the plot. The title should be something similar to: 'Distribution of {variable}'. <br> <br> 
 Test your function using the <code>patient_profile</code> dataset and <code>education</code> variable.")
 } else if(sample_data == 3){
   q3[[1]] <-  HTML("Write a function that takes a dataset and then computes the median of a numeric variable by a categorical variable. <br> <br> 
 Test your function using the <code>mod_penguin_08</code> dataset, <code>island</code> variable, and <code>flipper_length_mm</code> variable.")
-  q3[[2]] <-  HTML("Write a function that takes a dataset and a numeric variable and returns exactly 2 observations: the largest observation and the smallest observation based on that variable. <br> <br> 
+  q3[[2]] <-  HTML("Write a function that takes a dataset and a numeric variable and returns exactly 2 values: the largest value and the smallest value based on that variable. <br> <br> 
 Test your function using the <code>mod_penguin_08</code> dataset and <code>body_mass_g</code> variable.")
 }else{
   q3[[1]] <-  HTML("Write a function that takes a dataset and a numeric variable and standardizes the variable. For a variable <code>x</code>, standardization is done as follows: ( x - mean(x)) / sd(x). <br> <br> 
@@ -313,15 +312,15 @@ q4 <- list()
 
 if(sample_data == 1){
   q4[[1]] <- HTML("Consider the <code>pizza_order</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to convert the variables <code>size_1</code>, <code>pizza_1</code>, <code>size_2</code>, <code>pizza_2</code>, <code>size_3</code>, <code>pizza_3</code>, <code>size_4</code>, <code>pizza_4</code>, <code>size_5</code>, <code>pizza_5</code> to factor variables. <br> <br> Print a <code>glimpse()</code> of the output to prove you are successful.")
-  q4[[2]] <- HTML("Consider the <code>pizza_order</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to calculate the count and proportion of the categorical variables <code>size_1</code>, <code>size_2</code>, <code>size_3</code>, <code>size_4</code>, <code>size_5</code>. Recall proportion can be calculated as 'n/sum(n)'. <br> <br> Print the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>pizza_order</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to calculate the count and proportion of each category within the categorical variables <code>size_1</code>, <code>size_2</code>, <code>size_3</code>, <code>size_4</code>, <code>size_5</code>. <br> <br> Clarification: For <code>size_1</code> we will have the count and proportion of <code>S</code>, <code>M</code>, <code>L</code>, <code>XL</code>, <code>XXL</code>. Then same for <code>size_2</code> and so forth.  <br> <br> Print the output to prove you are successful.")
 } else if(sample_data == 2){
   q4[[1]] <- HTML("Consider the <code>medical_record</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to standardize the variables <code>bp</code>, <code>cholesterol</code>, <code>ekg_results</code>, and <code>max_hr</code>. For a variable <code>x</code>, standardization is done as follows: (x - mean(x)) / sd(x). <br> <br> Print the output to prove you are successful.")
-  q4[[2]] <- HTML("Consider the <code>medical_record</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to calculate the min, max, and range of the variables <code>bp</code>, <code>cholesterol</code>, and <code>max_hr</code>. <br> <br> Print the output to prove you are successful.")
+  q4[[2]] <- HTML("Consider the <code>medical_record</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to calculate the min, max, and range (range = max-min) of the variables <code>bp</code>, <code>cholesterol</code>, and <code>max_hr</code>. <br> <br> Print the output to prove you are successful.")
 }else if(sample_data == 3){
-  q4[[1]] <- HTML("Consider the <code>mod_penguin_08</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to create a scatterplot of each numeric variable's relationship with <code>body_mass_g</code>. ie: There will be 3 scatterplots with <code>y = body_mass_g</code> and x changing between <code>flipper_length_mm</code>, <code>bill_depth_mm</code>, and <code>bill_length_mm</code>. <br> <br> Print the output to prove you are successful.")
+  q4[[1]] <- HTML("Consider the <code>mod_penguin_08</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to create a scatterplot of certain numeric variable's relationship with <code>body_mass_g</code>. ie: There will be 3 scatterplots with <code>y = body_mass_g</code> and x changing between <code>flipper_length_mm</code>, <code>bill_depth_mm</code>, and <code>bill_length_mm</code>. <br> <br> Print the output to prove you are successful.")
   q4[[2]] <- HTML("Consider the <code>mod_penguin_08</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> loop to round the variables <code>bill_length_mm</code>, <code>bill_depth_mm</code>, <code>flipper_length_mm</code>, <code>body_mass_g</code> to 0 decimal places. <br> <br> Print the output to prove you are successful.")
 } else{
-  q4[[1]] <- HTML("Consider the <code>football</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to create a scatterplot of each numeric variable's relationship with <code>tm_score</code>. ie: There will be 3 scatterplots with <code>y = tm_score</code> and x changing between <code>opp_score</code>, <code>passing_yds</code>, and <code>rushing_yds</code>. <br> <br> Print the output to prove you are successful.")
+  q4[[1]] <- HTML("Consider the <code>football</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to create a scatterplot of certain numeric variable's relationship with <code>tm_score</code>. ie: There will be 4 scatterplots with <code>y = tm_score</code> and x changing between <code>opp_score</code>, <code>passing_yds</code>, <code>rushing_yds</code> and <code>avg_punt_yds</code>. <br> <br> Print the output to prove you are successful.")
   q4[[2]] <- HTML("Consider the <code>chi_weather</code> dataset. Use either <code>across()</code>, <code>map()</code> or <code>for()</code> to summarize the average <code>temp</code>, <code>humidity</code>, <code>precip</code>, and <code>windspeed</code> by <code>icon</code>. <br> <br> Print the output to prove you are successful.")
 }
 
