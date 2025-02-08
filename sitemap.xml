@@ -1,24 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://nustat.github.io/r4dsQuizzes/404.html</loc>
-  </url>
-  <url>
-    <loc>https://nustat.github.io/r4dsQuizzes/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://nustat.github.io/r4dsQuizzes/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://nustat.github.io/r4dsQuizzes/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nustat.github.io/r4dsQuizzes/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nustat.github.io/r4dsQuizzes/tutorials/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nustat.github.io/r4dsQuizzes/tutorials/quiz-1.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://nustat.github.io/r4dsQuizzes/404.html</loc></url>
+<url><loc>https://nustat.github.io/r4dsQuizzes/LICENSE.html</loc></url>
+<url><loc>https://nustat.github.io/r4dsQuizzes/authors.html</loc></url>
+<url><loc>https://nustat.github.io/r4dsQuizzes/index.html</loc></url>
+<url><loc>https://nustat.github.io/r4dsQuizzes/reference/index.html</loc></url>
+<url><loc>https://nustat.github.io/r4dsQuizzes/tutorials/index.html</loc></url>
+<url><loc>https://nustat.github.io/r4dsQuizzes/tutorials/quiz-1.html</loc></url>
 </urlset>
+
